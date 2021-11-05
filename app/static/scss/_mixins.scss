@@ -1,0 +1,28 @@
+@media (min-width: 64em) {
+}
+//target viewport and up (640, 1024,1400 px)
+$breakpoints-up: (
+	'medium': '40em',
+	'large': '64em',
+	'xlarge': '87.5em',
+);
+//viewport and down(639, 1023,1399px)
+$breakpoints-down: (
+	'small': '39.9375em',
+	'medium': '63.9375em',
+	'large': '87.4375em',
+);
+
+@mixin breakpoint-up($size) {
+	//check for min width, if it's 64em then do something
+	@media (min-width: map-get($breakpoints-up,$size)) {
+		@content;
+	}
+}
+//function name
+@mixin breakpoint-down($size) {
+	//check for min width, if it's 64em then do something
+	@media (max-width: map-get($breakpoints-down,$size)) {
+		@content;
+	}
+}

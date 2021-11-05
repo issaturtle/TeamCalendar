@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Old+Mincho:wght@400;900&display=swap"
+			rel="stylesheet"
+		/>
+		{%block bootstrap%} {%endblock%}
+		<link
+			rel="stylesheet"
+			href="{{url_for('static', filename = 'dist/style.css')}}"
+		/>
+		<title>{% block title %}Home{% endblock %}</title>
+	</head>
+	<body>
+		<header class="header">
+			<nav class="flex flex-jc-sb flex-ai-c flex-fg-c">
+				<a
+					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
+					target="_blank"
+					class="header__github"
+					><img
+						src="{{url_for('static', filename= 'Images/github3.png')}}"
+						width="30"
+						height="30"
+						alt="WeTried"
+						srcset=""
+				/></a>
+				<a href="#" class="header__Menu hide-desktop">
+					<span> </span><span></span><span></span>
+				</a>
+				{%block active %}
+				<div class="header__links hide-mobile">
+					<a href="homepage" class="active">Home</a>
+					<a href="#">About</a>
+					<a href="signup">Signup</a>
+				</div>
+				{%endblock%}
+				<a href="login" class="button header__cta hide-mobile">Login</a>
+			</nav>
+			<div class="container">{%block content %} {%endblock%}</div>
+		</header>
+		<script
+			type="text/javascript"
+			src="{{url_for('static', filename= 'temp.js')}}"
+		></script>
+	</body>
+</html>

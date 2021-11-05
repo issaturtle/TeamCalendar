@@ -1,0 +1,35 @@
+.container {
+	min-height: 90vh; /* height of the browser viewport */
+}
+.Register {
+	position: relative;
+	color: $darkBlue;
+	font-family: 'Lato', sans-serif;
+	border: 1px solid blue;
+	background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+	padding: 50px;
+	width: 800px;
+	height: 500px;
+
+	color: whitesmoke;
+	&__label {
+		display: block;
+		margin: 5px;
+	}
+	&__form {
+		display: block;
+		width: 400px;
+	}
+	&__Button {
+		margin-top: 30px;
+		margin-left: 30%;
+		background: linear-gradient(to top, whitesmoke, white);
+		transition: color 300ms ease-in-out;
+		&:hover {
+			color: #0d6efd;
+			transition: color 300ms ease-in-out;
+		}
+
+		text-align: center;
+	}
+}

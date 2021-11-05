@@ -1,0 +1,82 @@
+.header {
+	nav {
+		padding: 16px 30px;
+		// font-family: 'Zen Old Mincho', serif;
+		a {
+			text-decoration: none;
+			img {
+				width: 3rem;
+				height: 3rem;
+			}
+		}
+		background-color: white;
+	}
+	&__github {
+		color: blue;
+	}
+	//mobile
+	&__Menu {
+		> span {
+			display: block;
+			width: 26px;
+			height: 2px;
+			background-color: $darkBlue;
+			//if the line is not the last, add margin space
+			&:not(:last-child) {
+				margin-bottom: 3px;
+			}
+		}
+	}
+	&__links {
+		a {
+			font-size: 1rem;
+			color: $grayishBlue;
+			padding-left: 10px;
+			padding-right: 10px;
+			background: #cdcdcd;
+			padding: 10px 30px 10px 30px;
+			border-radius: 0.5em;
+			&:not(:last-child) {
+				margin-right: 32px;
+			}
+			position: relative;
+			// &::before {
+			// 	position: absolute;
+			// 	content: '';
+			// 	display: block;
+			// 	height: 5px;
+			// 	left: 0;
+			// 	right: 0;
+			// 	bottom: -22px;
+			// 	background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+			// 	opacity: 0;
+			// 	transition: opacity 300ms ease-in-out;
+			// }
+			&::before {
+				background: #cdcdcd;
+				padding: 10px 30px 10px 30px;
+				border-radius: 0.5em;
+			}
+			&:hover {
+				color: $darkBlue;
+				transition: color 300ms ease-in-out;
+				&::before {
+					opacity: 0.5;
+				}
+			}
+		}
+		a.active {
+			color: $darkBlue;
+			&::before {
+				background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+
+				opacity: 1;
+			}
+			background: white;
+		}
+	}
+	&__cta {
+		font-size: 1rem;
+		color: white;
+	}
+}
