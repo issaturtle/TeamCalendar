@@ -96,7 +96,7 @@ button:hover,
 }
 
 .header nav {
-  padding: 16px 30px;
+  padding: 7px 30px;
   background-color: white;
 }
 
@@ -127,11 +127,8 @@ button:hover,
 .header__links a {
   font-size: 1rem;
   color: #9698a6;
-  padding-left: 10px;
-  padding-right: 10px;
-  background: #cdcdcd;
-  padding: 10px 30px 10px 30px;
-  border-radius: 0.5em;
+  padding-left: 35px;
+  padding-right: 35px;
   position: relative;
 }
 
@@ -139,10 +136,23 @@ button:hover,
   margin-right: 32px;
 }
 
+.header__links a:first-child {
+  margin-left: 100px;
+}
+
 .header__links a::before {
+  content: '';
+  position: absolute;
   background: #cdcdcd;
-  padding: 10px 30px 10px 30px;
+  padding: 15px 55px 35px 60px;
   border-radius: 0.5em;
+  left: 0;
+  right: 0;
+  height: 10px;
+  bottom: -14px;
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .header__links a:hover {
@@ -152,17 +162,24 @@ button:hover,
 }
 
 .header__links a:hover::before {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .header__links a.active {
   color: #2d314d;
-  background: white;
 }
 
 .header__links a.active::before {
+  padding: 0;
+  border-radius: 0;
+  height: 5px;
+  left: 0;
+  right: 0;
+  bottom: -24px;
   background: -webkit-gradient(linear, left bottom, left top, from(#1d7bf5fa), to(#1d7bf5be));
   background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
   opacity: 1;
 }
 

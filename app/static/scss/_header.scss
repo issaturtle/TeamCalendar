@@ -1,6 +1,6 @@
 .header {
 	nav {
-		padding: 16px 30px;
+		padding: 7px 30px;
 		// font-family: 'Zen Old Mincho', serif;
 		a {
 			text-decoration: none;
@@ -31,15 +31,41 @@
 		a {
 			font-size: 1rem;
 			color: $grayishBlue;
-			padding-left: 10px;
-			padding-right: 10px;
-			background: #cdcdcd;
-			padding: 10px 30px 10px 30px;
-			border-radius: 0.5em;
+			padding-left: 35px;
+			padding-right: 35px;
+			// background: #cdcdcd;
+			// padding: 10px 30px 10px 30px;
+			// border-radius: 0.5em;
 			&:not(:last-child) {
 				margin-right: 32px;
 			}
+			&:first-child {
+				margin-left: 100px;
+			}
 			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				background: #cdcdcd;
+				// padding: 20px 30px 20px 30px;
+				padding: 15px 55px 35px 60px;
+				border-radius: 0.5em;
+				left: 0;
+				right: 0;
+				height: 10px;
+				bottom: -14px;
+				opacity: 0;
+				transition: opacity 300ms ease-in-out;
+			}
+			// &::before {
+			// 	position: absolute;
+			// 	content: '';
+			// 	background: #cdcdcd;
+			// 	padding: 10px 30px 10px 30px;
+			// 	border-radius: 0.5em;
+			// 	opacity: 0;
+			// 	text-align: center;
+			// }
 			// &::before {
 			// 	position: absolute;
 			// 	content: '';
@@ -52,27 +78,28 @@
 			// 	opacity: 0;
 			// 	transition: opacity 300ms ease-in-out;
 			// }
-			&::before {
-				background: #cdcdcd;
-				padding: 10px 30px 10px 30px;
-				border-radius: 0.5em;
-			}
 			&:hover {
 				color: $darkBlue;
 				transition: color 300ms ease-in-out;
 				&::before {
-					opacity: 0.5;
+					opacity: 0.3;
 				}
 			}
 		}
 		a.active {
 			color: $darkBlue;
 			&::before {
+				padding: 0;
+				border-radius: 0;
+				height: 5px;
+				left: 0;
+				right: 0;
+				bottom: -24px;
 				background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
 
+				transition: opacity 300ms ease-in-out;
 				opacity: 1;
 			}
-			background: white;
 		}
 	}
 	&__cta {
