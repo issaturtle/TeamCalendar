@@ -3,18 +3,20 @@
 }
 .Register {
 	position: relative;
-	color: $darkBlue;
+	color: rgba(0, 132, 255, 0.993);
 	font-family: 'Lato', sans-serif;
-	border: 1px solid blue;
-	background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+
+	border-radius: 1em;
+	// background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+	// background: linear-gradient(to top, #1d7bf5b7, #1d7bf5c2);
+	background: linear-gradient(to top, whitesmoke, white);
 	padding: 50px;
 	width: 800px;
 	height: 500px;
 
-	color: whitesmoke;
 	&__label {
 		display: block;
-		margin: 5px;
+		margin: 10px;
 	}
 	&__form {
 		display: block;
@@ -22,12 +24,13 @@
 	}
 	&__Button {
 		margin-top: 30px;
-		margin-left: 30%;
-		background: linear-gradient(to top, whitesmoke, white);
-		transition: color 300ms ease-in-out;
+		color: white;
+		font-size: 25px;
+		background: linear-gradient(to top, #1274f5ef, #1d7bf5be);
+
+		width: 400px;
+		border-radius: 0.25em;
 		&:hover {
-			color: #0d6efd;
-			transition: color 300ms ease-in-out;
 		}
 
 		text-align: center;
