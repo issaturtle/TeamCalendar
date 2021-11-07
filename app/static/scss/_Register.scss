@@ -4,34 +4,45 @@
 .Register {
 	position: relative;
 	color: rgba(0, 132, 255, 0.993);
-	font-family: 'Lato', sans-serif;
-
+	// font-family: 'Lato', sans-serif;
+	font-family: 'AG1';
+	font-size: 18px;
 	border-radius: 1em;
+
 	// background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
 	// background: linear-gradient(to top, #1d7bf5b7, #1d7bf5c2);
 	background: linear-gradient(to top, whitesmoke, white);
 	padding: 50px;
 	width: 800px;
-	height: 500px;
-
+	height: 525px;
+	&__title {
+		display: block;
+		margin-bottom: 20px;
+		margin-top: -30px;
+		font-family: 'Ag3';
+		color: black;
+	}
+	&__description {
+		margin-top: -20px;
+		font-size: 20px;
+		font-family: 'Ag1';
+	}
 	&__label {
 		display: block;
 		margin: 10px;
 	}
 	&__form {
 		display: block;
-		width: 400px;
 	}
 	&__Button {
 		margin-top: 30px;
+		margin-bottom: 30px;
 		color: white;
 		font-size: 25px;
 		background: linear-gradient(to top, #1274f5ef, #1d7bf5be);
-
-		width: 400px;
+		font-family: 'AG2';
+		width: 460px;
 		border-radius: 0.25em;
-		&:hover {
-		}
 
 		text-align: center;
 	}

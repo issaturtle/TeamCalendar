@@ -17,7 +17,7 @@ body {
 	background-color: rgba(236, 243, 255, 1);
 	position: relative;
 	// &::before {
-	// 	position: absolute;
+	// 	position: absolute;d
 	// 	display: block;
 	// 	content: '';
 	// 	opacity: 0.5;
@@ -67,11 +67,16 @@ button,
 	opacity: 0.9;
 	border-radius: 50px;
 	border: 0;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0);
+	transition: box-shadow 0.3s ease-in-out;
 	transition: opacity 300ms ease-in-out;
+	font-family: 'Ag2';
 	&:hover {
 		opacity: 2;
 		transition: opacity 300ms ease-in-out;
 		color: white;
+		box-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+		transition: box-shadow 0.3s ease-in-out;
 	}
 }
 
@@ -88,4 +93,24 @@ button,
 	@include breakpoint-up(large) {
 		display: none;
 	}
+}
+@font-face {
+	font-family: 'FG';
+	src: url(../fonts/FranklinGothic.ttf);
+}
+@font-face {
+	font-family: 'AG';
+	src: url(../fonts/avantgardebq-extralight.otf);
+}
+@font-face {
+	font-family: 'AG1';
+	src: url(../fonts/ITCAvantGardeStdBk.otf);
+}
+@font-face {
+	font-family: 'AG2';
+	src: url(../fonts/ITCAvantGardeStdMd.otf);
+}
+@font-face {
+	font-family: 'AG3';
+	src: url(../fonts/ITCAvantGardeStdDemi.otf);
 }

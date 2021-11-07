@@ -81,8 +81,15 @@ button,
   opacity: 0.9;
   border-radius: 50px;
   border: 0;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
   -webkit-transition: opacity 300ms ease-in-out;
   transition: opacity 300ms ease-in-out;
+  font-family: 'Ag2';
 }
 
 button:hover,
@@ -91,6 +98,12 @@ button:hover,
   -webkit-transition: opacity 300ms ease-in-out;
   transition: opacity 300ms ease-in-out;
   color: white;
+  -webkit-box-shadow: 2px 2px 10px black;
+          box-shadow: 2px 2px 10px black;
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
 }
 
 @media (max-width: 63.9375em) {
@@ -105,8 +118,35 @@ button:hover,
   }
 }
 
+@font-face {
+  font-family: 'FG';
+  src: url(../fonts/FranklinGothic.ttf);
+}
+
+@font-face {
+  font-family: 'AG';
+  src: url(../fonts/avantgardebq-extralight.otf);
+}
+
+@font-face {
+  font-family: 'AG1';
+  src: url(../fonts/ITCAvantGardeStdBk.otf);
+}
+
+@font-face {
+  font-family: 'AG2';
+  src: url(../fonts/ITCAvantGardeStdMd.otf);
+}
+
+@font-face {
+  font-family: 'AG3';
+  src: url(../fonts/ITCAvantGardeStdDemi.otf);
+}
+
 .header nav {
   padding: 7px 30px;
+  font-family: 'Ag1';
+  font-size: 20px;
   background-color: white;
 }
 
@@ -206,13 +246,28 @@ button:hover,
 .Register {
   position: relative;
   color: rgba(0, 132, 255, 0.993);
-  font-family: 'Lato', sans-serif;
+  font-family: 'AG1';
+  font-size: 18px;
   border-radius: 1em;
   background: -webkit-gradient(linear, left bottom, left top, from(whitesmoke), to(white));
   background: linear-gradient(to top, whitesmoke, white);
   padding: 50px;
   width: 800px;
-  height: 500px;
+  height: 525px;
+}
+
+.Register__title {
+  display: block;
+  margin-bottom: 20px;
+  margin-top: -30px;
+  font-family: 'Ag3';
+  color: black;
+}
+
+.Register__description {
+  margin-top: -20px;
+  font-size: 20px;
+  font-family: 'Ag1';
 }
 
 .Register__label {
@@ -222,16 +277,17 @@ button:hover,
 
 .Register__form {
   display: block;
-  width: 400px;
 }
 
 .Register__Button {
   margin-top: 30px;
+  margin-bottom: 30px;
   color: white;
   font-size: 25px;
   background: -webkit-gradient(linear, left bottom, left top, from(#1274f5ef), to(#1d7bf5be));
   background: linear-gradient(to top, #1274f5ef, #1d7bf5be);
-  width: 400px;
+  font-family: 'AG2';
+  width: 460px;
   border-radius: 0.25em;
   text-align: center;
 }
