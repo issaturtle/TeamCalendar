@@ -2,7 +2,7 @@
 	min-height: 90vh; /* height of the browser viewport */
 }
 .Register {
-	position: relative;
+	position: fixed;
 	color: rgba(0, 132, 255, 0.993);
 	// font-family: 'Lato', sans-serif;
 	font-family: 'AG1';
@@ -34,6 +34,9 @@
 	&__form {
 		display: block;
 	}
+	&__open {
+		z-index: -1;
+	}
 	&__Button {
 		margin-top: 30px;
 		margin-bottom: 30px;
@@ -45,5 +48,9 @@
 		border-radius: 0.25em;
 
 		text-align: center;
+	}
+	&__login {
+		width: 550px;
+		height: 360px;
 	}
 }

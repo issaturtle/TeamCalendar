@@ -25,6 +25,7 @@
 	<body>
 		{%endblock%}
 		<header class="header">
+			<div class="overlay"></div>
 			<nav class="flex flex-jc-sb flex-ai-c flex-fg-c">
 				<a
 					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
@@ -37,23 +38,33 @@
 						alt="WeTried"
 						srcset=""
 				/></a>
-				<a href="#" class="header__Menu hide-desktop">
+				<a id="buttonNav" href="#" class="header__Menu hide-desktop">
 					<span> </span><span></span><span></span>
 				</a>
 				{%block active %}
 				<div class="header__links hide-mobile">
 					<a href="homepage" class="active">Home</a>
 					<a href="#">About</a>
-					<a href="signup">Signup</a>
+					<a href="signup">Sign up</a>
 				</div>
 				{%endblock%}
 				<a href="login" class="button header__cta hide-mobile">Login</a>
 			</nav>
-			<div class="container">{%block content %} {%endblock%}</div>
+			<div class="container">
+				{%block content %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga adipisci
+					magnam accusamus praesentium a reiciendis corrupti cumque impedit
+					voluptate soluta aliquam quo at quisquam ipsum eum vaoluptates, minima
+					dolore blanditiis!
+				</p>
+				{%endblock%}
+			</div>
 		</header>
+
 		<script
 			type="text/javascript"
-			src="{{url_for('static', filename= 'temp.js')}}"
+			src="{{url_for('static', filename= 'js/script.js')}}"
 		></script>
 	</body>
 </html>

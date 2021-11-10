@@ -1,4 +1,21 @@
 .header {
+	&.open {
+		.overlay {
+			display: block;
+			// animation: fade-in 300ms ease-in-out forwards;
+		}
+		.header__Menu {
+			> span:first-child {
+				transform: rotate(45deg);
+			}
+			> span:nth-child(2) {
+				opacity: 0;
+			}
+			> span:last-child {
+				transform: rotate(-45deg);
+			}
+		}
+	}
 	nav {
 		padding: 7px 30px;
 		// font-family: 'Zen Old Mincho', serif;
@@ -24,8 +41,21 @@
 			height: 2px;
 			background-color: $darkBlue;
 			//if the line is not the last, add margin space
+			transition: all 300ms ease-in-out;
+			transform-origin: 2px 1.2px;
 			&:not(:last-child) {
-				margin-bottom: 3px;
+				margin-bottom: 6px;
+			}
+		}
+		&.open {
+			> span:first-child {
+				transform: rotate(45deg);
+			}
+			> span:nth-child(2) {
+				opacity: 0;
+			}
+			> span:last-child {
+				transform: rotate(-45deg);
 			}
 		}
 	}
@@ -109,3 +139,18 @@
 		color: white;
 	}
 }
+
+.overlay {
+	// background-color: $darkBlue;
+
+	opacity: 0;
+
+	position: fixed;
+	top: 4rem;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	background: linear-gradient($darkBlue, transparent);
+}
+
+//open style hamburger

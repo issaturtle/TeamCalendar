@@ -1,3 +1,72 @@
+@-webkit-keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  -webkit-animation: fade-in 300ms ease-in-out forwards;
+          animation: fade-in 300ms ease-in-out forwards;
+  opacity: 1;
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  -webkit-animation: fade-out 300ms ease-in-out forwards;
+          animation: fade-out 300ms ease-in-out forwards;
+}
+
 html {
   font-size: 100%;
   -webkit-box-sizing: border-box;
@@ -143,6 +212,24 @@ button:hover,
   src: url(../fonts/ITCAvantGardeStdDemi.otf);
 }
 
+.header.open .overlay {
+  display: block;
+}
+
+.header.open .header__Menu > span:first-child {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.header.open .header__Menu > span:nth-child(2) {
+  opacity: 0;
+}
+
+.header.open .header__Menu > span:last-child {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .header nav {
   padding: 7px 30px;
   font-family: 'Ag1';
@@ -168,10 +255,28 @@ button:hover,
   width: 26px;
   height: 2px;
   background-color: #2d314d;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-transform-origin: 2px 1.2px;
+          transform-origin: 2px 1.2px;
 }
 
 .header__Menu > span:not(:last-child) {
-  margin-bottom: 3px;
+  margin-bottom: 6px;
+}
+
+.header__Menu.open > span:first-child {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.header__Menu.open > span:nth-child(2) {
+  opacity: 0;
+}
+
+.header__Menu.open > span:last-child {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .header__links a {
@@ -238,13 +343,24 @@ button:hover,
   color: white;
 }
 
+.overlay {
+  opacity: 0;
+  position: fixed;
+  top: 4rem;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2d314d), to(transparent));
+  background: linear-gradient(#2d314d, transparent);
+}
+
 .container {
   min-height: 90vh;
   /* height of the browser viewport */
 }
 
 .Register {
-  position: relative;
+  position: fixed;
   color: rgba(0, 132, 255, 0.993);
   font-family: 'AG1';
   font-size: 18px;
@@ -279,6 +395,10 @@ button:hover,
   display: block;
 }
 
+.Register__open {
+  z-index: -1;
+}
+
 .Register__Button {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -290,5 +410,10 @@ button:hover,
   width: 460px;
   border-radius: 0.25em;
   text-align: center;
+}
+
+.Register__login {
+  width: 550px;
+  height: 360px;
 }
 /*# sourceMappingURL=style.css.map */
