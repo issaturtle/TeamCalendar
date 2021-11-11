@@ -397,6 +397,7 @@ button:hover,
 
 .Register__open {
   z-index: -1;
+  opacity: 0.5;
 }
 
 .Register__Button {
@@ -415,5 +416,13 @@ button:hover,
 .Register__login {
   width: 550px;
   height: 360px;
+}
+
+.Register__signUp {
+  display: block;
+  text-align: center;
+  align: center;
+  margin-top: -20px;
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */
