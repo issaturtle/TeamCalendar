@@ -12,3 +12,7 @@ def logout():
 @auth.route('/signup')
 def signup():
     return render_template("signup.html")
+
+@auth.route('/calen')
+def calen():
+    return render_template("calendar.html")

@@ -1,0 +1,93 @@
+.features {
+	// border-style: solid;
+	// border-width: 14 px calc(clamp(500 px, 50 vw, 800 px));
+	// margin: 0 -1 px;
+	// transform: rotate(20deg);
+	// transform: skewY(-4deg);
+	&__image {
+		@include breakpoint-up(large) {
+			height: 650px;
+		}
+		@include breakpoint-down(medium) {
+			height: 400px;
+		}
+	}
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+
+		@include breakpoint-up(large) {
+			grid-template-columns: repeat(4, 1fr);
+			display: flex;
+			> span:first-child {
+				border: solid whitesmoke 10px;
+				background: whitesmoke;
+				border-radius: 0.5em;
+				margin-right: 10px;
+			}
+			> span:nth-child(2) {
+				border: solid whitesmoke 10px;
+				background: whitesmoke;
+				border-radius: 0.5em;
+				margin-right: 10px;
+			}
+			> span:last-child {
+				border: solid whitesmoke 10px;
+				background: whitesmoke;
+				border-radius: 0.5em;
+			}
+		}
+		@include breakpoint-down(medium) {
+			border: solid whitesmoke 10px;
+			background: whitesmoke;
+			border-radius: 0.5em;
+			margin-bottom: 10px;
+		}
+		@include breakpoint-up(medium) {
+			grid-template-columns: repeat(2, 1fr);
+			> span:first-child {
+				border: solid whitesmoke 10px;
+				background: whitesmoke;
+				border-radius: 0.5em;
+				margin-right: 10px;
+
+				padding-right: 10px;
+			}
+			> span:nth-child(2) {
+				border: solid whitesmoke 10px;
+				background: whitesmoke;
+				border-radius: 0.5em;
+			}
+			> span:last-child {
+				border: solid whitesmoke 10px;
+				background: whitesmoke;
+				border-radius: 0.5em;
+			}
+		}
+	}
+	&__item {
+		border: 1px solid magenta;
+		padding: 0.9375rem;
+		@include breakpoint-up(medium) {
+			flex: 0 0 50%;
+		}
+		@include breakpoint-up(large) {
+			flex: 1;
+		}
+		// color: red;
+		// border: solid red 10px;
+		// background: whitesmoke;
+		// border-radius: 0.5em;
+		// text-align: center;
+	}
+	&__description {
+		h1 {
+			&:first-child {
+				font-family: 'AGBold';
+				color: $darkBlue;
+			}
+		}
+		p {
+		}
+	}
+}

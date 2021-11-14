@@ -1,10 +1,20 @@
+$red: #f37272;
+$brown: #584e4a;
+$whitey: #f0f0f0;
+
+$duration: 0.2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .header {
+	width: 100%;
+	background: black;
+	height: 70px;
 	&.open {
 		.overlay {
 			display: block;
 			// animation: fade-in 300ms ease-in-out forwards;
 		}
-		.header__Menu {
+		.header__toggle {
 			> span:first-child {
 				transform: rotate(45deg);
 			}
@@ -17,24 +27,32 @@
 		}
 	}
 	nav {
-		padding: 7px 30px;
+		position: relative;
+		// padding: 7px 30px;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		// font-family: 'Zen Old Mincho', serif;
 		font-family: 'Ag1';
 		font-size: 20px;
+		width: 100%;
+		height: 70px;
+
 		a {
+			color: white;
 			text-decoration: none;
 			img {
 				width: 3rem;
 				height: 3rem;
 			}
 		}
-		background-color: white;
+		background: black;
+		background-size: cover;
 	}
 	&__github {
 		color: blue;
 	}
 	//mobile
-	&__Menu {
+	&__toggle {
 		> span {
 			display: block;
 			width: 26px;
@@ -59,10 +77,74 @@
 			}
 		}
 	}
+	&__menu {
+		background: white;
+		position: absolute;
+		top: 100px;
+		padding: 1.625rem;
+		// width: calc(100%-40px);
+		width: calc(100% - 2.5rem);
+		border-radius: 3px;
+		left: 50%;
+		color: red;
+		transform: translateX(-50%);
+		// a {
+		// 	display: block;
+		// 	color: $darkBlue;
+		// 	padding: 0.625rem;
+		// 	text-align: center;
+		// 	font-family: 'AG2';
+		// }
+		a {
+			display: block;
+			font-size: 20px;
+			color: $darkBlue;
+			position: relative;
+			text-transform: uppercase;
+			text-decoration: none;
+			padding-bottom: 8px;
+			padding: 30px;
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 2px;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background-color: red;
+				text-align: center;
+			}
+			&:before {
+				opacity: 0;
+				transform: translateY(-$distance);
+				transition: transform 0s $easeOutBack, opacity 0s;
+			}
+			&:after {
+				opacity: 0;
+				transform: translateY($distance/2);
+				transition: transform $duration $easeOutBack, opacity $duration;
+			}
+			&:hover,
+			&:focus {
+				&:before,
+				&:after {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				&:before {
+					transition: transform $duration $easeOutBack, opacity $duration;
+				}
+				&:after {
+					transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+				}
+			}
+		}
+	}
 	&__links {
 		a {
 			font-size: 1rem;
-			color: $grayishBlue;
+			color: white;
 			padding-left: 35px;
 			padding-right: 35px;
 			// background: #cdcdcd;
@@ -89,29 +171,9 @@
 				opacity: 0;
 				transition: opacity 300ms ease-in-out;
 			}
-			// &::before {
-			// 	position: absolute;
-			// 	content: '';
-			// 	background: #cdcdcd;
-			// 	padding: 10px 30px 10px 30px;
-			// 	border-radius: 0.5em;
-			// 	opacity: 0;
-			// 	text-align: center;
-			// }
-			// &::before {
-			// 	position: absolute;
-			// 	content: '';
-			// 	display: block;
-			// 	height: 5px;
-			// 	left: 0;
-			// 	right: 0;
-			// 	bottom: -22px;
-			// 	background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
-			// 	opacity: 0;
-			// 	transition: opacity 300ms ease-in-out;
-			// }
+
 			&:hover {
-				color: $darkBlue;
+				color: white;
 				transition: color 300ms ease-in-out;
 				&::before {
 					opacity: 0.3;
@@ -119,14 +181,14 @@
 			}
 		}
 		a.active {
-			color: $darkBlue;
+			color: #1dcaf5fa;
 			&::before {
 				padding: 0;
 				border-radius: 0;
 				height: 5px;
 				left: 0;
 				right: 0;
-				bottom: -22px;
+				bottom: -24px;
 				background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
 
 				transition: opacity 300ms ease-in-out;

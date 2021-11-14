@@ -1,7 +1,9 @@
 .container {
 	min-height: 90vh; /* height of the browser viewport */
+	overflow: hidden;
 }
 .Register {
+	// margin-top: 70%;
 	position: fixed;
 	color: rgba(0, 132, 255, 0.993);
 	// font-family: 'Lato', sans-serif;
@@ -12,6 +14,7 @@
 	// background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
 	// background: linear-gradient(to top, #1d7bf5b7, #1d7bf5c2);
 	background: linear-gradient(to top, whitesmoke, white);
+
 	padding: 50px;
 	width: 800px;
 	height: 525px;
@@ -26,6 +29,7 @@
 		margin-top: -20px;
 		font-size: 20px;
 		font-family: 'Ag1';
+		color: #ebba52;
 	}
 	&__label {
 		display: block;
@@ -37,13 +41,14 @@
 	&__open {
 		z-index: -1;
 		opacity: 0.5;
+		transition: opacity 300ms ease-in-out;
 	}
 	&__Button {
 		margin-top: 30px;
 		margin-bottom: 30px;
 		color: white;
 		font-size: 25px;
-		background: linear-gradient(to top, #1274f5ef, #1d7bf5be);
+		// background: linear-gradient(to top, #1274f5ef, #1d7bf5be);
 		font-family: 'AG2';
 		width: 460px;
 		border-radius: 0.25em;
@@ -55,10 +60,13 @@
 		height: 360px;
 	}
 	&__signUp {
+		font-family: 'AG3';
 		display: block;
 		text-align: center;
-		align: center;
 		margin-top: -20px;
 		text-decoration: underline;
 	}
+}
+.feature__icon {
+	object-fit: cover;
 }
