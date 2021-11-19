@@ -156,6 +156,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			&:first-child {
 				margin-left: 100px;
 			}
+
 			position: relative;
 			&::before {
 				content: '';
@@ -199,6 +200,23 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	&__cta {
 		font-size: 1rem;
 		color: white;
+	}
+	#loggedOut {
+		font-size: 1rem;
+		color: white;
+		background: black;
+		opacity: 1;
+		cursor: context-menu;
+		margin-left: 200px;
+		&:hover {
+			background: black;
+			opacity: 1;
+			color: white;
+		}
+		&::before {
+			color: white;
+			background: black;
+		}
 	}
 }
 

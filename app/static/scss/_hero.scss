@@ -19,6 +19,7 @@
 		background-position: center bottom;
 		min-height: 17.5rem;
 		z-index: -2;
+		border-radius: 10px;
 		@include breakpoint-up(large) {
 			flex: 3;
 			order: 2;
@@ -41,6 +42,10 @@
 		}
 	}
 	&__text {
+		position: relative;
+		&.open {
+			z-index: -1;
+		}
 		@include breakpoint-up(large) {
 			flex: 2;
 			order: 1;
@@ -74,6 +79,7 @@
 		}
 	}
 	&__cta {
+		position: relative;
 		color: black;
 		background: #f2c973;
 		opacity: 0.8;

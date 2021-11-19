@@ -1,15 +1,33 @@
 .features {
-	// border-style: solid;
-	// border-width: 14 px calc(clamp(500 px, 50 vw, 800 px));
-	// margin: 0 -1 px;
-	// transform: rotate(20deg);
-	// transform: skewY(-4deg);
+	width: 100%;
+	@include breakpoint-up(large) {
+		height: 630px;
+	}
+	@include breakpoint-down(medium) {
+		height: 472px;
+	}
+
 	&__image {
+		position: relative;
+		background-image: url('/static/Images/lightbulb.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center 10px 10px;
+		min-height: 17.5rem;
+		margin-bottom: 26px;
+		border-radius: 10px;
 		@include breakpoint-up(large) {
-			height: 650px;
+			height: 558px;
+			margin-bottom: 1.5rem;
+			min-height: 35rem;
 		}
 		@include breakpoint-down(medium) {
-			height: 400px;
+			height: 278px;
+			background-position: center top 25%;
+		}
+		@include breakpoint-down(small) {
+			height: 280px;
+			background-position: center center;
 		}
 	}
 	&__grid {
@@ -20,53 +38,90 @@
 			grid-template-columns: repeat(4, 1fr);
 			display: flex;
 			> span:first-child {
-				border: solid whitesmoke 10px;
-				background: whitesmoke;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
 				border-radius: 0.5em;
 				margin-right: 10px;
 			}
 			> span:nth-child(2) {
-				border: solid whitesmoke 10px;
-				background: whitesmoke;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
 				border-radius: 0.5em;
 				margin-right: 10px;
 			}
 			> span:last-child {
-				border: solid whitesmoke 10px;
-				background: whitesmoke;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
 				border-radius: 0.5em;
 			}
 		}
 		@include breakpoint-down(medium) {
-			border: solid whitesmoke 10px;
-			background: whitesmoke;
+			border: solid black 1px;
+
+			background: linear-gradient(
+				to right,
+				rgb(0, 0, 0),
+				#4a1b0b,
+				#4b1c0c,
+				#793507
+			);
 			border-radius: 0.5em;
 			margin-bottom: 10px;
 		}
 		@include breakpoint-up(medium) {
-			grid-template-columns: repeat(2, 1fr);
+			// grid-template-columns: repeat(2, 1fr);
 			> span:first-child {
-				border: solid whitesmoke 10px;
-				background: whitesmoke;
-				border-radius: 0.5em;
-				margin-right: 10px;
-
-				padding-right: 10px;
+				border: solid black 3px;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
 			}
 			> span:nth-child(2) {
-				border: solid whitesmoke 10px;
-				background: whitesmoke;
-				border-radius: 0.5em;
+				border: solid black 3px;
+				border-top: 0px;
+				border-bottom: 0px;
+
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
 			}
 			> span:last-child {
-				border: solid whitesmoke 10px;
-				background: whitesmoke;
-				border-radius: 0.5em;
+				border: solid black 3px;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
 			}
 		}
 	}
 	&__item {
-		border: 1px solid magenta;
 		padding: 0.9375rem;
 		@include breakpoint-up(medium) {
 			flex: 0 0 50%;
@@ -82,12 +137,29 @@
 	}
 	&__description {
 		h1 {
-			&:first-child {
-				font-family: 'AGBold';
-				color: $darkBlue;
+			font-family: 'AGBold';
+			color: #ebba52;
+			@include breakpoint-up(large) {
+				color: #f2c973;
+				font-size: 45px;
+			}
+			@include breakpoint-down(medium) {
+				font-size: 40px;
+			}
+			@include breakpoint-down(small) {
+				font-size: 35px;
 			}
 		}
 		p {
+			color: white;
+			@include breakpoint-down(medium) {
+				font-size: 25px;
+			}
+			@include breakpoint-down(small) {
+				font-size: 1.2rem;
+
+				opacity: 0.8;
+			}
 		}
 	}
 }

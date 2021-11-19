@@ -24,15 +24,17 @@
 	{%block bodyType%}
 	<body>
 		{%endblock%}
+		
 		<header class="header">
 			<div class="overlay has-fade"></div>
+			{%block navBar%}
 			<nav class="webContainer flex flex-jc-sb flex-ai-c flex-fg-c">
 				<a
 					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
 					target="_blank"
 					class="header__github"
 					><img
-						src="{{url_for('static', filename= 'Images/github3.png')}}"
+						src="{{url_for('static', filename= 'Images/wt.png')}}"
 						width="30"
 						height="30"
 						alt="WeTried"
@@ -41,6 +43,7 @@
 				<a id="buttonNav" href="#" class="header__toggle hide-desktop">
 					<span> </span><span></span><span></span>
 				</a>
+			
 				{%block active %}
 				<div class="header__links hide-mobile">
 					<a href="homepage" class="active">Home</a>
@@ -50,6 +53,7 @@
 				{%endblock%}
 				<a href="login" class="button header__cta hide-mobile">Login</a>
 			</nav>
+			{%endblock%}
 			<div class="header__menu webContainer has-fade">
 				<a href="homepage">Home</a>
 				<a href="">About</a>
@@ -63,90 +67,74 @@
 			{%block featurelist%}
 			<section class= "hero webContainer ">
 				<div class="hero__image "></div>
-				<div class="hero__text ">
+				<div class="hero__text">
 					<h1>
 						we tried to make a project
 					</h1>
 					<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perferendis repellat asperiores quod quisquam suscipit deserunt vel ullam iste tempore, nostrum vero aliquam ipsum cum tenetur soluta accusamus. Voluptatibus, reprehenderit.</p>
-					<a href ="#" class = "button hero__cta">SIGN UP</a>
+					<a href ="#" id= "homepageSU" class = "button hero__cta">SIGN UP</a>
 				</div>
 			</section>
-			<section class="features webContainer">
-				<div class="features__picture">
-					<img class= "features__image" src="../static/Images/calendar2.jpg"
-							width="100%"
-							height="650px"
-					>
-				</div>
-				<div class= "features__grid   ">
-					<span >
-						<div class="features__item">
-							<div class="features__icon">
-							
-							
-							</div>
-							<div class="features__title"></div>
-							<div class="features__description ">
-								<h1>Calendar program</h1>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate aut nihil! Saepe quam ad dolorum minus iure sit quis fugit modi error, doloremque, ratione placeat vitae quia, consequuntur assumenda?
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dignissimos ullam delectus sunt vel ipsam corporis molestiae itaque nemo praesentium hic dolorum? Obcaecati nam officiis ipsa molestiae nulla adipisci nesciunt!
-									Tempora perferendis saepe eaque optio aperiam non inventore asperiores mollitia, expedita doloribus assumenda voluptate natus, consectetur rem! Rerum minima, nisi ad beatae ducimus optio dolore eligendi quos vitae corrupti hic.
-									Quisquam nesciunt praesentium laudantium saepe porro omnis recusandae earum eius ipsam consequatur sint voluptates magnam necessitatibus totam doloribus molestias maxime possimus nobis obcaecati in corporis ullam, nulla id ad. Hic!
-									Nulla quaerat sint obcaecati ipsa molestias eos maxime! Iste vitae, tenetur, sint aspernatur sapiente nobis adipisci earum velit delectus quibusdam voluptatum quos ratione tempore provident labore accusamus placeat sit explicabo.
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam odio aut voluptates, ut excepturi iusto assumenda voluptas minima ullam illum adipisci, nihil obcaecati animi debitis accusamus fugiat veritatis quaerat! Alias!	
-								</p>
-							</div>
-						</div>
-					</span>
-					<span>
-						<div class="features__item">
-							<div class="features__icon">
-							</div>
-							<div class="features__title"></div>
-							<div class="features__description">
-								<span>
-									<h1>Calendar Program</h1>
-							
-								</span>
-								<span>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate aut nihil! Saepe quam ad dolorum minus iure sit quis fugit modi error, doloremque, ratione placeat vitae quia, consequuntur assumenda?
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dignissimos ullam delectus sunt vel ipsam corporis molestiae itaque nemo praesentium hic dolorum? Obcaecati nam officiis ipsa molestiae nulla adipisci nesciunt!
-										Tempora perferendis saepe eaque optio aperiam non inventore asperiores mollitia, expedita doloribus assumenda voluptate natus, consectetur rem! Rerum minima, nisi ad beatae ducimus optio dolore eligendi quos vitae corrupti hic.
-										Quisquam nesciunt praesentium laudantium saepe porro omnis recusandae earum eius ipsam consequatur sint voluptates magnam necessitatibus totam doloribus molestias maxime possimus nobis obcaecati in corporis ullam, nulla id ad. Hic!
-										Nulla quaerat sint obcaecati ipsa molestias eos maxime! Iste vitae, tenetur, sint aspernatur sapiente nobis adipisci earum velit delectus quibusdam voluptatum quos ratione tempore provident labore accusamus placeat sit explicabo.
-										Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam odio aut voluptates, ut excepturi iusto assumenda voluptas minima ullam illum adipisci, nihil obcaecati animi debitis accusamus fugiat veritatis quaerat! Alias!	
+			<section class="features">
+				<div class= "temp webContainer">
+					<div class="features__image">
+					</div>
+					<div class= "features__grid ">
+						<span >
+							<div class="features__item">
+								<div class="features__icon">
+								
+								</div>
+								<div class="features__title"></div>
+								<div class="features__description ">
+									<h1>Secure</h1>
+									<p>Google Authentication or account creation to save and secure your work 	
 									</p>
-								</span><span></span>
-								
-								
+								</div>
 							</div>
-						</div>
-					</span>
-					<span>
-						<div class="features__item">
-							<div class="features__icon">
-							</div>
-							<div class="features__title"></div>
-							<div class="features__description">
-								<span>
-									<h1>Calendar Program</h1>
-							
-								</span>
-								<span>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate aut nihil! Saepe quam ad dolorum minus iure sit quis fugit modi error, doloremque, ratione placeat vitae quia, consequuntur assumenda?
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dignissimos ullam delectus sunt vel ipsam corporis molestiae itaque nemo praesentium hic dolorum? Obcaecati nam officiis ipsa molestiae nulla adipisci nesciunt!
-										Tempora perferendis saepe eaque optio aperiam non inventore asperiores mollitia, expedita doloribus assumenda voluptate natus, consectetur rem! Rerum minima, nisi ad beatae ducimus optio dolore eligendi quos vitae corrupti hic.
-										Quisquam nesciunt praesentium laudantium saepe porro omnis recusandae earum eius ipsam consequatur sint voluptates magnam necessitatibus totam doloribus molestias maxime possimus nobis obcaecati in corporis ullam, nulla id ad. Hic!
-										Nulla quaerat sint obcaecati ipsa molestias eos maxime! Iste vitae, tenetur, sint aspernatur sapiente nobis adipisci earum velit delectus quibusdam voluptatum quos ratione tempore provident labore accusamus placeat sit explicabo.
-										Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam odio aut voluptates, ut excepturi iusto assumenda voluptas minima ullam illum adipisci, nihil obcaecati animi debitis accusamus fugiat veritatis quaerat! Alias!	
-									</p>
-								</span><span></span>
+						</span>
+						<span>
+							<div class="features__item">
+								<div class="features__icon">
+								</div>
+								<div class="features__title"></div>
+								<div class="features__description">
+									<span>
+										<h1>Fast</h1>
 								
-								
+									</span>
+									<span>
+										<p>
+											Browser-based calendar system, light-weight and easily rendered
+										</p>
+									</span><span></span>
+									
+									
+								</div>
 							</div>
-						</div>
-					</span>
-				</div>
+						</span>
+						<span>
+							<div class="features__item">
+								<div class="features__icon">
+								</div>
+								<div class="features__title"></div>
+								<div class="features__description">
+									<span>
+										<h1>Efficient</h1>
+								
+									</span>
+									<span>
+										<p>
+											Assigning work to team members and managing their tasks with a few clicks
+										</p>
+									</span><span></span>
+									
+									
+								</div>
+							</div>
+						</span>
+					</div>
+			</div>
 			</section>
 			{%endblock%}
 		</header>
@@ -159,10 +147,11 @@
 				srcset=""
 			/>
 		</section> -->
-
+		{%block script%}
 		<script
 			type="text/javascript"
 			src="{{url_for('static', filename= 'js/script.js')}}"
 		></script>
+		{%endblock%}
 	</body>
 </html>

@@ -1,4 +1,30 @@
 {% extends "base.html"%} {%block title %}Login page{%endblock%} {%block
-content%}
-<h1>This is log out page</h1>
+content%} {%endblock%} {%block navBar%}
+<nav class="webContainer flex flex-jc-sb flex-ai-c flex-fg-c">
+	<a
+		href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
+		target="_blank"
+		class="header__github"
+		><img
+			src="{{url_for('static', filename= 'Images/github3.png')}}"
+			width="30"
+			height="30"
+			alt="WeTried"
+			srcset=""
+	/></a>
+	<a id="buttonNav" href="#" class="header__toggle hide-desktop">
+		<span> </span><span></span><span></span>
+	</a>
+
+	{%block active %}
+	<div class="header__links hide-mobile">
+		<a href="homepage" class="active">Home</a>
+		<a href="#">About</a>
+		<a href="#" id="loggedOut">Logged Out</a>
+		<!-- <a href="signup">Sign up</a> -->
+	</div>
+	{%endblock%}
+
+	<a href="login" class="button header__cta hide-mobile">Login</a>
+</nav>
 {%endblock%}

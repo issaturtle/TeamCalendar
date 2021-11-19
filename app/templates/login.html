@@ -48,4 +48,9 @@
 		</form>
 	</div>
 </div>
-{{text}} {%endblock%} {%block featurelist%} {%endblock%}
+{{text}} {%endblock%} {%block featurelist%} {%endblock%} {%block script%}
+<script
+	type="text/javascript"
+	src="{{url_for('static', filename= 'js/signup.js')}}"
+></script>
+{%endblock%}

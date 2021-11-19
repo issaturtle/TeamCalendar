@@ -13,8 +13,8 @@ buttonNav.addEventListener('click', function () {
 		});
 		body.classList.remove('noScroll');
 		header.classList.remove('open');
-		signUpHomepage.classList.remove('open');
 
+		Reg.classList.remove('Register__open');
 		//close ham
 
 		// overlay.classList.add('fade-out');
@@ -26,8 +26,8 @@ buttonNav.addEventListener('click', function () {
 		});
 		body.classList.add('noScroll');
 		header.classList.add('open');
-		signUpHomepage.classList.add('open');
 
+		Reg.classList.add('Register__open');
 		// overlay.classList.remove('fade-out');
 		// overlay.classList.add('fade-in');
 
