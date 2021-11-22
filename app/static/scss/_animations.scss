@@ -33,6 +33,35 @@
 		opacity: 0;
 	}
 }
+@keyframes moveTextLeft {
+	from {
+		transform: translateX(50%);
+	}
+	to {
+		transform: none;
+	}
+}
+@keyframes textTransitionLeft {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: none;
+	}
+}
+@keyframes revealText {
+	from {
+		// clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+		clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 50% 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+}
+.move-text-left {
+	animation: moveTextLeft 1s 1s ease both;
+}
+
 .fade-out {
 	animation: fade-out 300ms ease-in-out forwards;
 }

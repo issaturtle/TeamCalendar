@@ -1,0 +1,52 @@
+.about {
+	// display: flex;
+	// flex-direction: column;
+
+	// display: flex;
+
+	// align-content: space-between;
+	display: grid;
+	text-align: left;
+	transform: z-index ease-in-out 300ms;
+	&.open {
+		position: relative;
+		z-index: -1;
+		transform: z-index ease-in-out 300ms;
+	}
+	&__title {
+		// grid-column: 1 / -1;
+		// grid-row: 1;
+
+		text-align: left;
+		margin-top: 0;
+
+		margin-bottom: 25px;
+		h1 {
+			font-weight: 1000;
+			font-family: 'AGBold';
+			font-size: 2.15rem;
+			@include breakpoint-up(large) {
+				font-size: calc(clamp(3.5em, 6.5vw, 2.4em));
+			}
+			@include breakpoint-down(medium) {
+				font-size: calc(clamp(2.5em, 6.5vw, 2.4em));
+			}
+			line-height: 1.15;
+			color: black;
+		}
+		> .about__title__inner {
+			display: inline-block;
+			animation: textTransitionLeft 1s 1s ease both,
+				revealText 1s 0s cubic-bezier(1, 0.7, 0.5, 0.3) both;
+		}
+	}
+	&__description {
+		display: block;
+
+		> .about__description__inner {
+			display: inline-block;
+			animation: textTransitionLeft 1s 1s ease both,
+				revealText 1s 2s cubic-bezier(1, 0.7, 0.5, 0.3) both;
+		}
+	}
+}

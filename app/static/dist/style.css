@@ -68,6 +68,77 @@
   }
 }
 
+@-webkit-keyframes moveTextLeft {
+  from {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+  to {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes moveTextLeft {
+  from {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+  to {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes textTransitionLeft {
+  from {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  to {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes textTransitionLeft {
+  from {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  to {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes revealText {
+  from {
+    -webkit-clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 50% 100%);
+            clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 50% 100%);
+  }
+  to {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes revealText {
+  from {
+    -webkit-clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 50% 100%);
+            clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 50% 100%);
+  }
+  to {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.move-text-left {
+  -webkit-animation: moveTextLeft 1s 1s ease both;
+          animation: moveTextLeft 1s 1s ease both;
+}
+
 .fade-out {
   -webkit-animation: fade-out 300ms ease-in-out forwards;
           animation: fade-out 300ms ease-in-out forwards;
@@ -869,5 +940,62 @@ button:hover,
   -webkit-transition: opacity 1000 ms ease-in-out;
   transition: opacity 1000 ms ease-in-out;
   opacity: 1;
+}
+
+.about {
+  display: -ms-grid;
+  display: grid;
+  text-align: left;
+  -webkit-transform: z-index ease-in-out 300ms;
+          transform: z-index ease-in-out 300ms;
+}
+
+.about.open {
+  position: relative;
+  z-index: -1;
+  -webkit-transform: z-index ease-in-out 300ms;
+          transform: z-index ease-in-out 300ms;
+}
+
+.about__title {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.about__title h1 {
+  font-weight: 1000;
+  font-family: 'AGBold';
+  font-size: 2.15rem;
+  line-height: 1.15;
+  color: black;
+}
+
+@media (min-width: 64em) {
+  .about__title h1 {
+    font-size: calc(clamp(3.5em, 6.5vw, 2.4em));
+  }
+}
+
+@media (max-width: 63.9375em) {
+  .about__title h1 {
+    font-size: calc(clamp(2.5em, 6.5vw, 2.4em));
+  }
+}
+
+.about__title > .about__title__inner {
+  display: inline-block;
+  -webkit-animation: textTransitionLeft 1s 1s ease both, revealText 1s 0s cubic-bezier(1, 0.7, 0.5, 0.3) both;
+          animation: textTransitionLeft 1s 1s ease both, revealText 1s 0s cubic-bezier(1, 0.7, 0.5, 0.3) both;
+}
+
+.about__description {
+  display: block;
+}
+
+.about__description > .about__description__inner {
+  display: inline-block;
+  -webkit-animation: textTransitionLeft 1s 1s ease both, revealText 1s 2s cubic-bezier(1, 0.7, 0.5, 0.3) both;
+          animation: textTransitionLeft 1s 1s ease both, revealText 1s 2s cubic-bezier(1, 0.7, 0.5, 0.3) both;
 }
 /*# sourceMappingURL=style.css.map */
