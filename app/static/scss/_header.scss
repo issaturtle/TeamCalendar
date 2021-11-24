@@ -1,10 +1,3 @@
-$red: #f37272;
-$brown: #584e4a;
-$whitey: #f0f0f0;
-
-$duration: 0.2s;
-$distance: 8px;
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .header {
 	width: 100%;
 	background: black;
@@ -117,13 +110,13 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			}
 			&:before {
 				opacity: 0;
-				transform: translateY(-$distance);
-				transition: transform 0s $easeOutBack, opacity 0s;
+				transform: translateY(-$shiftpixel);
+				transition: transform 2s $easeout, opacity 0.2s;
 			}
 			&:after {
 				opacity: 0;
-				transform: translateY($distance/2);
-				transition: transform $duration $easeOutBack, opacity $duration;
+				transform: translateY($shiftpixel/2);
+				transition: transform $time $easeout, opacity $time;
 			}
 			&:hover,
 			&:focus {
@@ -133,10 +126,10 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 					transform: translateY(0);
 				}
 				&:before {
-					transition: transform $duration $easeOutBack, opacity $duration;
+					transition: transform $time $easeout, opacity $time;
 				}
 				&:after {
-					transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+					transition: transform 2s $time $easeout, opacity 2s $time;
 				}
 			}
 		}

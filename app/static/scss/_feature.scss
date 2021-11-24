@@ -71,20 +71,53 @@
 				border-radius: 0.5em;
 			}
 		}
-		@include breakpoint-down(medium) {
-			border: solid black 1px;
+		// @include breakpoint-down(medium) {
+		// 	border: solid black 1px;
 
-			background: linear-gradient(
-				to right,
-				rgb(0, 0, 0),
-				#4a1b0b,
-				#4b1c0c,
-				#793507
-			);
-			border-radius: 0.5em;
-			margin-bottom: 10px;
+		// 	background: linear-gradient(
+		// 		to right,
+		// 		rgb(0, 0, 0),
+		// 		#4a1b0b,
+		// 		#4b1c0c,
+		// 		#793507
+		// 	);
+		// 	border-radius: 0.5em;
+		// 	margin-bottom: 10px;
+		// }
+		@include breakpoint-up(large) {
+			> span:first-child {
+				border: solid black 3px;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
+			}
+			> span:nth-child(2) {
+				border: solid black 3px;
+
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
+			}
+			> span:last-child {
+				border: solid black 3px;
+				background: linear-gradient(
+					to right,
+					rgb(0, 0, 0),
+					#4a1b0b,
+					#4b1c0c,
+					#793507
+				);
+			}
 		}
-		@include breakpoint-up(medium) {
+		@include breakpoint-down(medium) {
 			// grid-template-columns: repeat(2, 1fr);
 			> span:first-child {
 				border: solid black 3px;

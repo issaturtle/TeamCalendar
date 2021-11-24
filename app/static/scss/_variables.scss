@@ -2,8 +2,14 @@ $darkBlue: hsl(233, 26%, 24%);
 $grayishBlue: hsl(233, 8%, 62%);
 $veryLightGray: hsl(0, 0%, 98%);
 $lightGrayishBlue: hsl(220, 16%, 96%);
-
+$gold: #f2c973;
+$buttonblue: #3775cb;
 //font
 $font-med: 1.125rem;
 $font-small: 0.875rem;
 $font-large: 1.25rem;
+
+//drop down animation values
+$time: 0.2s;
+$shiftpixel: 8px;
+$easeout: cubic-bezier(0.2, 0.9, 0.2, 1.3);
