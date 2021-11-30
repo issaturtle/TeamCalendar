@@ -45,7 +45,8 @@
 	}
 	&__description {
 		display: block;
-		background: $buttonblue;
+		background: linear-gradient(to right, #211e1e, #117aca);
+		box-shadow: 0 4px 14px rgba(55, 117, 203, 1);
 
 		animation: opacityChange 3000ms;
 
@@ -73,20 +74,21 @@
 		> .about__description__inner {
 			display: inline-block;
 			background: white;
-			border: 3px solid $gold;
+			border-bottom: 7px solid $gold;
 
 			// padding: 100px;
 			@include breakpoint-up(medium) {
 				padding: 75px;
 
-				border-bottom: 0px;
+				// border-bottom: 0px;
 			}
 			@include breakpoint-down(small) {
 				padding: 10px;
 				padding-right: 30px;
 				color: black;
 				background: white;
-				border-right: 3px solid $gold;
+				border-right: 7px solid $gold;
+				border-bottom: 0px;
 			}
 
 			animation: textTransitionDown 1s 1s ease both,

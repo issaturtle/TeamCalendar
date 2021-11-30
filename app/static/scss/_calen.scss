@@ -1,0 +1,44 @@
+.addEvent {
+	&.open {
+		.overlay {
+			display: block;
+		}
+	}
+	.overlay {
+		position: fixed;
+		z-index: 2;
+	}
+	&__menu {
+		background: linear-gradient(
+			to right,
+			#0a0f18,
+			#141e2f,
+			#1e2d47,
+			#283c5f,
+			#324b77
+		);
+		font-family: 'Agbold';
+		position: fixed;
+		z-index: 3;
+		top: 100px;
+		padding: 1.625rem;
+		// width: calc(100%-40px);
+		width: calc(100% - 2.5rem);
+		border-radius: 3px;
+		left: 50%;
+
+		transform: translateX(-50%);
+	}
+	&__title {
+		padding-top: 10px;
+		color: $gold;
+	}
+
+	&__label {
+		font-family: 'Ag3';
+		color: white;
+	}
+	.Register__Button {
+		margin-left: 30%;
+	}
+}

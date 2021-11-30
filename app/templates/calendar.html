@@ -13,10 +13,61 @@
 			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css"
 			rel="stylesheet"
 		/>
+		<link
+			rel="stylesheet"
+			href="{{url_for('static', filename = 'dist/style.css')}}"
+		/>
 		<script src="{{url_for('static', filename = 'calendar_test/lib/main.js')}}"></script>
-		<script src="{{url_for('static', filename = 'js/calen.js')}}"></script>
+		<!-- <script src="{{url_for('static', filename = 'js/calen.js')}}"></script> -->
 	</head>
-	<body>
+	<body class="body">
+		<div class="addEvent">
+			<div class="overlay has-fade"></div>
+			<div class="addEvent__menu webContainer has-fade">
+				<form method="POST">
+					<h1 align="center" class="addEvent__title">Create Event</h1>
+					<div class="form-group">
+						<label for="eventName" class="addEvent__label">
+							Name of Event</label
+						>
+						<input
+							type="text"
+							class="form-control"
+							id="eventName"
+							name="eventName"
+							placeholder="Enter name of event"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="startD" class="addEvent__label"> Start date</label>
+						<input
+							type="date"
+							class="form-control"
+							id="startD"
+							name="startD"
+							placeholder="Example: 2021-11-07"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="endD" class="addEvent__label"> End date</label>
+						<input
+							type="date"
+							class="form-control"
+							id="endD"
+							name="endD"
+							placeholder="Example: 2021-11-08"
+						/>
+					</div>
+					<button type="submit" class="button Register__Button">Submit</button>
+				</form>
+			</div>
+		</div>
 		<div id="calendar"></div>
 	</body>
+	{%block script%}
+	<script
+		type="text/javascript"
+		src="{{url_for('static', filename= 'js/calen.js')}}"
+	></script>
+	{%endblock%}
 </html>

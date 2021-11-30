@@ -1,3 +1,9 @@
+const fadeElement = document.querySelectorAll('.has-fade');
+const overlay = document.querySelector('.overlay');
+const eve = document.querySelector('.addEvent');
+const body = document.querySelector('.body');
+const submit = document.querySelector('.Register__Button');
+var events = {};
 document.addEventListener('DOMContentLoaded', function () {
 	var calendarEl = document.getElementById('calendar');
 	var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -8,14 +14,49 @@ document.addEventListener('DOMContentLoaded', function () {
 // var calendar = new FullCalendar.Calendar(calendarEl, {
 // 	themeSystem: 'bootstrap',
 // });
+
 document.addEventListener('DOMContentLoaded', function () {
 	var calendarEl = document.getElementById('calendar');
 
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView: 'dayGridMonth',
+		selectable: true,
+		timeZone: 'PT',
 		initialDate: '2021-11-07',
+		dateClick: function (info) {
+			alert('Date: ' + info.dateStr);
+		},
+		dayMaxEventRows: true, // for all non-TimeGrid views
+		views: {
+			timeGrid: {
+				dayMaxEventRows: 6, // adjust to 6 only for timeGridWeek/timeGridDay
+			},
+		},
+		customButtons: {
+			addEventButton: {
+				text: 'Create events',
+				click: function () {
+					if (eve.classList.contains('open')) {
+						fadeElement.forEach(function (element) {
+							element.classList.remove('fade-in');
+							element.classList.add('fade-out');
+						});
+						body.classList.remove('noScroll');
+						eve.classList.remove('open');
+					} else {
+						fadeElement.forEach(function (element) {
+							element.classList.remove('fade-out');
+							element.classList.add('fade-in');
+						});
+						body.classList.add('noScroll');
+						eve.classList.add('open');
+					}
+				},
+			},
+		},
+
 		headerToolbar: {
-			left: 'prev,next today',
+			left: 'prev,next today addEventButton',
 			center: 'title',
 			right: 'dayGridMonth,timeGridWeek,timeGridDay',
 		},
@@ -26,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			},
 			{
 				title: 'Long Event',
-				start: '2021-11-07',
+				start: '2021-11-09',
 				end: '2021-11-10',
 			},
 			{
@@ -71,3 +112,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	calendar.render();
 });
+submit.addEventListener('click', function () {
+	if (eve.classList.contains('open')) {
+		fadeElement.forEach(function (element) {
+			element.classList.remove('fade-in');
+			element.classList.add('fade-out');
+		});
+		body.classList.remove('noScroll');
+		eve.classList.remove('open');
+	}
+});
+// fetch('/calen')
+// 	.then(function (response) {
+// 		return response.text();
+// 	})
+// 	.then(function (text) {
+// 		console.log('get response as text');
+// 		console.log(text);
+// 	});
+fetch('/calen');
+function addEvent(event) {
+	calendar.addEvent();
+}

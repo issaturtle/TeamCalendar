@@ -24,7 +24,7 @@
 	{%block bodyType%}
 	<body>
 		{%endblock%}
-		
+
 		<header class="header">
 			<div class="overlay has-fade"></div>
 			{%block navBar%}
@@ -59,6 +59,8 @@
 				<a href="about">About</a>
 				<a href="login">Login</a>
 			</div>
+			{%block notif%}
+			{%endblock%}
 			{%block content %}
 			
 				
@@ -72,7 +74,7 @@
 						We-Tried to Make a Project Calendar 
 					</h1>
 					<p>Featuring a bootstrap calendar as our interface, teamleaders will be able to quickly assign works to their respective teams. Communications have never been easier with the ability to create events on the fly using the lightweight program.</p>
-					<a href ="#" id= "homepageSU" class = "button hero__cta">SIGN UP</a>
+					<a href ="signup" id= "homepageSU" class = "button hero__cta">SIGN UP</a>
 				</div>
 			</section>
 			<section class="features">
@@ -101,13 +103,12 @@
 								<div class="features__description">
 									<span>
 										<h1>Fast</h1>
-								
 									</span>
 									<span>
 										<p>
 											Browser-based calendar system, light-weight and easily rendered
 										</p>
-									</span><span></span>
+									
 									
 									
 								</div>
