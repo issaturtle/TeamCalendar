@@ -3,115 +3,127 @@ const overlay = document.querySelector('.overlay');
 const eve = document.querySelector('.addEvent');
 const body = document.querySelector('.body');
 const submit = document.querySelector('.Register__Button');
-var events = {};
-document.addEventListener('DOMContentLoaded', function () {
-	var calendarEl = document.getElementById('calendar');
-	var calendar = new FullCalendar.Calendar(calendarEl, {
-		initialView: 'dayGridMonth',
-	});
-	calendar.render();
-});
-// var calendar = new FullCalendar.Calendar(calendarEl, {
-// 	themeSystem: 'bootstrap',
-// });
+let calendarEl = document.getElementById('calendar');
+let calendar = new FullCalendar.Calendar(calendarEl);
+var json = [];
 
 document.addEventListener('DOMContentLoaded', function () {
-	var calendarEl = document.getElementById('calendar');
-
-	var calendar = new FullCalendar.Calendar(calendarEl, {
-		initialView: 'dayGridMonth',
-		selectable: true,
-		timeZone: 'PT',
-		initialDate: '2021-11-07',
-		dateClick: function (info) {
-			alert('Date: ' + info.dateStr);
-		},
-		dayMaxEventRows: true, // for all non-TimeGrid views
-		views: {
-			timeGrid: {
-				dayMaxEventRows: 6, // adjust to 6 only for timeGridWeek/timeGridDay
-			},
-		},
-		customButtons: {
-			addEventButton: {
-				text: 'Create events',
-				click: function () {
-					if (eve.classList.contains('open')) {
-						fadeElement.forEach(function (element) {
-							element.classList.remove('fade-in');
-							element.classList.add('fade-out');
-						});
-						body.classList.remove('noScroll');
-						eve.classList.remove('open');
-					} else {
-						fadeElement.forEach(function (element) {
-							element.classList.remove('fade-out');
-							element.classList.add('fade-in');
-						});
-						body.classList.add('noScroll');
-						eve.classList.add('open');
-					}
+	var json = [];
+	fetch('http://127.0.0.1:5000/calen.json')
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			json = json.concat(data);
+			calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView: 'dayGridMonth',
+				selectable: true,
+				timeZone: 'PT',
+				initialDate: '2021-11-07',
+				dateClick: function (info) {
+					alert('Date: ' + info.dateStr);
 				},
-			},
-		},
+				dayMaxEventRows: true, // for all non-TimeGrid views
+				views: {
+					timeGrid: {
+						dayMaxEventRows: 6, // adjust to 6 only for timeGridWeek/timeGridDay
+					},
+				},
+				customButtons: {
+					addEventButton: {
+						text: 'Create events',
+						click: function () {
+							if (eve.classList.contains('open')) {
+								fadeElement.forEach(function (element) {
+									element.classList.remove('fade-in');
+									element.classList.add('fade-out');
+								});
+								body.classList.remove('noScroll');
+								eve.classList.remove('open');
+							} else {
+								fadeElement.forEach(function (element) {
+									element.classList.remove('fade-out');
+									element.classList.add('fade-in');
+								});
+								body.classList.add('noScroll');
+								eve.classList.add('open');
+							}
+						},
+					},
+				},
 
-		headerToolbar: {
-			left: 'prev,next today addEventButton',
-			center: 'title',
-			right: 'dayGridMonth,timeGridWeek,timeGridDay',
-		},
-		events: [
-			{
-				title: 'All Day Event',
-				start: '2021-11-01',
-			},
-			{
-				title: 'Long Event',
-				start: '2021-11-09',
-				end: '2021-11-10',
-			},
-			{
-				groupId: '999',
-				title: 'Repeating Event',
-				start: '2021-11-09T16:00:00',
-			},
-			{
-				groupId: '999',
-				title: 'Repeating Event',
-				start: '2021-11-16T16:00:00',
-			},
-			{
-				title: 'Conference',
-				start: '2021-11-11',
-				end: '2021-11-13',
-			},
-			{
-				title: 'Meeting',
-				start: '2021-11-12T10:30:00',
-				end: '2021-11-12T12:30:00',
-			},
-			{
-				title: 'Lunch',
-				start: '2021-11-12T12:00:00',
-			},
-			{
-				title: 'Meeting',
-				start: '2021-11-12T14:30:00',
-			},
-			{
-				title: 'Birthday Party',
-				start: '2021-11-13T07:00:00',
-			},
-			{
-				title: 'Click for Google',
-				url: 'http://google.com/',
-				start: '2021-11-28',
-			},
-		],
-	});
+				headerToolbar: {
+					left: 'prev,next today addEventButton',
+					center: 'title',
+					right: 'dayGridMonth,timeGridWeek,timeGridDay',
+				},
+				events: json,
 
-	calendar.render();
+				// events: [
+				// 	{
+				// 		end: '2021-11-18',
+				// 		start: '2021-11-17',
+				// 		title: 'No Nut',
+				// 	},
+				// 	{
+				// 		end: '2021-11-20',
+				// 		start: '2021-11-19',
+				// 		title: 'No Nut',
+				// 	},
+				// 	{
+				// 		end: '2021-11-30',
+				// 		start: '2021-11-11',
+				// 		title: 'add',
+				// 	},
+				// ],
+				// // events: 'app/static/calendar_test/examples/json/events.json',
+			});
+			calendar.render();
+			console.log(json);
+		});
 });
+
+// let ar = JSON.parse(
+// 	'D:/visualstudioProj/FlaskProject/app/static/calendar_test/examples/json/events.json'
+// );
+// var my_json;
+// $.getJSON(
+// 	'D:/visualstudioProj/FlaskProject/app/static/calendar_test/examples/json/events.json',
+// 	function (json) {
+// 		my_json = JSON.parse(json);
+// 	}
+// );
+// var json = [];
+// fetch(
+// 	'D:/visualstudioProj/FlaskProject/app/static/calendar_test/examples/json/events.json'
+// )
+// 	.then(function (response) {
+// 		json = response.json();
+// 	})
+// 	.then(function (obj) {
+// 		console.log(obj);
+// 	});
+// fetch('./events.json')
+// 	.then((response) => {
+// 		return response.json();
+// 	})
+// 	.then((data) => {
+// 		console.log(data);
+// 	});\
+
+//works
+// var json = [
+// 	{
+// 		start: '2021-11-01',
+// 		title: 'new Event',
+// 	},
+// 	{
+// 		title: 'Long Event',
+// 		start: '2021-11-01',
+// 		end: '2021-11-02',
+// 	},
+// ];
+
 submit.addEventListener('click', function () {
 	if (eve.classList.contains('open')) {
 		fadeElement.forEach(function (element) {
@@ -130,7 +142,3 @@ submit.addEventListener('click', function () {
 // 		console.log('get response as text');
 // 		console.log(text);
 // 	});
-fetch('/calen');
-function addEvent(event) {
-	calendar.addEvent();
-}
