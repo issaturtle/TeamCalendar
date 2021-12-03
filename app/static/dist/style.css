@@ -1151,4 +1151,8 @@ button:hover,
 .addEvent .Register__Button {
   margin-left: 30%;
 }
+
+.addEvent .form-check {
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

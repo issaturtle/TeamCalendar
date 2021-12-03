@@ -1,11 +1,12 @@
 const fadeElement = document.querySelectorAll('.has-fade');
+
 const overlay = document.querySelector('.overlay');
 const eve = document.querySelector('.addEvent');
+const del = document.querySelector('.deleteEvent');
 const body = document.querySelector('.body');
 const submit = document.querySelector('.Register__Button');
 let calendarEl = document.getElementById('calendar');
 let calendar = new FullCalendar.Calendar(calendarEl);
-var json = [];
 
 document.addEventListener('DOMContentLoaded', function () {
 	var json = [];
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				},
 				customButtons: {
 					addEventButton: {
-						text: 'Create events',
+						text: 'Create/Delete events',
 						click: function () {
 							if (eve.classList.contains('open')) {
 								fadeElement.forEach(function (element) {
@@ -50,12 +51,39 @@ document.addEventListener('DOMContentLoaded', function () {
 							}
 						},
 					},
+					LogoutButton: {
+						text: 'Logout',
+						click: function () {
+							location.replace('http://127.0.0.1:5000/logout');
+						},
+					},
+					Deletebutton: {
+						text: 'Delete event',
+						click: function () {
+							if (del.classList.contains('open')) {
+								// fadeElement.forEach(function (element) {
+								// 	element.classList.remove('fade-in');
+								// 	element.classList.add('fade-out');
+								// });
+								fadeElement.classList;
+								body.classList.remove('noScroll');
+								del.classList.remove('open');
+							} else {
+								fadeElement.forEach(function (element) {
+									element.classList.remove('fade-out');
+									element.classList.add('fade-in');
+								});
+								body.classList.add('noScroll');
+								del.classList.add('open');
+							}
+						},
+					},
 				},
 
 				headerToolbar: {
-					left: 'prev,next today addEventButton',
+					left: 'prev,next,today addEventButton',
 					center: 'title',
-					right: 'dayGridMonth,timeGridWeek,timeGridDay',
+					right: 'dayGridMonth,timeGridWeek,timeGridDay LogoutButton',
 				},
 				events: json,
 

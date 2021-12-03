@@ -1,6 +1,8 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 		<link
 			href="{{url_for('static', filename = 'calendar_test/lib/main.css')}}"
 			rel="stylesheet"
@@ -19,7 +21,6 @@
 		/>
 		<script src="{{url_for('static', filename = 'calendar_test/lib/main.js')}}"></script>
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<!-- <script src="{{url_for('static', filename = 'js/calen.js')}}"></script> -->
 	</head>
 	<body class="body">
@@ -28,6 +29,33 @@
 			<div class="addEvent__menu webContainer has-fade">
 				<form id="addingEvent" method="POST">
 					<h1 align="center" class="addEvent__title">Create Event</h1>
+
+					<div class="form-group">
+						<div class="form-check form-check-inline">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="inlineRadioOptions"
+								id="createEve"
+								value="createEve"
+							/>
+							<label class="form-check-label" for="createEve"
+								>Create event</label
+							>
+						</div>
+						<div class="form-check form-check-inline">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="inlineRadioOptions"
+								id="deleteEve"
+								value="deleteEve"
+							/>
+							<label class="form-check-label" for="deleteEve">
+								Delete event</label
+							>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="eventName" class="addEvent__label">
 							Name of Event</label
@@ -64,6 +92,7 @@
 				</form>
 			</div>
 		</div>
+
 		<div id="calendar"></div>
 	</body>
 	{%block script%}
