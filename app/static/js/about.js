@@ -3,7 +3,7 @@ const header = document.querySelector('.header');
 
 const fadeElement = document.querySelectorAll('.has-fade');
 const body = document.querySelector('body');
-const signUpHomepage = document.querySelector('.hero__text');
+const signUpHomepage = document.querySelector('.intro__text');
 const aboutpage = document.querySelector('.about');
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
@@ -14,10 +14,6 @@ buttonNav.addEventListener('click', function () {
 		body.classList.remove('noScroll');
 		header.classList.remove('open');
 		aboutpage.classList.remove('open');
-		//close ham
-
-		// overlay.classList.add('fade-out');
-		// overlay.classList.remove('fade-in');
 	} else {
 		fadeElement.forEach(function (element) {
 			element.classList.remove('fade-out');
@@ -26,10 +22,5 @@ buttonNav.addEventListener('click', function () {
 		body.classList.add('noScroll');
 		header.classList.add('open');
 		aboutpage.classList.add('open');
-		// overlay.classList.remove('fade-out');
-		// overlay.classList.add('fade-in');
-
-		// overlay.classList.remove('fade-out');
-		// overlay.classList.add('fade-in');
 	}
 });

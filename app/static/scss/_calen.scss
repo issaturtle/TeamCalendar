@@ -17,7 +17,8 @@
 			#283c5f,
 			#324b77
 		);
-		font-family: 'Agbold';
+		font-weight: 1000;
+		font-family: 'Open Sans', sans-serif;
 		position: fixed;
 		z-index: 3;
 		top: 100px;
@@ -30,12 +31,15 @@
 		transform: translateX(-50%);
 	}
 	&__title {
+		font-weight: 800;
+		font-family: 'Open Sans', sans-serif;
 		padding-top: 10px;
 		color: $gold;
 	}
 
 	&__label {
-		font-family: 'Ag3';
+		font-weight: 800;
+		font-family: 'Open Sans', sans-serif;
 		color: white;
 	}
 	.Register__Button {

@@ -11,10 +11,10 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'AG1';
+	font-family: 'Open Sans', sans-serif;
 	font-size: 1.125rem;
 	line-height: 1.3;
-	font-weight: 300px;
+	font-weight: 400px;
 
 	position: relative;
 	background: linear-gradient(
@@ -87,7 +87,7 @@ button,
 	box-shadow: 0 4px 14px rgba(55, 117, 203, 1);
 	transition: box-shadow 0.3s ease-in-out;
 	transition: opacity 300ms ease-in-out;
-	font-family: 'Ag2';
+	font-family: 'Open Sans', sans-serif;
 	&:hover {
 		opacity: 2;
 		transition: opacity 300ms ease-in-out;
@@ -110,28 +110,4 @@ button,
 	@include breakpoint-up(large) {
 		display: none;
 	}
-}
-@font-face {
-	font-family: 'FG';
-	src: url(../fonts/FranklinGothic.ttf);
-}
-@font-face {
-	font-family: 'AG';
-	src: url(../fonts/avantgardebq-extralight.otf);
-}
-@font-face {
-	font-family: 'AG1';
-	src: url(../fonts/ITCAvantGardeStdBk.otf);
-}
-@font-face {
-	font-family: 'AG2';
-	src: url(../fonts/ITCAvantGardeStdMd.otf);
-}
-@font-face {
-	font-family: 'AG3';
-	src: url(../fonts/ITCAvantGardeStdDemi.otf);
-}
-@font-face {
-	font-family: 'AGBold';
-	src: url(../fonts/AGB.otf);
 }

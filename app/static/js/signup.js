@@ -4,7 +4,7 @@ const overlay = document.querySelector('.overlay');
 const Reg = document.querySelector('.Register');
 const fadeElement = document.querySelectorAll('.has-fade');
 const body = document.querySelector('body');
-const signUpHomepage = document.querySelector('.hero__text');
+const signUpHomepage = document.querySelector('.intro__text');
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
 		fadeElement.forEach(function (element) {

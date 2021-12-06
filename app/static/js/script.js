@@ -4,7 +4,7 @@ const overlay = document.querySelector('.overlay');
 const Reg = document.querySelector('.Register');
 const fadeElement = document.querySelectorAll('.has-fade');
 const body = document.querySelector('body');
-const signUpHomepage = document.querySelector('.hero__text');
+const signUpHomepage = document.querySelector('.intro__text');
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
 		fadeElement.forEach(function (element) {
@@ -14,11 +14,6 @@ buttonNav.addEventListener('click', function () {
 		body.classList.remove('noScroll');
 		header.classList.remove('open');
 		signUpHomepage.classList.remove('open');
-
-		//close ham
-
-		// overlay.classList.add('fade-out');
-		// overlay.classList.remove('fade-in');
 	} else {
 		fadeElement.forEach(function (element) {
 			element.classList.remove('fade-out');
@@ -27,11 +22,5 @@ buttonNav.addEventListener('click', function () {
 		body.classList.add('noScroll');
 		header.classList.add('open');
 		signUpHomepage.classList.add('open');
-
-		// overlay.classList.remove('fade-out');
-		// overlay.classList.add('fade-in');
-
-		// overlay.classList.remove('fade-out');
-		// overlay.classList.add('fade-in');
 	}
 });
