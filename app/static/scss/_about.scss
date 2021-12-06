@@ -1,16 +1,9 @@
 .about {
-	// display: flex;
-	// flex-direction: column;
-
-	// display: flex;
-
-	// align-content: space-between;
 	@include breakpoint-up(medium) {
 		padding-top: 150px;
-
+		padding-left: 75px;
 		display: flex;
 		text-align: left;
-		padding-left: 75px;
 	}
 	&.open {
 		position: relative;
@@ -24,6 +17,11 @@
 		margin-top: 0;
 		padding-right: 100px;
 		margin-bottom: 25px;
+		> .about__title__inner {
+			display: inline-block;
+			animation: textTransitionLeft 1s 1s ease both,
+				revealText 1s 0s cubic-bezier(1, 0.7, 0.5, 0.3) both;
+		}
 		h1 {
 			font-weight: 800;
 			font-family: 'Open Sans', sans-serif;
@@ -36,11 +34,6 @@
 			}
 			line-height: 1.15;
 			color: black;
-		}
-		> .about__title__inner {
-			display: inline-block;
-			animation: textTransitionLeft 1s 1s ease both,
-				revealText 1s 0s cubic-bezier(1, 0.7, 0.5, 0.3) both;
 		}
 	}
 	&__description {

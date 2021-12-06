@@ -15,22 +15,22 @@
 </div>
 {%endblock%}
 {%block notif%}
-{% with messages = get_flashed_messages(with_categories=true)%}
-		{%if messages %}
-			{% for category, message in messages%}
-			{%if category == 'error'%}
-				<div class = "  alert alert-danger alter-dismissable fade show ">
-					<a href= "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
-					{{message}}
-				
-				</div>
-			{%else%}
+{% with msgs = get_flashed_messages(with_categories=true)%}
+		{%if msgs %}
+			{% for category, msg in msgs%}
+			{%if category != 'error'%}
 				<div class = "alert alert-success alert-dismissible fade show ">
 					
 					<a href= "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
-					{{message}}
+					{{msg}}
 				
 				</div>
+			{%else%}
+			<div class = "alert alert-danger alter-dismissable fade show ">
+				<a href= "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
+				{{msg}}
+			
+			</div>
 			
 			{%endif%}
 			{%endfor%}
@@ -91,7 +91,7 @@
 		</form>
 	</div>
 </div>
-{{text}} {%endblock%}
+{%endblock%}
 {%block featurelist%}
 {%endblock%}
 {%block script%}

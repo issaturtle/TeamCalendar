@@ -53,8 +53,8 @@ def logout():
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        email = request.form.get('email')
         name = request.form.get('firstName')
+        email = request.form.get('email')
         password = request.form.get('password1')
         password_confirm = request.form.get('password2')
 

@@ -34,6 +34,11 @@ body {
 		font-size: $font-large;
 	}
 }
+h1,
+h2,
+h3 {
+	margin-top: 0px;
+}
 .bodyOpacity {
 	background: linear-gradient(to right, rgba(236, 243, 255, 0.5), $grayishBlue);
 }
@@ -43,40 +48,6 @@ a:hover,
 a:active {
 	text-decoration: none;
 }
-h1,
-h2,
-h3 {
-	margin-top: 0px;
-}
-.webContainer {
-	padding-top: 2.25rem;
-	padding-bottom: 1.5rem;
-	padding-right: 30px;
-	padding-left: 30px;
-	max-width: 1260px;
-
-	margin: 0 auto;
-}
-.flex {
-	display: flex;
-	//justifying content space between;
-	&-jc-sb {
-		justify-content: space-between;
-	}
-	&-jc-c {
-		justify-content: center;
-	}
-	&-ai-c {
-		align-items: center;
-	}
-	&-fg-c {
-		flex-grow: 0.5;
-	}
-	&-ac-c {
-		align-content: center;
-	}
-}
-//button
 button,
 .button {
 	padding: 0.8rem 3rem;
@@ -96,6 +67,36 @@ button,
 		transition: box-shadow 0.3s ease-in-out;
 	}
 }
+
+.webContainer {
+	padding-top: 2.25rem;
+	padding-bottom: 1.5rem;
+	padding-right: 30px;
+	padding-left: 30px;
+	max-width: 1260px;
+
+	margin: 0 auto;
+}
+.flex {
+	display: flex;
+	//justifying content space between;
+	&-ac-c {
+		align-content: center;
+	}
+	&-ai-c {
+		align-items: center;
+	}
+	&-fg-c {
+		flex-grow: 0.5;
+	}
+	&-jc-sb {
+		justify-content: space-between;
+	}
+	&-jc-c {
+		justify-content: center;
+	}
+}
+//button
 
 //hide
 .hide-mobile {

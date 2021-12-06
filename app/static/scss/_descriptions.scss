@@ -9,26 +9,26 @@
 
 	&__image {
 		position: relative;
-		//src https://unsplash.com/photos/fmTde1Fe23A
-		background-image: url('/static/Images/lightbulb.jpg');
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center 10px 10px;
 		min-height: 17.5rem;
 		margin-bottom: 26px;
 		border-radius: 10px;
-		@include breakpoint-up(large) {
-			height: 558px;
-			margin-bottom: 1.5rem;
-			min-height: 35rem;
+		//src https://unsplash.com/photos/fmTde1Fe23A
+		background-image: url('/static/Images/lightbulb.jpg');
+		background-repeat: no-repeat;
+		background-position: center 10px 10px;
+		background-size: cover;
+		@include breakpoint-down(small) {
+			height: 280px;
+			background-position: center center;
 		}
 		@include breakpoint-down(medium) {
 			height: 278px;
 			background-position: center top 25%;
 		}
-		@include breakpoint-down(small) {
-			height: 280px;
-			background-position: center center;
+		@include breakpoint-up(large) {
+			height: 558px;
+			margin-bottom: 1.5rem;
+			min-height: 35rem;
 		}
 	}
 	&__grid {
@@ -137,15 +137,14 @@
 		h1 {
 			font-weight: 1000;
 			font-family: 'Open Sans', sans-serif;
-
-			@include breakpoint-up(large) {
-				font-size: 45px;
+			@include breakpoint-down(small) {
+				font-size: 35px;
 			}
 			@include breakpoint-down(medium) {
 				font-size: 40px;
 			}
-			@include breakpoint-down(small) {
-				font-size: 35px;
+			@include breakpoint-up(large) {
+				font-size: 45px;
 			}
 		}
 
@@ -153,23 +152,13 @@
 			font-weight: 400;
 			font-family: 'Open Sans', sans-serif;
 			color: white;
-			@include breakpoint-down(medium) {
-				font-size: 25px;
-			}
 			@include breakpoint-down(small) {
 				font-size: 1.2rem;
 				opacity: 0.8;
 			}
-
-			// color: white;
-			// @include breakpoint-down(medium) {
-			// 	font-size: 25px;
-			// }
-			// @include breakpoint-down(small) {
-			// 	font-size: 1.2rem;
-
-			// 	opacity: 0.8;
-			// }
+			@include breakpoint-down(medium) {
+				font-size: 25px;
+			}
 		}
 	}
 }
