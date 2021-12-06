@@ -72,6 +72,26 @@
 		font-size: 20px;
 		text-decoration: underline;
 	}
+
+	.Register__googleButton {
+		display: inline-block;
+		padding-top: 20px;
+		background: white;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		width: 250px;
+		height: 50px;
+		font-size: 15px;
+		text-align: center;
+		background-image: url('https://img.icons8.com/fluency/48/000000/google-logo.png');
+		background-repeat: no-repeat;
+		box-shadow: 0 4px 14px gray;
+		border-radius: 0.25em;
+		a {
+			color: $buttonblue;
+			padding-left: 30px;
+		}
+	}
 }
 .feature__icon {
 	object-fit: cover;

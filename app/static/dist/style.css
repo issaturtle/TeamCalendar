@@ -691,6 +691,28 @@ button:hover,
   text-decoration: underline;
 }
 
+.Register .Register__googleButton {
+  display: inline-block;
+  padding-top: 20px;
+  background: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 250px;
+  height: 50px;
+  font-size: 15px;
+  text-align: center;
+  background-image: url("https://img.icons8.com/fluency/48/000000/google-logo.png");
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0 4px 14px gray;
+          box-shadow: 0 4px 14px gray;
+  border-radius: 0.25em;
+}
+
+.Register .Register__googleButton a {
+  color: #3775cb;
+  padding-left: 30px;
+}
+
 .feature__icon {
   -o-object-fit: cover;
      object-fit: cover;

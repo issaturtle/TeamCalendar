@@ -1,7 +1,12 @@
-from flask import Blueprint, render_template, request, redirect, jsonify, session, Flask
+from flask import Blueprint, render_template, request, redirect, jsonify, session, Flask, url_for
 from flask.helpers import flash
 from flask.sessions import NullSession
 from pymongo import MongoClient, cursor
+from authlib.integrations.flask_client import OAuth
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 import bcrypt
 salt = bcrypt.gensalt()     #used for hashing, unique for every user
@@ -74,6 +79,36 @@ def signup():
 
     return render_template('signup.html')
 
+
+app = Flask(__name__)
+oauth = OAuth(app)
+user = oauth.register(
+    name='user',
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+    client_id= str(os.getenv("CLIENT_ID")),
+    client_secret=str(os.getenv("CLIENT_SECRET")),
+    userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo', 
+    api_base_url='https://www.googleapis.com/oauth2/v1/',
+    client_kwargs={'scope': 'openid email profile'},
+)
+
+@app.route("/test")
+def test():
+    return "hello world"
+
+@auth.route('/signupGoogle')
+def signUpGoogle():
+    user = oauth.create_client('user')
+    redirect = url_for('auth.authorize', _external = True)
+    return user.authorize_redirect(redirect)
+@auth.route('/authorize')
+def authorize():
+    user = oauth.create_client('user')
+    token = user.authorize_access_token()
+    resp = user.get('userinfo').json()
+    
+    return resp["email"]
 @auth.route('/calen.json')
 def calenJson():
     email = session["email"]
