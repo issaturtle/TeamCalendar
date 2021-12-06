@@ -93,22 +93,39 @@ user = oauth.register(
     client_kwargs={'scope': 'openid email profile'},
 )
 
-@app.route("/test")
-def test():
-    return "hello world"
-
 @auth.route('/signupGoogle')
 def signUpGoogle():
     user = oauth.create_client('user')
     redirect = url_for('auth.authorize', _external = True)
     return user.authorize_redirect(redirect)
+
 @auth.route('/authorize')
 def authorize():
     user = oauth.create_client('user')
     token = user.authorize_access_token()
     resp = user.get('userinfo').json()
-    
-    return resp["email"]
+
+    cursor = collection.find({"email": resp["email"]})
+    if cursor.count() == 0:                          #if account does not exist
+        new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "events": []}  #create an account  given google user info
+        add_user(new_user)
+        session["email"] = resp["email"]        #session is now by google user
+        calenJson()                             #load calen for user
+    elif cursor.count() == 1:
+        for data in cursor:             
+            if data["password"] == bcrypt.hashpw(resp["id"].encode('utf-8'), data["salt"]):               #check password
+                session["email"] = resp["email"]                                                #if passed session is now set for the user with a given email
+                print("Successful login with " + resp["email"] + " " + resp["id"])    #for server side management
+                print("Loading calender...")                                                #for server side management
+                calenJson()                                                             #loads calender for session user
+                return redirect('/calen')                                               #redirects to calendar
+            else:
+                print("wrong password")                                                 #for server side management
+                flash('password is incorrect', category="error")                        #flashes user a password error
+    return redirect('/calen')               #redirect to calen for user
+
+def add_user(user):
+    collection.insert_one(user)
 @auth.route('/calen.json')
 def calenJson():
     email = session["email"]
