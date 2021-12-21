@@ -2,7 +2,7 @@ from flask import Blueprint,render_template
 
 views = Blueprint('views', __name__) #define blueprint
 
-@views.route('/homepage')
+@views.route('/')
 def home():
     return render_template("homepage.html")
 
