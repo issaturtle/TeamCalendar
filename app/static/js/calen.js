@@ -10,7 +10,7 @@ let calendar = new FullCalendar.Calendar(calendarEl);
 
 document.addEventListener('DOMContentLoaded', function () {
 	var json = [];
-	fetch('http://127.0.0.1:5000/calen.json')
+	fetch('https://personal-calendar-1.herokuapp.com/calen.json')
 		.then((response) => {
 			return response.json();
 		})
@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
 					LogoutButton: {
 						text: 'Logout',
 						click: function () {
-							location.replace('http://127.0.0.1:5000/logout');
+							location.replace(
+								'https://personal-calendar-1.herokuapp.com/logout'
+							);
 						},
 					},
 					Deletebutton: {
