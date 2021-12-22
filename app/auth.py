@@ -11,7 +11,7 @@ load_dotenv()
 
 import bcrypt
 salt = bcrypt.gensalt()     #used for hashing, unique for every user
-s3 = S3Connection(str(os.getenv("CLIENT_ID")), str(os.getenv("CLIENT_SECRET")), str(os.getenv("WEB_KEY")))
+
 auth = Blueprint('auth', __name__)  
 
 cluster = MongoClient("mongodb+srv://Connor:Bustos@cluster0.z1idj.mongodb.net/Login?retryWrites=true&w=majority")       #our database connection
