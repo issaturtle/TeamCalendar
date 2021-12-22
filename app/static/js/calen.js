@@ -100,3 +100,4 @@ submit.addEventListener('click', function () {
 		eve.classList.remove('open');
 	}
 });
+print('hello');
