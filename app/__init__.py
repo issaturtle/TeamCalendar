@@ -13,6 +13,6 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(views, url_prefix='/')
     
-    app.config['SECRET_KEY'] =str(os.getenv("WEB_KEY"))
+    app.config['SECRET_KEY'] =str(os.environ.get('WEB_KEY'))
     
     return app
