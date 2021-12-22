@@ -4,7 +4,7 @@ from flask.sessions import NullSession
 from pymongo import MongoClient, cursor
 from authlib.integrations.flask_client import OAuth
 from dotenv import load_dotenv
-from boto.s3.connection import S3Connection
+# from boto.s3.connection import S3Connection
 import os
 
 load_dotenv()
