@@ -8,7 +8,6 @@ def main():
     return render_template("homepage.html")
 @views.route('/homepage')
 def home():
-    
     return render_template("homepage.html")
 
 @views.route('/about')

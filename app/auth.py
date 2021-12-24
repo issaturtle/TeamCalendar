@@ -4,7 +4,6 @@ from flask.sessions import NullSession
 from pymongo import MongoClient, cursor
 from authlib.integrations.flask_client import OAuth
 from dotenv import load_dotenv
-# from boto.s3.connection import S3Connection
 import os
 
 load_dotenv()
@@ -87,8 +86,8 @@ user = oauth.register(
     name='user',
     access_token_url='https://accounts.google.com/o/oauth2/token',
     authorize_url='https://accounts.google.com/o/oauth2/auth',
-    client_id= str(os.environ.get('CLIENT_ID')),
-    client_secret=str(os.environ.get('CLIENT_SECRET')),
+    client_id= str(os.getenv("CLIENT_ID")),
+    client_secret=str(os.getenv("CLIENT_SECRET")),
     userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo', 
     api_base_url='https://www.googleapis.com/oauth2/v1/',
     client_kwargs={'scope': 'openid email profile'},
@@ -186,5 +185,3 @@ def get_user_events(email):
     for item in cursor:
         events = item["events"]                 #get user events
     return events
-
-# print(str(os.environ.get("CLIENT_ID")))

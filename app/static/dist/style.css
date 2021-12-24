@@ -1145,6 +1145,51 @@ button:hover,
           transform: translateX(-50%);
 }
 
+.addEvent__dashboard {
+  background: #152238;
+  position: fixed;
+  left: 150px;
+  padding-left: 0;
+  margin-left: 0;
+  width: 300px;
+}
+
+.addEvent__dashboard ul {
+  list-style-type: none;
+}
+
+.addEvent__dashboard #lastList {
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.addEvent__dashboard #DBTitleIMG {
+  margin-left: 30px;
+  text-align: center;
+  padding-left: 20px;
+  font-size: 30px;
+}
+
+.addEvent__dashboard i {
+  padding-right: 5px;
+}
+
+.addEvent__dashboard a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: lightgray;
+  padding: 30px;
+  padding-left: 20px;
+  margin-left: 0;
+  display: block;
+}
+
+.addEvent__dashboard a:hover {
+  color: white;
+}
+
 .addEvent__title {
   font-weight: 800;
   font-family: 'Open Sans', sans-serif;

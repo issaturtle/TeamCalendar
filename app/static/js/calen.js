@@ -7,22 +7,54 @@ const body = document.querySelector('.body');
 const submit = document.querySelector('.Register__Button');
 let calendarEl = document.getElementById('calendar');
 let calendar = new FullCalendar.Calendar(calendarEl);
-
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd;
 document.addEventListener('DOMContentLoaded', function () {
 	var json = [];
-	fetch('https://personal-calendar-1.herokuapp.com/calen.json')
+	fetch('/calen.json')
 		.then((response) => {
 			return response.json();
 		})
 		.then((data) => {
 			json = json.concat(data);
+			console.log(json[0]['end']);
 			calendar = new FullCalendar.Calendar(calendarEl, {
 				initialView: 'dayGridMonth',
 				selectable: true,
 				timeZone: 'PT',
-				initialDate: '2021-11-07',
+				initialDate: today,
 				dateClick: function (info) {
-					alert('Date: ' + info.dateStr);
+					var empty = false;
+					var date = '';
+					var counter = 0;
+
+					for (let i = 0; i < json.length; i++) {
+						if (
+							info.dateStr == json[i]['start'] ||
+							info.dateStr == json[i]['end']
+						) {
+							date +=
+								json[i]['title'] +
+								': Start: ' +
+								json[i]['start'] +
+								', Deadline: ' +
+								json[i]['end'] +
+								'\n';
+
+							empty = true;
+						} else {
+							continue;
+						}
+					}
+
+					if (empty == false) {
+						alert('Date: ' + info.dateStr + '\n' + 'No Tasks ');
+					} else {
+						alert('Date: ' + info.dateStr + '\n' + 'Tasks: ' + '\n' + date);
+					}
 				},
 				dayMaxEventRows: true, // for all non-TimeGrid views
 				views: {
@@ -51,12 +83,16 @@ document.addEventListener('DOMContentLoaded', function () {
 							}
 						},
 					},
+					Dashboard: {
+						text: 'Teams',
+						click: function () {
+							alert('test');
+						},
+					},
 					LogoutButton: {
 						text: 'Logout',
 						click: function () {
-							location.replace(
-								'https://personal-calendar-1.herokuapp.com/logout'
-							);
+							location.replace('/logout');
 						},
 					},
 					Deletebutton: {
@@ -79,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				},
 
 				headerToolbar: {
-					left: 'prev,next,today addEventButton',
+					left: 'Dashboard prev,next,today addEventButton',
 					center: 'title',
 					right: 'dayGridMonth,timeGridWeek,timeGridDay LogoutButton',
 				},
@@ -100,4 +136,3 @@ submit.addEventListener('click', function () {
 		eve.classList.remove('open');
 	}
 });
-print('hello');

@@ -30,6 +30,46 @@
 
 		transform: translateX(-50%);
 	}
+	&__dashboard {
+		ul {
+			list-style-type: none;
+		}
+		#lastList {
+			padding-top: 20px;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+		#DBTitleIMG {
+			margin-left: 30px;
+			text-align: center;
+			padding-left: 20px;
+			font-size: 30px;
+		}
+		i {
+			padding-right: 5px;
+		}
+		background: #152238;
+
+		position: fixed;
+		left: 150px;
+		padding-left: 0;
+		margin-left: 0;
+		a {
+			font-family: 'Roboto', sans-serif;
+			font-weight: 600;
+			font-size: 18px;
+			color: lightgray;
+			padding: 30px;
+			padding-left: 20px;
+			margin-left: 0;
+
+			display: block;
+			&:hover {
+				color: white;
+			}
+		}
+		width: 300px;
+	}
 	&__title {
 		font-weight: 800;
 		font-family: 'Open Sans', sans-serif;
