@@ -1,6 +1,9 @@
 .has-fade {
 	visibility: hidden;
 }
+.has-fade-db {
+	visibility: hidden;
+}
 .fade-in {
 	animation: fade-in 300ms ease-in-out forwards;
 	opacity: 1;

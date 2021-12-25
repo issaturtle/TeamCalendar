@@ -1,5 +1,6 @@
 const fadeElement = document.querySelectorAll('.has-fade');
-
+const fadeDB = document.querySelectorAll('.has-fade-db');
+const eventMenu = document.querySelector('.addEvent__menu');
 const overlay = document.querySelector('.overlay');
 const eve = document.querySelector('.addEvent');
 const del = document.querySelector('.deleteEvent');
@@ -67,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
 						text: 'Create/Delete events',
 						click: function () {
 							if (eve.classList.contains('open')) {
+								//opens
+
 								fadeElement.forEach(function (element) {
 									element.classList.remove('fade-in');
 									element.classList.add('fade-out');
@@ -74,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
 								body.classList.remove('noScroll');
 								eve.classList.remove('open');
 							} else {
+								//close
+								// overlay.classList.remove('fade-out');
+								// overlay.classList.add('fade-in');
 								fadeElement.forEach(function (element) {
 									element.classList.remove('fade-out');
 									element.classList.add('fade-in');
@@ -86,7 +92,27 @@ document.addEventListener('DOMContentLoaded', function () {
 					Dashboard: {
 						text: 'Teams',
 						click: function () {
-							alert('test');
+							if (eve.classList.contains('opens')) {
+								//opens
+								overlay.classList.remove('fade-in');
+								overlay.classList.add('fade-out');
+								fadeDB.forEach(function (element) {
+									element.classList.remove('fade-in');
+									element.classList.add('fade-out');
+								});
+								body.classList.remove('noScroll');
+								eve.classList.remove('opens');
+							} else {
+								//close
+								overlay.classList.remove('fade-out');
+								overlay.classList.add('fade-in');
+								fadeDB.forEach(function (element) {
+									element.classList.remove('fade-out');
+									element.classList.add('fade-in');
+								});
+								body.classList.add('noScroll');
+								eve.classList.add('opens');
+							}
 						},
 					},
 					LogoutButton: {

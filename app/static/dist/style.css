@@ -2,6 +2,10 @@
   visibility: hidden;
 }
 
+.has-fade-db {
+  visibility: hidden;
+}
+
 .fade-in {
   -webkit-animation: fade-in 300ms ease-in-out forwards;
           animation: fade-in 300ms ease-in-out forwards;
@@ -1146,6 +1150,10 @@ button:hover,
 }
 
 .addEvent__dashboard {
+  padding-bottom: 130px;
+  padding-top: 0px;
+  margin-top: 0;
+  top: 66px;
   background: #152238;
   position: fixed;
   left: 150px;
@@ -1188,6 +1196,13 @@ button:hover,
 
 .addEvent__dashboard a:hover {
   color: white;
+}
+
+.addEvent__dashboard #LLC {
+  margin-top: 70px;
+  padding-top: 30px;
+  padding-bottom: 0;
+  padding-left: 111px;
 }
 
 .addEvent__title {
