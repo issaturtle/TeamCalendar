@@ -133,7 +133,12 @@ def calenJson():
         return "NOT LOGGED IN"
     jsonData = get_user_events(email)
     return jsonify(jsonData)
-
+@auth.route('/tasklist')
+def task():
+    email = session["email"]
+    if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
+        return "NOT LOGGED IN"
+    return render_template("tasklist.html")
 @auth.route('/calen', methods=['GET', 'POST'])
 def calen():
     email = session["email"]

@@ -1225,4 +1225,53 @@ button:hover,
 .addEvent .form-check {
   color: white;
 }
+
+.Tasklist__title {
+  position: relative;
+  text-align: center;
+  padding-top: 20px;
+  color: #f2c973;
+  z-index: -1;
+}
+
+.Tasklist__toggle {
+  padding-left: 35px;
+}
+
+.Tasklist__toggle > span {
+  background-color: white;
+}
+
+.Tasklist__dashboard {
+  top: 69px;
+}
+
+.Tasklist__display {
+  border: solid blue 1px;
+  width: 1000px;
+  height: 1000px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 /*# sourceMappingURL=style.css.map */

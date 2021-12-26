@@ -14,3 +14,6 @@ def home():
 def about():
     return render_template("about.html")
 
+@views.route('/tasklist')
+def task():
+    return render_template("tasklist.html")

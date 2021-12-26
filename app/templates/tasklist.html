@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{url_for('static', filename = 'dist/style.css')}}"
+		/>
+		<link />
+		<title>Tasklist</title>
+	</head>
+	<body class="body">
+		<header class="header">
+			<div class="overlay has-fade"></div>
+
+			<nav class="flex flex-jc-sb flex-ai-c flex-fg-c">
+				<a id="buttonNav" href="#" class="header__toggle Tasklist__toggle">
+					<span> </span><span></span><span></span>
+				</a>
+
+				<div class="header__links hide-mobile">
+					<a href="logout">Logout</a>
+				</div>
+			</nav>
+			<div class="box">
+				<div class="Tasklist__title">
+					<h1>Task List</h1>
+				</div>
+				<div class="Tasklist__display">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<h1>hi</h1>
+				</div>
+			</div>
+			<div
+				class="
+					addEvent__menu addEvent__dashboard
+					Tasklist__dashboard
+					has-fade-db
+				"
+			>
+				<a
+					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
+					target="_blank"
+					class="header__github"
+					id="DBTitleIMG"
+					><img
+						src="{{url_for('static', filename= 'Images/wt.png')}}"
+						width="40"
+						height="40"
+						alt="WeTried"
+						srcset=""
+					/>
+					We-Tried</a
+				>
+				<div style="width: 300px; height: 2px; border: 1px solid gray"></div>
+				<ul>
+					<li>
+						<a href="homepage">
+							<i class="bi bi-house-door"></i>
+							Homepage
+						</a>
+					</li>
+					<li>
+						<a href="calen"> <i class="bi bi-calendar4"></i> Calendar</a>
+					</li>
+					<li>
+						<a href="tasklist"> <i class="bi bi-bookmark"></i>Task List</a>
+					</li>
+				</ul>
+				<div style="width: 300px; height: 2px; border: 1px solid gray"></div>
+				<ul>
+					<li>
+						<a>
+							<i class="bi bi-collection"></i>
+							My Teams
+						</a>
+					</li>
+					<li>
+						<a> <i class="bi bi-diagram-3"></i>Join Teams</a>
+					</li>
+					<li>
+						<a> <i class="bi bi-people"></i>Create Team</a>
+					</li>
+				</ul>
+				<div style="width: 300px; height: 2px; border: 1px solid gray"></div>
+				<ul id="lastList">
+					<li>
+						<a href="logout"> <i class="bi bi-door-open"></i>Logout</a>
+					</li>
+				</ul>
+				<a id="LLC" href="about">
+					<i class="bi bi-chat-right"></i>
+					We-tried LLC
+				</a>
+			</div>
+		</header>
+	</body>
+	<script
+		type="text/javascript"
+		src="{{url_for('static', filename= 'js/tasklist.js')}}"
+	></script>
+</html>
