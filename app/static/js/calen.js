@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 		.then((data) => {
 			json = json.concat(data);
-			console.log(json[0]['end']);
+
 			calendar = new FullCalendar.Calendar(calendarEl, {
 				initialView: 'dayGridMonth',
 				selectable: true,

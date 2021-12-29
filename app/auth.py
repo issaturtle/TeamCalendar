@@ -4,7 +4,7 @@ from flask.sessions import NullSession
 from pymongo import MongoClient, cursor
 from authlib.integrations.flask_client import OAuth
 from dotenv import load_dotenv
-import os
+import os,json
 
 load_dotenv()
 
@@ -16,7 +16,7 @@ auth = Blueprint('auth', __name__)
 cluster = MongoClient("mongodb+srv://Connor:Bustos@cluster0.z1idj.mongodb.net/Login?retryWrites=true&w=majority")       #our database connection
 db = cluster["Login"]               #our main collection
 collection = db["data"]             #collection
-
+stack = [] #userInfo.json
 valid_logins = collection.find({}, {'_id': 1, 'email': 1, 'password': 1, 'events':[]})      #search for data
 
 @auth.route('/login', methods=['GET', 'POST'])          
@@ -32,7 +32,8 @@ def login():
                 if data["password"] == bcrypt.hashpw(password, data["salt"]):               #check password
                     session["email"] = email                                                #if passed session is now set for the user with a given email
                     print("Successful login with " + email + " " + password.decode('utf-8'))    #for server side management
-                    print("Loading calender...")                                                #for server side management
+                    print("Loading calender...") 
+                    getUser()                                               #for server side management
                     calenJson()                                                             #loads calender for session user
                     return redirect('/calen')                                               #redirects to calendar
                 else:
@@ -47,6 +48,9 @@ def login():
 @auth.route('/logout')
 def logout():
     session["email"] = NullSession.__name__     #LOG OUT THE USER
+    if(len(stack)!=0):
+        stack.pop()
+    
     return render_template("logout.html")       
 
 
@@ -104,25 +108,36 @@ def authorize():
     user = oauth.create_client('user')
     token = user.authorize_access_token()
     resp = user.get('userinfo').json()
-
+    
+    userName = resp["email"]
+    stack.append(userName)
+    
     cursor = collection.find({"email": resp["email"]})
     if cursor.count() == 0:                          #if account does not exist
         new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "events": []}  #create an account  given google user info
         add_user(new_user)
         session["email"] = resp["email"]        #session is now by google user
+        getUser()
         calenJson()                             #load calen for user
     elif cursor.count() == 1:
         for data in cursor:             
             if data["password"] == bcrypt.hashpw(resp["id"].encode('utf-8'), data["salt"]):               #check password
                 session["email"] = resp["email"]                                                #if passed session is now set for the user with a given email
                 print("Successful login with " + resp["email"] + " " + resp["id"])    #for server side management
-                print("Loading calender...")                                                #for server side management
+                print("Loading calender...")   
+                getUser()                                             #for server side management
                 calenJson()                                                             #loads calender for session user
                 return redirect('/calen')                                               #redirects to calendar
             else:
                 print("wrong password")                                                 #for server side management
                 flash('password is incorrect', category="error")                        #flashes user a password error
     return redirect('/calen')               #redirect to calen for user
+@auth.route('/userInfo.json')
+def getUser():
+    userInfo = {"email":"none"}
+    if(len(stack) != 0):
+        userInfo = {"email":str(stack[0])}
+    return jsonify(userInfo)
 
 def add_user(user):
     collection.insert_one(user)

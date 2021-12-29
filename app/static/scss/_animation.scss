@@ -86,3 +86,25 @@
 		opacity: 0;
 	}
 }
+@keyframes displayNone {
+	from {
+		visibility: visible;
+		opacity: 1;
+	}
+	99% {
+		visibility: visible;
+		opacity: 0;
+		display: none;
+	}
+	to {
+		visibility: hidden;
+		opacity: 0;
+		height: 0;
+		padding: 0;
+		margin: 0;
+		width: 0;
+	}
+}
+.displayNone {
+	animation: displayNone 200ms ease-in-out forwards;
+}

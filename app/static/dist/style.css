@@ -188,6 +188,51 @@
   }
 }
 
+@-webkit-keyframes displayNone {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+    display: none;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    width: 0;
+  }
+}
+
+@keyframes displayNone {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+    display: none;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    width: 0;
+  }
+}
+
+.displayNone {
+  -webkit-animation: displayNone 200ms ease-in-out forwards;
+          animation: displayNone 200ms ease-in-out forwards;
+}
+
 html {
   font-size: 100%;
   -webkit-box-sizing: border-box;
@@ -1226,12 +1271,22 @@ button:hover,
   color: white;
 }
 
+#teams {
+  color: lightgray;
+}
+
 .Tasklist__title {
   position: relative;
   text-align: center;
   padding-top: 20px;
   color: #f2c973;
   z-index: -1;
+}
+
+.Tasklist__username {
+  color: white;
+  padding-top: 20px;
+  margin-left: 1200px;
 }
 
 .Tasklist__toggle {
@@ -1244,6 +1299,10 @@ button:hover,
 
 .Tasklist__dashboard {
   top: 69px;
+}
+
+.Tasklist__logout {
+  margin-right: 35px;
 }
 
 .Tasklist__display {
@@ -1273,5 +1332,23 @@ button:hover,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.cardBox__zIndex {
+  z-index: -1;
+}
+
+.cardBox__cards {
+  margin-right: 20px;
+  padding-left: 0px;
+}
+
+.cardBox__tag {
+  background: -webkit-gradient(linear, left top, right top, from(#211e1e), to(#117aca));
+  background: linear-gradient(to right, #211e1e, #117aca);
+}
+
+.removeTag {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

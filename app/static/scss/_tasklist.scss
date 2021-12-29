@@ -10,6 +10,9 @@
 // 	width: 100%;
 // 	height: 70px;
 // }
+#teams {
+	color: lightgray;
+}
 .Tasklist {
 	&__title {
 		position: relative;
@@ -19,6 +22,11 @@
 		color: $gold;
 		z-index: -1;
 	}
+	&__username {
+		color: white;
+		padding-top: 20px;
+		margin-left: 1200px;
+	}
 	&__toggle {
 		padding-left: 35px;
 		> span {
@@ -27,6 +35,9 @@
 	}
 	&__dashboard {
 		top: 69px;
+	}
+	&__logout {
+		margin-right: 35px;
 	}
 	&__display {
 		border: solid blue 1px;
@@ -43,4 +54,21 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+}
+.cardBox {
+	&__zIndex {
+		z-index: -1;
+	}
+	&__cards {
+		margin-right: 20px;
+		padding-left: 0px;
+
+		// height: 200px;
+	}
+	&__tag {
+		background: linear-gradient(to right, #211e1e, #117aca);
+	}
+}
+.removeTag {
+	display: none;
 }
