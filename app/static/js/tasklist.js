@@ -34,9 +34,13 @@ buttonNav.addEventListener('click', function () {
 	}
 });
 
-let createCard = (json) => {
+let createCard = (json, num) => {
 	let row = document.createElement('div');
-	row.className = 'row row-cols-1 row-cols-md-3 g-4 webContainer';
+	if ((num == 2) == true) {
+		tagList.className = 'row row-cols-1 row-cols-md-3 g-4 webContainer';
+	} else {
+		tagList.className = 'row row-cols-1 row-cols-md-1 g-4 webContainer';
+	}
 
 	let col = document.createElement('div');
 	col.className = 'col';
@@ -55,12 +59,37 @@ let createCard = (json) => {
 	let card_title = document.createElement('h5');
 	card_title.className = 'card-title';
 	card_title.innerHTML = json['title'];
+
 	let card_text = document.createElement('p');
 	card_text.className = 'card-text';
 	card_text.innerHTML = 'Starting date: ' + json['start'];
+
 	let card_text_end = document.createElement('p');
 	card_text_end.className = 'card-text';
 	card_text_end.innerHTML = 'Ending date: ' + json['end'];
+
+	let form = document.createElement('form');
+	form.method = 'POST';
+	let inpEvent = document.createElement('input');
+	inpEvent.type = 'text';
+	inpEvent.id = 'eventTitle';
+	inpEvent.name = 'eventTitle';
+	inpEvent.value = json['title'];
+	inpEvent.className = 'removeTag';
+
+	let inpStart = document.createElement('input');
+	inpStart.type = 'text';
+	inpStart.id = 'eventStart';
+	inpStart.name = 'eventStart';
+	inpStart.value = json['start'];
+	inpStart.className = 'removeTag';
+
+	let inpEnd = document.createElement('input');
+	inpEnd.type = 'text';
+	inpEnd.id = 'eventEnd';
+	inpEnd.name = 'eventEnd';
+	inpEnd.value = json['end'];
+	inpEnd.className = 'removeTag';
 
 	let card_footer = document.createElement('div');
 	card_footer.className = 'card-footer';
@@ -68,31 +97,41 @@ let createCard = (json) => {
 	let card_button = document.createElement('button');
 	card_button.className = 'btn btn-primary';
 	card_button.innerHTML = 'Resolve';
+	card_button.type = 'submit';
 	card_button.addEventListener('click', function () {
 		col.classList.add('displayNone');
-		// setTimeout(1000);
-		// col.classList.add('removeTag');
 	});
 	card_footer.append(card_button);
 	card_footer.appendChild(card_button);
+	form.appendChild(inpEvent);
+	form.appendChild(inpStart);
+	form.appendChild(inpEnd);
+	form.appendChild(card_footer);
 	card_body.appendChild(card_title);
 	card_body.appendChild(card_text);
 	card_body.appendChild(card_text_end);
 
 	card.appendChild(img);
 	card.appendChild(card_body);
-	card.appendChild(card_footer);
+	card.appendChild(form);
 	col.appendChild(card);
 
 	tagList.appendChild(col);
 };
 
 let createList = (json) => {
-	for (let i = 0; i < json.length; i++) {
-		createCard(json[i]);
+	if (json.length < 3) {
+		for (let i = 0; i < json.length; i++) {
+			createCard(json[i], 1);
+		}
+	} else {
+		for (let i = 0; i < json.length; i++) {
+			createCard(json[i], 2);
+		}
 	}
 };
 json = [];
+json1 = [];
 fetch('/calen.json')
 	.then((response) => {
 		return response.json();
@@ -102,26 +141,34 @@ fetch('/calen.json')
 		// test.innerHTML = json.length;
 		createList(json);
 	});
-document.addEventListener('DOMContentLoaded', function () {
-	var json1 = [];
-	var json = [];
-	// fetch('/calen.json')
-	// 	.then((response) => {
-	// 		return response.json();
-	// 	})
-	// 	.then((data) => {
-	// 		json = json.concat(data);
-	// 		test.innerHTML = json[0]['end'];
-	// 	});
-	fetch('/userInfo.json')
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			json1 = json1.concat(data);
-			user.innerHTML = 'Hello ' + json1[0]['email'];
-		});
-});
-$('button').click(function () {
-	alert(this.classList); // or alert($(this).attr('id'));
-});
+fetch('/userInfo.json')
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		json1 = json1.concat(data);
+		user.innerHTML = 'Hello ' + json1[0]['email'];
+	});
+// document.addEventListener('DOMContentLoaded', function () {
+// 	var json1 = [];
+// 	var json = [];
+// 	// fetch('/calen.json')
+// 	// 	.then((response) => {
+// 	// 		return response.json();
+// 	// 	})
+// 	// 	.then((data) => {
+// 	// 		json = json.concat(data);
+// 	// 		test.innerHTML = json[0]['end'];
+// 	// 	});
+// 	fetch('/userInfo.json')
+// 		.then((response) => {
+// 			return response.json();
+// 		})
+// 		.then((data) => {
+// 			json1 = json1.concat(data);
+// 			user.innerHTML = 'Hello ' + json1[0]['email'];
+// 		});
+// });
+// $('button').click(function () {
+// 	alert(this.classList); // or alert($(this).attr('id'));
+// });

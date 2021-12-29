@@ -94,7 +94,10 @@
 	99% {
 		visibility: visible;
 		opacity: 0;
-		display: none;
+		height: 0;
+		padding: 0;
+		margin: 0;
+		width: 0;
 	}
 	to {
 		visibility: hidden;

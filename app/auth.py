@@ -18,7 +18,7 @@ db = cluster["Login"]               #our main collection
 collection = db["data"]             #collection
 stack = [] #userInfo.json
 valid_logins = collection.find({}, {'_id': 1, 'email': 1, 'password': 1, 'events':[]})      #search for data
-
+temp = ""
 @auth.route('/login', methods=['GET', 'POST'])          
 def login():
     session["email"] = NullSession.__name__         #Sets session to NULL for security
@@ -111,7 +111,7 @@ def authorize():
     
     userName = resp["email"]
     stack.append(userName)
-    
+    temp = stack[0]
     cursor = collection.find({"email": resp["email"]})
     if cursor.count() == 0:                          #if account does not exist
         new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "events": []}  #create an account  given google user info
@@ -134,9 +134,10 @@ def authorize():
     return redirect('/calen')               #redirect to calen for user
 @auth.route('/userInfo.json')
 def getUser():
-    userInfo = {"email":"none"}
-    if(len(stack) != 0):
-        userInfo = {"email":str(stack[0])}
+    email = session["email"]
+    
+
+    userInfo = {"email":email}
     return jsonify(userInfo)
 
 def add_user(user):
@@ -148,12 +149,23 @@ def calenJson():
         return "NOT LOGGED IN"
     jsonData = get_user_events(email)
     return jsonify(jsonData)
-@auth.route('/tasklist')
-def task():
+@auth.route('/tasklist', methods=['GET', 'POST'])
+def taskList():
     email = session["email"]
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
-    return render_template("tasklist.html")
+    if request.method == 'POST':
+        title = request.form.get('eventTitle')
+        start = request.form.get('eventStart')
+        end = request.form.get('eventEnd')
+        event = {"title":title, "start":start, "end":end}
+        if (delete_event(email, event)):
+            calenJson()
+            stack.append(email)
+            return render_template("taskList.html")
+        
+            
+    return render_template("taskList.html")
 @auth.route('/calen', methods=['GET', 'POST'])
 def calen():
     email = session["email"]
@@ -169,13 +181,15 @@ def calen():
         if choice == "createEve":
             add_event(email, event)                                 #if addevent, adds an event
         elif choice == "deleteEve":
-            delete_event(email, event)                              #if deleteevent, deletes an event
+             temp = delete_event(email, event)                              #if deleteevent, deletes an event
         else:
             print("no choice")                                      #else, there is nothing happening
 
         calenJson()                                                 #renders new information and outputs to the calendar
         return render_template("calendar.html")
     return render_template("calendar.html")
+
+    
 def add_event(email, thingToAdd):
     #Testing adding a list of events to an account
     #if valid email, update from given collection
@@ -200,6 +214,7 @@ def delete_event(email, thingToDelete):
             }
         }
     )
+    return True
 def get_user_events(email):
     cursor = collection.find({"email": email})  #finds user in database by email
     for item in cursor:
