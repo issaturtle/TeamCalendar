@@ -25,7 +25,8 @@
 			href="{{url_for('static', filename = 'dist/style.css')}}"
 		/>
 		<link />
-		<title>Tasklist</title>
+
+		<title>{%block title%} Tasklist {%endblock%}</title>
 	</head>
 	<body class="body">
 		<header class="header">
@@ -43,7 +44,7 @@
 			</nav>
 			<div class="box flex flex-jc-sb flex-ai-c flex-fg-c">
 				<div class="Tasklist__title">
-					<h1>Task List</h1>
+					<h1>{%block pagetitle%}Task List{%endblock%}</h1>
 				</div>
 				<!-- <div class="Tasklist__display">
 					<ul>
@@ -53,6 +54,7 @@
 					</ul>
 					<h1>hi</h1>
 				</div> -->
+				{%block cardBox%}
 				<div class="cardBox__container">
 					<div
 						id="tagsList"
@@ -89,6 +91,7 @@
 						</div> -->
 					</div>
 				</div>
+				{%endblock%}
 			</div>
 			<div
 				class="
@@ -135,7 +138,7 @@
 						</a>
 					</li>
 					<li>
-						<a> <i class="bi bi-diagram-3"></i>Join Teams</a>
+						<a href="joinTeam"> <i class="bi bi-diagram-3"></i>Join Teams</a>
 					</li>
 					<li>
 						<a> <i class="bi bi-people"></i>Create Team</a>
@@ -152,6 +155,7 @@
 					We-tried LLC
 				</a>
 			</div>
+			<iframe name="frame"></iframe>
 		</header>
 	</body>
 	<script

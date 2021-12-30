@@ -1357,4 +1357,14 @@ button:hover,
 .removeTag {
   display: none;
 }
+
+iframe {
+  display: none;
+}
+
+.joinTeam {
+  border: solid 1px blue;
+  width: 50%;
+  height: auto;
+}
 /*# sourceMappingURL=style.css.map */

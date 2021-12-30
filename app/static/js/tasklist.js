@@ -70,6 +70,7 @@ let createCard = (json, num) => {
 
 	let form = document.createElement('form');
 	form.method = 'POST';
+	form.target = 'frame';
 	let inpEvent = document.createElement('input');
 	inpEvent.type = 'text';
 	inpEvent.id = 'eventTitle';

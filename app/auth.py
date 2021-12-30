@@ -16,6 +16,8 @@ auth = Blueprint('auth', __name__)
 cluster = MongoClient("mongodb+srv://Connor:Bustos@cluster0.z1idj.mongodb.net/Login?retryWrites=true&w=majority")       #our database connection
 db = cluster["Login"]               #our main collection
 collection = db["data"]             #collection
+teams = cluster["Teams"]
+team_collection = teams["data"]
 stack = [] #userInfo.json
 valid_logins = collection.find({}, {'_id': 1, 'email': 1, 'password': 1, 'events':[]})      #search for data
 temp = ""
@@ -163,9 +165,11 @@ def taskList():
             calenJson()
             stack.append(email)
             return render_template("taskList.html")
-        
-            
+                
     return render_template("taskList.html")
+@auth.route('/joinTeam')
+def joinTeam():
+    return render_template("joinTeam.html")
 @auth.route('/calen', methods=['GET', 'POST'])
 def calen():
     email = session["email"]
@@ -176,7 +180,7 @@ def calen():
         strDes = request.form.get('eventName')
         startD= request.form.get('startD')
         endD = request.form.get('endD')
-        event = {'title': strDes, 'start': startD, "end" : endD}    #creates an event object given the input from user
+        event = {'title': strDes.strip(), 'start': startD, "end" : endD}    #creates an event object given the input from user
 
         if choice == "createEve":
             add_event(email, event)                                 #if addevent, adds an event
