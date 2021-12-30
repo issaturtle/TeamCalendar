@@ -113,7 +113,7 @@ def authorize():
     
     userName = resp["email"]
     stack.append(userName)
-    temp = stack[0]
+    
     cursor = collection.find({"email": resp["email"]})
     if cursor.count() == 0:                          #if account does not exist
         new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "events": []}  #create an account  given google user info
@@ -137,8 +137,6 @@ def authorize():
 @auth.route('/userInfo.json')
 def getUser():
     email = session["email"]
-    
-
     userInfo = {"email":email}
     return jsonify(userInfo)
 
@@ -224,3 +222,172 @@ def get_user_events(email):
     for item in cursor:
         events = item["events"]                 #get user events
     return events
+
+@auth.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    email = session["email"]
+    if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
+        return "NOT LOGGED IN"
+    if request.method == 'POST':
+        choice = request.form.get('choice')
+        if choice == "create team":
+            team_name = request.form.get('team name')
+            private = request.form.get('private')
+            password = request.form.get('password')
+            team = {"team name": team_name, "members": [email], "private": private, "password": password, "events": []}
+            ret = create_team(email, team)
+            if ret :
+                print("SUCCESS")
+            else:
+                print("ERROR")
+        elif choice == "add to team":
+            team_to_add_to = request.form.get('team name')
+            member = request.form.get('user email')
+            team = {"team name": team_to_add_to, "members": member}
+            return
+        elif choice == "join team":
+            team_to_join = request.form.get('team name')
+            password = request.form.get('password')
+            join_team(email, team_to_join, password)
+        elif choice == "leave team":
+            team_to_leave = request.form.get('team name')
+            leave_team(email, team_to_leave)
+        elif choice == "check calender":
+            calenJson()
+
+
+def create_team(email, team):
+    cursor = collection.find({"email": email})      #look for user
+    for item in cursor:
+        teams = item["teams"]                       #look at teams user is in
+    if team["team name"] in teams:                               #if the team they want to add is already in the team list exit
+        return False            
+
+    cursor = team_collection.find({"team name": team["team name"]})     #look for team in the database
+    if cursor.count() == 1:                                             #if team already exists return
+        return False
+    else:
+        team_collection.insert_one(team)                                #team does not exist, create a new team
+        collection.update_one(
+            {"email": email},
+            {
+                "$push":{
+                    "teams": team["team name"]                          #updates the users list of teams they are in
+                }
+            }
+        )
+
+def add_to_team(email, team):
+    cursor = collection.find({"email": email})      #look for user
+    for item in cursor:
+        teams = item["teams"]                       #look at teams user is in
+    if team["team name"] in teams:                               #if the team they want to add is already in the team list exit
+        return False
+
+    cursor = team_collection.find({"team name": team["team name"]})     #look for team in the database
+    if cursor.count != 1:
+        return "not a valid team"
+    for data in cursor:
+        members = data["members"]
+        leader = data["leader"]
+    if leader == email:                             #only leaders can add a member to the team #creator of the team
+        if team["members"] not in members:
+            team_collection.update_one(
+                {"team name": team["team name"]},
+                {
+                    "$push":{
+                        "members": team["members"]
+                    }
+                }
+            )
+            collection.update_one(     
+            {"email": email},   #given email to identify the account to update
+            {
+                "$push":{           #pushes values into a given array name.
+                "teams":
+                        {
+                            "$each": team["team name"]
+                        }
+                    }
+            }
+    )
+            
+    return
+
+def join_team(email, team, password):
+    cursor = collection.find({"email": email}) 
+    for item in cursor:
+        teams = item["teams"]                       #look at teams user is in
+    if team in teams:                               #if the team they want to add is already in the team list exit
+        return False
+
+    cursor = team_collection.find({"team name": team}) #look for team in the database
+    if cursor.count != 1:
+        return "not a valid team"
+    for data in cursor:
+        private = data["private"]
+        team_password = data["password"]
+        members = data["members"]
+        leader = data["leader"]
+    if private:                 #team is private, provide a password
+        if password == team_password and email not in members:
+            team_collection.update_one(
+                {"team name": team},
+                {
+                    "$push":{
+                        "members": email
+                    }
+                }
+            )
+            collection.update_one(     
+            {"email": email},   #given email to identify the account to update
+            {
+                "$push":{           #pushes values into a given array name.
+                "teams":
+                        {
+                            "$each": team
+                        }
+                    }
+            }
+            )
+
+
+    return
+            
+def leave_team(email, team):
+    cursor = collection.find({"email": email}) 
+    for item in cursor:
+        teams = item["teams"]                       #look at teams user is in
+    if team not in teams:                               #if the team they want to add is already in the team list exit
+        return False
+    else:
+        cursor = team_collection.find({"team name": team}) #look for team in the database
+        if cursor.count != 1:
+            return "not a valid team"
+        collection.update_one(             #TO delete
+        {"email": email},                       #given logged in
+        {
+            "$pull":                            #pull out of db
+            {
+                "teams": team  #thing to pull out, if it is a dict, it pulls out the entire dict
+            }
+        }
+        )
+        team_collection.update_one(
+                {"team name": team},
+                {
+                    "$pull":{
+                        "members": email
+                    }
+                }
+            )
+
+
+@auth.route('/teams.json')
+def list_teams():
+    teams = team_collection.find({}, {'id': 1, 'team name': 1, 'private': 1})
+    team_list = []
+    for team in teams:
+        temp = {'team name': team['team name'], 'private': team['private']}
+        team_list.append(temp)
+    return jsonify(team_list)

@@ -1,6 +1,54 @@
 {% extends "tasklist.html"%} {%block title%} Join Teams {%endblock%} {%block
-pagetitle%}Join Teams{%endblock%} {%block cardBox%}
-<div class="joinTeam">
-	<p>Click on any available teams to join</p>
+pagetitle%}
+<div class="joinTeam__title">
+	<h1>Join Team</h1>
 </div>
+{%endblock%} {%block cardBox%}
+<div class="joinTeam webContainer">
+	<h3 class="joinTeam__description">Click on any available teams to join</h3>
+	<form method="POST">
+		<div id="formG" class="form-group">
+			<!-- <div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="RadioOptions"
+					id="createEve"
+					value="createEve"
+				/>
+				<label class="form-check-label" for="createEve">Create event</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="RadioOptions"
+					id="deleteEve"
+					value="deleteEve"
+				/>
+				<label class="form-check-label" for="deleteEve"> Delete event</label>
+			</div> -->
+		</div>
+		<div class="form-group">
+			<label for="text" class="Register__label joinTeam__label">
+				Or join a private team</label
+			>
+			<input
+				type="text"
+				class="form-control"
+				id="privateTeam"
+				name="privateTeam"
+				placeholder="Enter private team name"
+			/>
+		</div>
+		<div class="joinTeam__button">
+			<button type="submit" class="button Register__Button">Submit</button>
+		</div>
+	</form>
+</div>
+{%endblock%} {%block JS%}
+<script
+	type="text/javascript"
+	src="{{url_for('static', filename= 'js/joinTeam.js')}}"
+></script>
 {%endblock%}

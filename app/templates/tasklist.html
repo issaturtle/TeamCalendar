@@ -43,9 +43,11 @@
 				>
 			</nav>
 			<div class="box flex flex-jc-sb flex-ai-c flex-fg-c">
+				{%block pagetitle%}
 				<div class="Tasklist__title">
-					<h1>{%block pagetitle%}Task List{%endblock%}</h1>
+					<h1>Task List</h1>
 				</div>
+				{%endblock%}
 				<!-- <div class="Tasklist__display">
 					<ul>
 						<li>1</li>
@@ -158,8 +160,10 @@
 			<iframe name="frame"></iframe>
 		</header>
 	</body>
+	{%block JS%}
 	<script
 		type="text/javascript"
 		src="{{url_for('static', filename= 'js/tasklist.js')}}"
 	></script>
+	{%endblock%}
 </html>

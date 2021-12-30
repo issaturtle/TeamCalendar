@@ -57,6 +57,7 @@
 }
 .cardBox {
 	&__zIndex {
+		position: relative;
 		z-index: -1;
 	}
 	&__cards {

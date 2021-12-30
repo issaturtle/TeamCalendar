@@ -1,5 +1,22 @@
 .joinTeam {
-	border: solid 1px blue;
+	// border: solid 1px $gold;
+	background: white;
+	border-radius: 20px;
+	box-shadow: 0 4px 14px $gold;
 	width: 50%;
 	height: auto;
+	margin-top: 50px;
+	&__title {
+		padding-top: 20px;
+		color: rgba(31, 160, 247, 0.973);
+	}
+	&__description {
+		text-align: center;
+	}
+	&__button {
+		text-align: center;
+	}
+	&__label {
+		margin-left: 0px;
+	}
 }

@@ -1341,6 +1341,7 @@ button:hover,
 }
 
 .cardBox__zIndex {
+  position: relative;
   z-index: -1;
 }
 
@@ -1363,8 +1364,29 @@ iframe {
 }
 
 .joinTeam {
-  border: solid 1px blue;
+  background: white;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 4px 14px #f2c973;
+          box-shadow: 0 4px 14px #f2c973;
   width: 50%;
   height: auto;
+  margin-top: 50px;
+}
+
+.joinTeam__title {
+  padding-top: 20px;
+  color: rgba(31, 160, 247, 0.973);
+}
+
+.joinTeam__description {
+  text-align: center;
+}
+
+.joinTeam__button {
+  text-align: center;
+}
+
+.joinTeam__label {
+  margin-left: 0px;
 }
 /*# sourceMappingURL=style.css.map */
