@@ -8,17 +8,25 @@ pagetitle%}
 	<h3 class="joinTeam__description">Click on any available teams to join</h3>
 	<form method="POST">
 		<div id="formG" class="form-group">
-			<!-- <div class="form-check">
+			<!-- <div class="form-group row">
 				<input
 					class="form-check-input"
 					type="radio"
 					name="RadioOptions"
-					id="createEve"
-					value="createEve"
+					id="deleteEve"
+					value="deleteEve"
 				/>
-				<label class="form-check-label" for="createEve">Create event</label>
-			</div>
-			<div class="form-check">
+				<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-4">
+					<input
+						type="email"
+						class="form-control"
+						id="inputEmail3"
+						placeholder="Email"
+					/>
+				</div>
+			</div> -->
+			<!-- <div class="form-check">
 				<input
 					class="form-check-input"
 					type="radio"
@@ -27,9 +35,9 @@ pagetitle%}
 					value="deleteEve"
 				/>
 				<label class="form-check-label" for="deleteEve"> Delete event</label>
-			</div> -->
+			</div>  -->
 		</div>
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label for="text" class="Register__label joinTeam__label">
 				Or join a private team</label
 			>
@@ -40,6 +48,23 @@ pagetitle%}
 				name="privateTeam"
 				placeholder="Enter private team name"
 			/>
+		</div> -->
+		<div class="form-group row">
+			<label
+				id="passLabel"
+				for="inputEmail3"
+				class="col-sm-2 col-form-label displayNone"
+				>:)</label
+			>
+			<div id="passInput" class="col-sm-4 displayNone">
+				<input
+					type="password"
+					class="form-control"
+					id="passInput"
+					placeholder="password"
+					style="margin-top: 30px"
+				/>
+			</div>
 		</div>
 		<div class="joinTeam__button">
 			<button type="submit" class="button Register__Button">Submit</button>

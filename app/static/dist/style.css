@@ -1375,6 +1375,14 @@ iframe {
   display: none;
 }
 
+input[type='radio'] {
+  vertical-align: middle;
+}
+
+.displayNone {
+  display: none;
+}
+
 .joinTeam {
   background: white;
   border-radius: 20px;

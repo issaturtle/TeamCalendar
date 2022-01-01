@@ -6,6 +6,8 @@ const body = document.querySelector('.body');
 const card = document.querySelector('#contain');
 const formG = document.querySelector('#formG');
 const user = document.querySelector('#username');
+const passLabel = document.querySelector('#passLabel');
+const passInput = document.querySelector('#passInput');
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
 		//opens
@@ -46,13 +48,30 @@ let createRadioB = (json) => {
 	let label = document.createElement('label');
 	label.className = 'form-check-label';
 	label.htmlFor = String(json['team name']);
-	label.innerHTML = String(json['team name']);
-
+	var tname = String(json['team name']);
+	if (json['private'] == true) {
+		label.innerHTML = `<i class="bi bi-file-lock-fill">${tname}</i>`;
+	} else {
+		label.innerHTML = `${tname}`;
+	}
 	form_check.appendChild(inp);
 	form_check.appendChild(label);
 
 	formG.appendChild(form_check);
-	count += 1;
+	// if (document.getElementById(String(json['team name'])).checked) {
+	// 	console.log('hello');
+	// }
+	inp.addEventListener('click', function () {
+		$('input[type="password"]').val('');
+		if (json['private']) {
+			passInput.classList.remove('displayNone');
+			passLabel.classList.remove('displayNone');
+			passLabel.innerHTML = `password for ${json['team name']}`;
+		} else {
+			passInput.classList.add('displayNone');
+			passLabel.classList.add('displayNone');
+		}
+	});
 };
 
 let initTeams = (json) => {

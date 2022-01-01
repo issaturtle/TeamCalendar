@@ -79,3 +79,10 @@
 iframe {
 	display: none;
 }
+input[type='radio'] {
+	// margin-top: -1px;
+	vertical-align: middle;
+}
+.displayNone {
+	display: none;
+}
