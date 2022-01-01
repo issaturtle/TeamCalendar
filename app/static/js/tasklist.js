@@ -7,7 +7,20 @@ const test = document.querySelector('#test');
 const user = document.querySelector('#username');
 const tagList = document.querySelector('#tagsList');
 const cardBox = document.querySelector('.cardBox__container');
+const profi = document.querySelector('#pills-profile-tab');
 
+profi.addEventListener('click', function () {
+	//CAN FETCH DURING CLICk
+	// fetch('/userInfo.json')
+	// 	.then((response) => {
+	// 		return response.json();
+	// 	})
+	// 	.then((data) => {
+	// 		json1 = json1.concat(data);
+	// 		user.innerHTML = 'Hello ' + json1[0]['email'];
+	// 	});
+	document.querySelector('#lol').innerHTML = 'hi';
+});
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
 		//opens

@@ -391,3 +391,11 @@ def list_teams():
         temp = {'team name': team['team name'], 'private': team['private']}
         team_list.append(temp)
     return jsonify(team_list)
+@auth.route('/createTeam')
+def create_team():
+    email = session["email"]
+    if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
+        return "NOT LOGGED IN"
+    
+    return render_template('createTeam.html')
+    

@@ -1277,6 +1277,14 @@ button:hover,
   color: white;
 }
 
+.createTeam {
+  margin-top: 7%;
+}
+
+.createTeam__labels {
+  color: white;
+}
+
 #teams {
   color: lightgray;
 }

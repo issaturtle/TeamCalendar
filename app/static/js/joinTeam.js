@@ -3,7 +3,7 @@ const header = document.querySelector('.header');
 const overlay = document.querySelector('.overlay');
 const fadeDB = document.querySelectorAll('.has-fade-db');
 const body = document.querySelector('.body');
-const subButton = document.querySelector('.joinTeam__button');
+const card = document.querySelector('#contain');
 const formG = document.querySelector('#formG');
 const user = document.querySelector('#username');
 buttonNav.addEventListener('click', function () {
@@ -17,7 +17,7 @@ buttonNav.addEventListener('click', function () {
 		});
 		body.classList.remove('noScroll');
 		header.classList.remove('open');
-		subButton.classList.remove('cardBox__zIndex');
+		card.classList.remove('cardBox__zIndex');
 	} else {
 		//close
 		overlay.classList.remove('fade-out');
@@ -28,7 +28,7 @@ buttonNav.addEventListener('click', function () {
 		});
 		body.classList.add('noScroll');
 		header.classList.add('open');
-		subButton.classList.add('cardBox__zIndex');
+		card.classList.add('cardBox__zIndex');
 	}
 });
 var count = 0;
@@ -40,13 +40,13 @@ let createRadioB = (json) => {
 	inp.className = 'form-check-input';
 	inp.type = 'radio';
 	inp.name = 'RadioOptions';
-	inp.id = String(json['team name']) + count;
-	inp.value = String(json['team name']) + count;
+	inp.id = String(json['team name']);
+	inp.value = String(json['team name']);
 
 	let label = document.createElement('label');
 	label.className = 'form-check-label';
-	label.htmlFor = String(json['team name']) + count;
-	label.innerHTML = String(json['team name']) + count;
+	label.htmlFor = String(json['team name']);
+	label.innerHTML = String(json['team name']);
 
 	form_check.appendChild(inp);
 	form_check.appendChild(label);

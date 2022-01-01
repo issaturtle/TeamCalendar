@@ -10,11 +10,7 @@
 			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 			crossorigin="anonymous"
 		/>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-			crossorigin="anonymous"
-		></script>
+
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
@@ -57,42 +53,188 @@
 					<h1>hi</h1>
 				</div> -->
 				{%block cardBox%}
-				<div class="cardBox__container">
-					<div
-						id="tagsList"
-						class="row row-cols-1 row-cols-md-3 g-4 webContainer"
-					>
-						<!-- <div class="col">
-							<div class="card h-100">
-								<img
-									class="card-img-top"
-									width="390"
-									height="40"
-									src="/static/Images/colortag.png"
-								/>
-								<div class="card-body">
-									<h5 class="card-title">finish homework</h5>
-									<p class="card-text">Starting date: 2021-12-05</p>
-									<p class="card-text">Ending date: 2021-12-07</p>
-								</div>
-								<form method="POST">
-									<input
-										class="removeTag"
-										type="text"
-										id="eventTitle"
-										name="eventTitle"
-										value="finish homework"
-									/>
-									<div class="card-footer">
-										<button class="btn btn-primary" type="submit">
-											Resolve
-										</button>
-									</div>
-								</form>
-							</div>
-						</div> -->
+				<!-- <nav>
+					<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button
+								class="nav-link active"
+								id="pills-home-tab"
+								data-bs-toggle="pill"
+								data-bs-target="#pills-home"
+								type="button"
+								role="tab"
+								aria-controls="pills-home"
+								aria-selected="true"
+							>
+								Home
+							</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button
+								class="nav-link"
+								id="pills-profile-tab"
+								data-bs-toggle="pill"
+								data-bs-target="#pills-profile"
+								type="button"
+								role="tab"
+								aria-controls="pills-profile"
+								aria-selected="false"
+							>
+								Profile
+							</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button
+								class="nav-link"
+								id="pills-contact-tab"
+								data-bs-toggle="pill"
+								data-bs-target="#pills-contact"
+								type="button"
+								role="tab"
+								aria-controls="pills-contact"
+								aria-selected="false"
+							>
+								Contact
+							</button>
+						</li>
+					</ul>
+					<div class="tab-content" id="pills-tabContent">
+						<div
+							class="tab-pane fade show active"
+							id="pills-home"
+							role="tabpanel"
+							aria-labelledby="pills-home-tab"
+						>
+							<h1>hello</h1>
+							>
+						</div>
+						<div
+							class="tab-pane fade"
+							id="pills-profile"
+							role="tabpanel"
+							aria-labelledby="pills-profile-tab"
+						>
+							<h2>hi</h2>
+						</div>
+						<div
+							class="tab-pane fade"
+							id="pills-contact"
+							role="tabpanel"
+							aria-labelledby="pills-contact-tab"
+						>
+							...
+						</div>
 					</div>
+				</nav> -->
+				<ul
+					class="nav nav-pills mb-3"
+					id="pills-tab"
+					role="tablist"
+					style="margin-top: 20px"
+				>
+					<li class="nav-item" role="presentation">
+						<button
+							class="nav-link active"
+							id="pills-personalProfile-tab"
+							data-bs-toggle="pill"
+							data-bs-target="#pills-personalProfile"
+							type="button"
+							role="tab"
+							aria-controls="pills-personalProfile"
+							aria-selected="true"
+						>
+							Home
+						</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button
+							class="nav-link"
+							id="pills-profile-tab"
+							data-bs-toggle="pill"
+							data-bs-target="#pills-profile"
+							type="button"
+							role="tab"
+							aria-controls="pills-profile"
+							aria-selected="false"
+						>
+							Profile
+						</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button
+							class="nav-link"
+							id="pills-contact-tab"
+							data-bs-toggle="pill"
+							data-bs-target="#pills-contact"
+							type="button"
+							role="tab"
+							aria-controls="pills-contact"
+							aria-selected="false"
+						>
+							Contact
+						</button>
+					</li>
+				</ul>
+				<div class="tab-content" id="pills-tabContent">
+					<div
+						class="tab-pane fade show active"
+						id="pills-personalProfile"
+						role="tabpanel"
+						aria-labelledby="pills-personalProfile-tab"
+					>
+						<div class="cardBox__container">
+							<div
+								id="tagsList"
+								class="row row-cols-1 row-cols-md-3 g-4 webContainer"
+							>
+								<!-- <div class="col">
+								<div class="card h-100">
+									<img
+										class="card-img-top"
+										width="390"
+										height="40"
+										src="/static/Images/colortag.png"
+									/>
+									<div class="card-body">
+										<h5 class="card-title">finish homework</h5>
+										<p class="card-text">Starting date: 2021-12-05</p>
+										<p class="card-text">Ending date: 2021-12-07</p>
+									</div>
+									<form method="POST">
+										<input
+											class="removeTag"
+											type="text"
+											id="eventTitle"
+											name="eventTitle"
+											value="finish homework"
+										/>
+										<div class="card-footer">
+											<button class="btn btn-primary" type="submit">
+												Resolve
+											</button>
+										</div>
+									</form>
+								</div>
+							</div> -->
+							</div>
+						</div>
+					</div>
+					<div
+						class="tab-pane fade"
+						id="pills-profile"
+						role="tabpanel"
+						aria-labelledby="pills-profile-tab"
+					>
+						<h1 id="lol">gu</h1>
+					</div>
+					<div
+						class="tab-pane fade"
+						id="pills-contact"
+						role="tabpanel"
+						aria-labelledby="pills-contact-tab"
+					></div>
 				</div>
+
 				{%endblock%}
 			</div>
 			<div
@@ -143,7 +285,7 @@
 						<a href="joinTeam"> <i class="bi bi-diagram-3"></i>Join Teams</a>
 					</li>
 					<li>
-						<a> <i class="bi bi-people"></i>Create Team</a>
+						<a href="createTeam"> <i class="bi bi-people"></i>Create Team</a>
 					</li>
 				</ul>
 				<div style="width: 300px; height: 2px; border: 1px solid gray"></div>
@@ -159,11 +301,18 @@
 			</div>
 			<iframe name="frame"></iframe>
 		</header>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
 	</body>
+
 	{%block JS%}
 	<script
 		type="text/javascript"
 		src="{{url_for('static', filename= 'js/tasklist.js')}}"
 	></script>
+
 	{%endblock%}
 </html>
