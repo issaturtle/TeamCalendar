@@ -20,3 +20,12 @@
 		margin-left: 0px;
 	}
 }
+.createTeam {
+	margin-top: 7%;
+	&__labels {
+		color: white;
+	}
+}
+.switchZindex {
+	z-index: -1;
+}

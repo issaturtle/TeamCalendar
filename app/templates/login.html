@@ -27,40 +27,42 @@ message in messages%} {%if category == 'error'%}
 
 {%endif%} {%endfor%} {%endif%} {%endwith%} {%endblock%} {%block content%}
 <div class="container flex flex-jc-c flex-ai-c">
-	<div class="Register Register__login flex flex-jc-c flex-ac-c">
-		<form method="POST">
-			<h1 align="center" class="Register__title">Login</h1>
+	<div class="Register Register__login">
+		<div>
+			<form method="POST">
+				<h1 align="center" class="Register__title">Login</h1>
 
-			<div class="form-group">
-				<label for="email" class="Register__label"> Email Address</label>
-				<input
-					type="email"
-					class="form-control"
-					id="email"
-					name="email"
-					placeholder="Enter email"
-				/>
-			</div>
-			<div class="form-group">
-				<label for="password1" class="Register__label"> Password</label>
-				<input
-					type="password"
-					class="form-control"
-					id="password1"
-					name="password1"
-					placeholder="Enter password"
-				/>
-			</div>
-			<div>
-				<button id="RegLog" type="submit" class="button Register__Button">
-					Submit
-				</button>
-				<a href="signup" class="Register__signUp">Sign up here</a>
-			</div>
-			<div class="Register__googleButton">
-				<a href="signupGoogle">Or login with Google</a>
-			</div>
-		</form>
+				<div class="form-group">
+					<label for="email" class="Register__label"> Email Address</label>
+					<input
+						type="email"
+						class="form-control"
+						id="email"
+						name="email"
+						placeholder="Enter email"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="password1" class="Register__label"> Password</label>
+					<input
+						type="password"
+						class="form-control"
+						id="password1"
+						name="password1"
+						placeholder="Enter password"
+					/>
+				</div>
+				<div>
+					<button id="RegLog" type="submit" class="button Register__Button">
+						Submit
+					</button>
+					<a href="signup" class="Register__signUp">Sign up here</a>
+				</div>
+			</form>
+		</div>
+		<div class="Register__googleButton" style="margin-left: 6.5rem">
+			<a href="signupGoogle">Or login with Google</a>
+		</div>
 	</div>
 </div>
 {{text}} {%endblock%} {%block featurelist%} {%endblock%} {%block script%}

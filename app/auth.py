@@ -18,9 +18,9 @@ db = cluster["Login"]               #our main collection
 collection = db["data"]             #collection
 teams = cluster["Teams"]
 team_collection = teams["data"]
-stack = [] #userInfo.json
+# stack = [] #userInfo.json
 valid_logins = collection.find({}, {'_id': 1, 'email': 1, 'password': 1, 'events':[]})      #search for data
-temp = ""
+
 @auth.route('/login', methods=['GET', 'POST'])          
 def login():
     session["email"] = NullSession.__name__         #Sets session to NULL for security
@@ -50,8 +50,7 @@ def login():
 @auth.route('/logout')
 def logout():
     session["email"] = NullSession.__name__     #LOG OUT THE USER
-    if(len(stack)!=0):
-        stack.pop()
+    
     
     return render_template("logout.html")       
 
@@ -112,7 +111,8 @@ def authorize():
     resp = user.get('userinfo').json()
     
     userName = resp["email"]
-    stack.append(userName)
+    
+
     
     cursor = collection.find({"email": resp["email"]})
     if cursor.count() == 0:                          #if account does not exist
@@ -161,7 +161,7 @@ def taskList():
         event = {"title":title, "start":start, "end":end}
         if (delete_event(email, event)):
             calenJson()
-            stack.append(email)
+            # stack.append(email)
             return render_template("taskList.html")
                 
     return render_template("taskList.html")

@@ -1,0 +1,72 @@
+{% extends "tasklist.html"%} {%block title%} Create Teams {%endblock%} {%block
+pagetitle%} {%endblock%} {%block cardBox%}
+<div class="addEvent__menu webContainer createTeam">
+	<div>
+		<h1 align="center" class="addEvent__title">Create Team</h1>
+	</div>
+	<form id="addingEvent" method="POST">
+		<div class="form-group createTeam__labels">
+			<div class="form-check form-check-inline">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="inlineRadioOptions"
+					id="createTeam"
+					value="public"
+				/>
+				<label class="form-check-label" for="createTeam">Public</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="inlineRadioOptions"
+					id="privateTeam"
+					value="private"
+				/>
+				<label class="form-check-label" for="privateTeam"> Private</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="teamName" class="addEvent__label"> Team name </label>
+			<input
+				type="text"
+				class="form-control input-large"
+				id="teamName"
+				name="teamName"
+				placeholder="Enter desired team name"
+			/>
+		</div>
+		<div class="form-group">
+			<label for="password1" class="addEvent__label">
+				If private, enter password</label
+			>
+			<input
+				type="password"
+				class="form-control"
+				id="password1"
+				name="password1"
+				placeholder="Enter password, blank if public"
+			/>
+		</div>
+		<div class="form-group">
+			<label for="password2" class="addEvent__label"> Reenter password</label>
+			<input
+				type="password"
+				class="form-control"
+				id="password2"
+				name="password2"
+				placeholder="Re-enter password, blank if public"
+			/>
+		</div>
+		<div class="joinTeam__button">
+			<button type="submit" class="button Register__Button">Submit</button>
+		</div>
+	</form>
+</div>
+{%endblock%} {%block JS%}
+<script
+	type="text/javascript"
+	src="{{url_for('static', filename= 'js/createTeam.js')}}"
+></script>
+{%endblock%}

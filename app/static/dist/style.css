@@ -617,7 +617,7 @@ button:hover,
   height: 5px;
   left: 0;
   right: 0;
-  bottom: -24px;
+  bottom: -22px;
   background: -webkit-gradient(linear, left bottom, left top, from(#1d7bf5fa), to(#1d7bf5be));
   background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
   -webkit-transition: opacity 300ms ease-in-out;
@@ -1330,6 +1330,10 @@ button:hover,
           flex-grow: 0;
 }
 
+.Tasklist__button {
+  margin-right: 35px;
+}
+
 .box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1396,5 +1400,17 @@ iframe {
 
 .joinTeam__label {
   margin-left: 0px;
+}
+
+.createTeam {
+  margin-top: 7%;
+}
+
+.createTeam__labels {
+  color: white;
+}
+
+.switchZindex {
+  z-index: -1;
 }
 /*# sourceMappingURL=style.css.map */

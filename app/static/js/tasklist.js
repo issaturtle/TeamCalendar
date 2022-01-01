@@ -8,7 +8,7 @@ const user = document.querySelector('#username');
 const tagList = document.querySelector('#tagsList');
 const cardBox = document.querySelector('.cardBox__container');
 const profi = document.querySelector('#pills-profile-tab');
-
+const navList = document.querySelector('#pills-tab');
 profi.addEventListener('click', function () {
 	//CAN FETCH DURING CLICk
 	// fetch('/userInfo.json')
@@ -33,6 +33,7 @@ buttonNav.addEventListener('click', function () {
 		body.classList.remove('noScroll');
 		header.classList.remove('open');
 		cardBox.classList.remove('cardBox__zIndex');
+		navList.classList.remove('switchZindex');
 	} else {
 		//close
 		overlay.classList.remove('fade-out');
@@ -44,6 +45,7 @@ buttonNav.addEventListener('click', function () {
 		body.classList.add('noScroll');
 		header.classList.add('open');
 		cardBox.classList.add('cardBox__zIndex');
+		navList.classList.add('switchZindex');
 	}
 });
 
