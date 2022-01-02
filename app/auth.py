@@ -281,8 +281,8 @@ def logout():
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        name = request.form.get('firstName')
         email = request.form.get('email')
+        name = request.form.get('firstName')
         password = request.form.get('password1')
         password_confirm = request.form.get('password2')
 
@@ -299,7 +299,7 @@ def signup():
         password = password.encode('utf-8')                             #encodes password to bytes so it can be hashed
         hashed = bcrypt.hashpw(password, salt)                          #unique hash for every user
 
-        user_data = {"email": email, "name": name, "password": hashed, "salt": salt, "events": []}     
+        user_data = {"email": email, "name": name, "teams": [],"password": hashed, "salt": salt, "teams": [], "events": []}     
         collection.insert_one(user_data)                                                                 #saves user information in database
         flash("New account created", category="success")
         redirect('/signup')
@@ -319,30 +319,26 @@ def authorize():
     user = oauth.create_client('user')
     token = user.authorize_access_token()
     resp = user.get('userinfo').json()
-    
-    userName = resp["email"]
-    stack.append(userName)
-    
+
     cursor = collection.find({"email": resp["email"]})
     if cursor.count() == 0:                          #if account does not exist
-        new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "events": []}  #create an account  given google user info
+        new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "teams": [], "events": []}  #create an account  given google user info
         add_user(new_user)
         session["email"] = resp["email"]        #session is now by google user
-        getUser()
         calenJson()                             #load calen for user
     elif cursor.count() == 1:
         for data in cursor:             
             if data["password"] == bcrypt.hashpw(resp["id"].encode('utf-8'), data["salt"]):               #check password
                 session["email"] = resp["email"]                                                #if passed session is now set for the user with a given email
                 print("Successful login with " + resp["email"] + " " + resp["id"])    #for server side management
-                print("Loading calender...")   
-                getUser()                                             #for server side management
+                print("Loading calender...")                                                #for server side management
                 calenJson()                                                             #loads calender for session user
                 return redirect('/calen')                                               #redirects to calendar
             else:
                 print("wrong password")                                                 #for server side management
                 flash('password is incorrect', category="error")                        #flashes user a password error
     return redirect('/calen')               #redirect to calen for user
+
 
 @auth.route('/userInfo.json')
 def getUser():
@@ -381,12 +377,9 @@ def joinTeam():
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     if request.method == 'POST':
-        #choice = request.form["RadioOptions"]
         choice = request.form.get("RadioOptions")
-        password = ""
-        choice = choice[:-1]
+        password = request.form.get("password")
         join_team(email, choice, password)
-        private = request.form.get("privateTeam")
     return render_template("joinTeam.html")
 
 @auth.route('/calen', methods=['GET', 'POST'])

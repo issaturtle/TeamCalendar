@@ -64,12 +64,12 @@ let createRadioB = (json) => {
 	inp.addEventListener('click', function () {
 		$('input[type="password"]').val('');
 		if (json['private']) {
-			passInput.classList.remove('displayNone');
-			passLabel.classList.remove('displayNone');
-			passLabel.innerHTML = `password for ${json['team name']}`;
+			passInput.classList.remove('PasswordNone');
+			passLabel.classList.remove('PasswordNone');
+			passLabel.innerHTML = `Password for ${json['team name']}`;
 		} else {
-			passInput.classList.add('displayNone');
-			passLabel.classList.add('displayNone');
+			passInput.classList.add('PasswordNone');
+			passLabel.classList.add('PasswordNone');
 		}
 	});
 };

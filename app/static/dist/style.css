@@ -1250,7 +1250,7 @@ button:hover,
 }
 
 .addEvent__dashboard #LLC {
-  margin-top: 70px;
+  margin-top: 50px;
   padding-top: 30px;
   padding-bottom: 0;
   padding-left: 110px;
@@ -1379,7 +1379,7 @@ input[type='radio'] {
   vertical-align: middle;
 }
 
-.displayNone {
+.PasswordNone {
   display: none;
 }
 
