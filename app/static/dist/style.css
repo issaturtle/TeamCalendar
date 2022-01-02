@@ -1224,7 +1224,7 @@ button:hover,
 }
 
 .addEvent__dashboard #DBTitleIMG {
-  margin-left: 30px;
+  margin-left: 29px;
   text-align: center;
   padding-left: 20px;
   font-size: 30px;
@@ -1250,7 +1250,7 @@ button:hover,
 }
 
 .addEvent__dashboard #LLC {
-  margin-top: 50px;
+  margin-top: 40px;
   padding-top: 30px;
   padding-bottom: 0;
   padding-left: 110px;
@@ -1420,5 +1420,9 @@ input[type='radio'] {
 
 .switchZindex {
   z-index: -1;
+}
+
+.teamCardCenter {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
