@@ -248,7 +248,11 @@ def delete_team_event(team, thingToDelete):
             }
         }
     )
-
+def get_team_events(team):
+    cursor = team_collection.find({"team name": team})
+    for item in cursor:
+        events = item["events"]
+    return events
 #################################################
 
 ##################ROUTES#########################
