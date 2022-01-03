@@ -6,8 +6,10 @@ const eve = document.querySelector('.addEvent');
 const del = document.querySelector('.deleteEvent');
 const body = document.querySelector('.body');
 const submit = document.querySelector('.Register__Button');
+const teamName = document.querySelector('#calenName');
 let calendarEl = document.getElementById('calendar');
 let calendar = new FullCalendar.Calendar(calendarEl);
+
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -20,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			return response.json();
 		})
 		.then((data) => {
-			json = json.concat(data);
+			json = json.concat(data['events']);
+			if (data['team'] != undefined) {
+				teamName.innerHTML = data['team'] + "'s calendar";
+			}
 
 			calendar = new FullCalendar.Calendar(calendarEl, {
 				initialView: 'dayGridMonth',
@@ -162,3 +167,6 @@ submit.addEventListener('click', function () {
 		eve.classList.remove('open');
 	}
 });
+function myFunc(vars) {
+	return vars;
+}

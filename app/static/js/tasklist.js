@@ -9,18 +9,19 @@ const tagList = document.querySelector('#tagsList');
 const cardBox = document.querySelector('.cardBox__container');
 const profi = document.querySelector('#pills-profile-tab');
 const navList = document.querySelector('#pills-tab');
-profi.addEventListener('click', function () {
-	//CAN FETCH DURING CLICk
-	// fetch('/userInfo.json')
-	// 	.then((response) => {
-	// 		return response.json();
-	// 	})
-	// 	.then((data) => {
-	// 		json1 = json1.concat(data);
-	// 		user.innerHTML = 'Hello ' + json1[0]['email'];
-	// 	});
-	document.querySelector('#lol').innerHTML = 'hi';
-});
+
+// profi.addEventListener('click', function () {
+// 	//CAN FETCH DURING CLICk
+// 	// fetch('/userInfo.json')
+// 	// 	.then((response) => {
+// 	// 		return response.json();
+// 	// 	})
+// 	// 	.then((data) => {
+// 	// 		json1 = json1.concat(data);
+// 	// 		user.innerHTML = 'Hello ' + json1[0]['email'];
+// 	// 	});
+// 	document.querySelector('#lol').innerHTML = 'hi';
+// });
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
 		//opens
@@ -48,7 +49,32 @@ buttonNav.addEventListener('click', function () {
 		navList.classList.add('switchZindex');
 	}
 });
+let createTabs = (json) => {
+	teamName = json['teams'].replace(' ', '-');
+	console.log(teamName);
+	let nav_item = document.createElement('li');
+	nav_item.className = 'nav-item';
+	nav_item.setAttribute('role', 'presentation');
 
+	let tabButton = document.createElement('button');
+	tabButton.className = 'nav-link';
+	tabButton.id = `pills-${teamName}-tab`;
+
+	tabButton.setAttribute('data-bs-toggle', 'pill');
+	tabButton.setAttribute('data-bs-target', '#pills-profile');
+
+	tabButton.type = 'button';
+	tabButton.role = 'tab';
+	tabButton.setAttribute('aria-controls', 'pills-profile');
+	tabButton.setAttribute('aria-selected', 'false');
+	tabButton.innerHTML = json['teams'];
+	tabButton.addEventListener('click', function () {
+		document.querySelector('#team').innerHTML = json['teams'];
+	});
+
+	nav_item.appendChild(tabButton);
+	navList.appendChild(nav_item);
+};
 let createCard = (json, num) => {
 	let row = document.createElement('div');
 	if ((num == 2) == true) {
@@ -153,7 +179,7 @@ fetch('/calen.json')
 		return response.json();
 	})
 	.then((data) => {
-		json = json.concat(data);
+		json = json.concat(data['events']);
 		// test.innerHTML = json.length;
 		createList(json);
 	});
@@ -165,6 +191,21 @@ fetch('/userInfo.json')
 		json1 = json1.concat(data);
 		user.innerHTML = 'Hello ' + json1[0]['email'];
 	});
+teamJson = [];
+fetch('/userTeams.json')
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		teamJson = teamJson.concat(data);
+		// test.innerHTML = json.length;
+		initTabs(teamJson);
+	});
+let initTabs = (json) => {
+	for (let i = 0; i < json.length; i++) {
+		createTabs(json[i]);
+	}
+};
 // document.addEventListener('DOMContentLoaded', function () {
 // 	var json1 = [];
 // 	var json = [];

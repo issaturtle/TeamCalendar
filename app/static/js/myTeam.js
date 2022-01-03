@@ -5,9 +5,9 @@ const fadeDB = document.querySelectorAll('.has-fade-db');
 const body = document.querySelector('.body');
 const test = document.querySelector('#test');
 const user = document.querySelector('#username');
-
 const cardBox = document.querySelector('.cardBox__container');
 const tagList = document.querySelector('#tagsList');
+
 let createCard = (json, num) => {
 	let row = document.createElement('div');
 	if ((num == 2) == true) {
@@ -32,14 +32,14 @@ let createCard = (json, num) => {
 	card_body.className = 'card-body';
 	let card_title = document.createElement('h5');
 	card_title.className = 'card-title';
-	card_title.innerHTML = json;
+	card_title.innerHTML = json['teams'];
 	let form = document.createElement('form');
 	form.method = 'POST';
 	let inpTeamName = document.createElement('input');
 	inpTeamName.type = 'text';
 	inpTeamName.id = 'teamName';
 	inpTeamName.name = 'teamName';
-	inpTeamName.value = json;
+	inpTeamName.value = json['teams'];
 	inpTeamName.className = 'removeTag';
 	let card_footer = document.createElement('div');
 	card_footer.className = 'card-footer';
@@ -83,7 +83,15 @@ fetch('/userTeams.json')
 		json = json.concat(data);
 		createList(json);
 	});
-
+json1 = [];
+fetch('/userInfo.json')
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		json1 = json1.concat(data);
+		user.innerHTML = 'Hello ' + json1[0]['email'];
+	});
 const navList = document.querySelector('#pills-tab');
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {

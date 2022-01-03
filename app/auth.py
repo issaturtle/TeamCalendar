@@ -84,7 +84,8 @@ def get_user_events(email):
     cursor = collection.find({"email": email})  #finds user in database by email
     for item in cursor:
         events = item["events"]                 #get user events
-    return events
+    temp = {"email":email, "events":events}
+    return temp
 
 def create_team(email, team):
     cursor = collection.find({"email": email})      #look for user
@@ -252,13 +253,16 @@ def get_team_events(team):
     cursor = team_collection.find({"team name": team})
     for item in cursor:
         events = item["events"]
-    return events
+    temp = {"team":team, "events":events}
+    return temp
+    
 #################################################
 
 ##################ROUTES#########################
 @auth.route('/login', methods=['GET', 'POST'])          
 def login():
     session["email"] = NullSession.__name__         #Sets session to NULL for security
+    session["team"] = NullSession.__name__
     if request.method == 'POST':                    #if input is put into form
         email = request.form.get('email')
         password = request.form.get('password1')
@@ -271,8 +275,9 @@ def login():
                     print("Successful login with " + email + " " + password.decode('utf-8'))    #for server side management
                     print("Loading calender...") 
                     getUser()                                               #for server side management
-                    calenJson(1)                                                             #loads calender for session user
-                    return redirect('/calen')                                               #redirects to calendar
+                    calenJson()
+                                                                                #loads calender for session user
+                    return redirect('/calen')                                             #redirects to calendar
                 else:
                     print("wrong password")                                                 #for server side management
                     flash('password is incorrect', category="error")                        #flashes user a password error
@@ -283,6 +288,7 @@ def login():
 @auth.route('/logout')
 def logout():
     session["email"] = NullSession.__name__     #LOG OUT THE USER
+    session["team"] = NullSession.__name__   
     if(len(stack)!=0):
         stack.pop()
     
@@ -335,7 +341,7 @@ def authorize():
         new_user = {"email": resp["email"], "name": resp["name"], "password": bcrypt.hashpw(resp["id"].encode('utf-8'), salt), "salt": salt, "teams": [], "events": []}  #create an account  given google user info
         add_user(new_user)
         session["email"] = resp["email"]        #session is now by google user
-        calenJson(1)                             #load calen for user
+        calenJson()                             #load calen for user
     elif cursor.count() == 1:
         for data in cursor:             
             if data["password"] == bcrypt.hashpw(resp["id"].encode('utf-8'), data["salt"]):               #check password
@@ -347,7 +353,7 @@ def authorize():
             else:
                 print("wrong password")                                                 #for server side management
                 flash('password is incorrect', category="error")                        #flashes user a password error
-    return redirect('/calen')               #redirect to calen for user
+    return redirect('/calen')                #redirect to calen for user
 
 
 @auth.route('/userInfo.json')
@@ -357,19 +363,21 @@ def getUser():
     return jsonify(userInfo)
 
 @auth.route('/calen.json')
-def calenJson(choice = 1, teamname = ""):
+def calenJson():
     email = session["email"]
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
-    if choice == 1 :
+    if session["team"] != NullSession.__name__:
+        teamname = session["team"]
+        jsonData = get_team_events(teamname)
+    else:
         jsonData = get_user_events(email)
-    elif choice ==2 :
-        return teamname
     return jsonify(jsonData)
 
 @auth.route('/tasklist', methods=['GET', 'POST'])
 def taskList():
     email = session["email"]
+    session["team"] = NullSession.__name__
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     if request.method == 'POST':
@@ -378,7 +386,7 @@ def taskList():
         end = request.form.get('eventEnd')
         event = {"title":title, "start":start, "end":end}
         if (delete_event(email, event)):
-            calenJson(1)
+            calenJson()
             stack.append(email)
             return render_template("taskList.html")
                 
@@ -387,6 +395,7 @@ def taskList():
 @auth.route('/joinTeam', methods = ['GET', 'POST'])
 def joinTeam():
     email = session["email"]
+    session["team"] = NullSession.__name__
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     if request.method == 'POST':
@@ -398,25 +407,36 @@ def joinTeam():
 @auth.route('/calen', methods=['GET', 'POST'])
 def calen():
     email = session["email"]
+    
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
+        session["team"] = NullSession.__name__
         return "NOT LOGGED IN"
+    
     if request.method == 'POST':
         choice = request.form.get('inlineRadioOptions')         #either delete or enter an event
         strDes = request.form.get('eventName')
         startD= request.form.get('startD')
         endD = request.form.get('endD')
         event = {'title': strDes.strip(), 'start': startD, "end" : endD}    #creates an event object given the input from user
-
-        if choice == "createEve":
-            add_event(email, event)                                 #if addevent, adds an event
-        elif choice == "deleteEve":
-             temp = delete_event(email, event)                              #if deleteevent, deletes an event
-        else:
-            print("no choice")                                      #else, there is nothing happening
-
-        calenJson(1)                                                 #renders new information and outputs to the calendar
+        team = session["team"]
+        if  team != NullSession.__name__:
+            if choice == "createEve":
+                add_team_event(team, event)                                 #if addevent, adds an event
+            elif choice == "deleteEve":
+                delete_team_event(team, event)                              #if deleteevent, deletes an event
+            else:
+                print("no choice")                                      #else, there is nothing happening
+            calenJson()                                                 #renders new information and outputs to the calendar
+        else:  
+            if choice == "createEve":
+                add_event(email, event)                                 #if addevent, adds an event
+            elif choice == "deleteEve":
+                delete_event(email, event)                              #if deleteevent, deletes an event
+            else:
+                print("no choice")                                      #else, there is nothing happening
+            calenJson() 
         return render_template("calendar.html")
-    return render_template("calendar.html")
+    return render_template("calendar.html", teamName ="")
 
 @auth.route('/teams.json')
 def list_teams():
@@ -433,31 +453,36 @@ def getUserTeams():
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     cursor = collection.find({"email": email})  #finds user in database by email
+    dict = []
     for item in cursor:
         teams = item["teams"]                 #get user events
-    return jsonify(teams)
+        for team in teams:
+            cursor2 = team_collection.find({"team name": team})
+            for items in cursor2:
+                events = items["events"]
+            temp = {"teams" : team, "events": events}
+            dict.append(temp)
+    return jsonify(dict)
+
 @auth.route('/myTeam', methods=['GET', 'POST'])
 def myTeam():
     email = session["email"]
-    if email==NullSession.__name__:
+    session["team"] = NullSession.__name__
+    if email == NullSession.__name__:
         return "Not Logged In"
     if request.method == 'POST':
-        title = request.form.get('teamName')  
-        getFromcalenJson = calenJson(2,title)
-        return getFromcalenJson
+        title = request.form.get('teamName') 
+        session["team"] = title
+        calenJson()
+        return redirect('/calen')
         
     return render_template("myTeam.html")
-
-@auth.route('/teamCalen')
-def teamCalenJson():
-    email = session["email"]
-    if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
-        return "NOT LOGGED IN"
 
 
 @auth.route('/createTeam', methods=['GET', 'POST'])
 def createTeam():
     email = session["email"]
+    session["team"] = NullSession.__name__
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     if request.method == 'POST':

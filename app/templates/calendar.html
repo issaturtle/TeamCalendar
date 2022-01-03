@@ -33,8 +33,10 @@
 	</head>
 	<body class="body">
 		<div class="addEvent">
-			<div class="overlay has-fade"></div>
-
+			<div class="overlay has-fade" style="top: 6rem"></div>
+			<div>
+				<h5 id="calenName">Personal Calendar</h5>
+			</div>
 			<div class="addEvent__menu webContainer has-fade">
 				<form id="addingEvent" method="POST">
 					<h1 align="center" class="addEvent__title">Create Event</h1>
@@ -101,16 +103,19 @@
 				</form>
 			</div>
 
-			<div class="addEvent__menu addEvent__dashboard has-fade-db">
+			<div
+				class="addEvent__menu addEvent__dashboard has-fade-db"
+				style="top: 6rem"
+			>
 				<a
 					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
 					target="_blank"
 					class="header__github"
 					id="DBTitleIMG"
 					><img
-						src="{{url_for('static', filename= 'Images/wt.png')}}"
-						width="40"
-						height="40"
+						src="{{url_for('static', filename= 'Images/jinx.png')}}"
+						width="60"
+						height="50"
 						alt="WeTried"
 						srcset=""
 					/>
