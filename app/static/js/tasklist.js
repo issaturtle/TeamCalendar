@@ -79,7 +79,13 @@ let createTabs = (json) => {
 
 	tabButton.addEventListener('click', function () {
 		let div = document.createElement('div');
-		div.innerHTML = 'Click event to resolve';
+
+		if (json['events'].length == 0) {
+			div.innerHTML = 'No tasks';
+		} else {
+			div.innerHTML = 'Click event to resolve';
+		}
+
 		div.className = 'taskListTabs__title';
 		if (pillsProf.hasChildNodes()) {
 			while (pillsProf.firstChild) {
