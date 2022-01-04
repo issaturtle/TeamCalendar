@@ -91,14 +91,16 @@
 		visibility: visible;
 		opacity: 1;
 	}
-	99% {
-		visibility: visible;
-		opacity: 0;
-		height: 0;
-		padding: 0;
-		margin: 0;
-		width: 0;
-	}
+	// 99% {
+	// 	// visibility: visible;
+	// 	// opacity: 0;
+	// 	// height: 0;
+	// 	// padding: 0;
+	// 	// margin: 0;
+	// 	// width: 0;
+	// 	visibility: visible;
+	// 	transform: scale(0.5);
+	// }
 	to {
 		visibility: hidden;
 		opacity: 0;
@@ -106,8 +108,16 @@
 		padding: 0;
 		margin: 0;
 		width: 0;
+		flex-grow: 0;
+		// -webkit-transform: translateZ(0);
+		// -moz-transform: translateZ(0);
+		// -ms-transform: translateZ(0);
+		// -o-transform: translateZ(0);
+		// transform: translateZ(0);
+		visibility: hidden;
+		transform: scale(0, 0.5);
 	}
 }
 .displayNone {
-	animation: displayNone 200ms ease-in-out forwards;
+	animation: displayNone 300ms ease-in-out forwards;
 }

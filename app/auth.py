@@ -381,7 +381,9 @@ def taskList():
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     if request.method == 'POST':
+        
         title = request.form.get('eventTitle')
+      
         start = request.form.get('eventStart')
         end = request.form.get('eventEnd')
         event = {"title":title, "start":start, "end":end}

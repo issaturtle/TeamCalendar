@@ -32,3 +32,28 @@
 .teamCardCenter {
 	text-align: center;
 }
+.tabButtons {
+	border-radius: 0px;
+}
+.teamCardWidth {
+	width: 300px;
+}
+
+.taskListTabs {
+	&__title {
+		text-align: center;
+	}
+	&__Buttons {
+		border-radius: 0px;
+		box-shadow: none;
+		&:hover {
+			box-shadow: none;
+		}
+	}
+	&__Width {
+		width: 500px;
+	}
+}
+.flxGrw {
+	flex-grow: 0;
+}

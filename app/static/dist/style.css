@@ -193,14 +193,6 @@
     visibility: visible;
     opacity: 1;
   }
-  99% {
-    visibility: visible;
-    opacity: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    width: 0;
-  }
   to {
     visibility: hidden;
     opacity: 0;
@@ -208,6 +200,11 @@
     padding: 0;
     margin: 0;
     width: 0;
+    -webkit-box-flex: 0;
+            flex-grow: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0, 0.5);
+            transform: scale(0, 0.5);
   }
 }
 
@@ -216,14 +213,6 @@
     visibility: visible;
     opacity: 1;
   }
-  99% {
-    visibility: visible;
-    opacity: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    width: 0;
-  }
   to {
     visibility: hidden;
     opacity: 0;
@@ -231,12 +220,18 @@
     padding: 0;
     margin: 0;
     width: 0;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0, 0.5);
+            transform: scale(0, 0.5);
   }
 }
 
 .displayNone {
-  -webkit-animation: displayNone 200ms ease-in-out forwards;
-          animation: displayNone 200ms ease-in-out forwards;
+  -webkit-animation: displayNone 300ms ease-in-out forwards;
+          animation: displayNone 300ms ease-in-out forwards;
 }
 
 html {
@@ -1424,5 +1419,38 @@ input[type='radio'] {
 
 .teamCardCenter {
   text-align: center;
+}
+
+.tabButtons {
+  border-radius: 0px;
+}
+
+.teamCardWidth {
+  width: 300px;
+}
+
+.taskListTabs__title {
+  text-align: center;
+}
+
+.taskListTabs__Buttons {
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.taskListTabs__Buttons:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.taskListTabs__Width {
+  width: 500px;
+}
+
+.flxGrw {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
 /*# sourceMappingURL=style.css.map */

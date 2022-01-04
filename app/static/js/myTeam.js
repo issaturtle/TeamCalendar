@@ -75,23 +75,38 @@ let createList = (json) => {
 		}
 	}
 };
-fetch('/userTeams.json')
-	.then((response) => {
-		return response.json();
+// fetch('/userTeams.json')
+// 	.then((response) => {
+// 		return response.json();
+// 	})
+// 	.then((data) => {
+// 		json = json.concat(data);
+// 		createList(json);
+// 	});
+// json1 = [];
+// fetch('/userInfo.json')
+// 	.then((response) => {
+// 		return response.json();
+// 	})
+// 	.then((data) => {
+// 		json1 = json1.concat(data);
+// 		user.innerHTML = 'Hello ' + json1[0]['email'];
+// 	});
+Promise.all([fetch('/userTeams.json'), fetch('/userInfo.json')])
+	.then(function (responses) {
+		return Promise.all(
+			responses.map(function (response) {
+				return response.json();
+			})
+		);
 	})
-	.then((data) => {
-		json = json.concat(data);
+	.then(function (data) {
+		json = json.concat(data[0]);
 		createList(json);
-	});
-json1 = [];
-fetch('/userInfo.json')
-	.then((response) => {
-		return response.json();
-	})
-	.then((data) => {
-		json1 = json1.concat(data);
+		json1 = json1.concat(data[1]);
 		user.innerHTML = 'Hello ' + json1[0]['email'];
 	});
+
 const navList = document.querySelector('#pills-tab');
 buttonNav.addEventListener('click', function () {
 	if (header.classList.contains('open')) {

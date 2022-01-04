@@ -15,6 +15,33 @@ var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
+let eventCreate = () => {
+	if (eve.classList.contains('open')) {
+		//opens
+		if (eve.classList.contains('opens')) {
+		} else {
+			overlay.classList.remove('fade-in');
+			overlay.classList.add('fade-out');
+		}
+
+		fadeElement.forEach(function (element) {
+			element.classList.remove('fade-in');
+			element.classList.add('fade-out');
+		});
+		body.classList.remove('noScroll');
+		eve.classList.remove('open');
+	} else {
+		//close
+		// overlay.classList.remove('fade-out');
+		// overlay.classList.add('fade-in');
+		fadeElement.forEach(function (element) {
+			element.classList.remove('fade-out');
+			element.classList.add('fade-in');
+		});
+		body.classList.add('noScroll');
+		eve.classList.add('open');
+	}
+};
 document.addEventListener('DOMContentLoaded', function () {
 	var json = [];
 	fetch('/calen.json')
@@ -33,34 +60,31 @@ document.addEventListener('DOMContentLoaded', function () {
 				timeZone: 'PT',
 				initialDate: today,
 				dateClick: function (info) {
-					var empty = false;
-					var date = '';
-					var counter = 0;
+					eventCreate();
+					// for (let i = 0; i < json.length; i++) {
+					// 	if (
+					// 		info.dateStr == json[i]['start'] ||
+					// 		info.dateStr == json[i]['end']
+					// 	) {
+					// 		date +=
+					// 			json[i]['title'] +
+					// 			': Start: ' +
+					// 			json[i]['start'] +
+					// 			', Deadline: ' +
+					// 			json[i]['end'] +
+					// 			'\n';
 
-					for (let i = 0; i < json.length; i++) {
-						if (
-							info.dateStr == json[i]['start'] ||
-							info.dateStr == json[i]['end']
-						) {
-							date +=
-								json[i]['title'] +
-								': Start: ' +
-								json[i]['start'] +
-								', Deadline: ' +
-								json[i]['end'] +
-								'\n';
+					// 		empty = true;
+					// 	} else {
+					// 		continue;
+					// 	}
+					// }
 
-							empty = true;
-						} else {
-							continue;
-						}
-					}
-
-					if (empty == false) {
-						alert('Date: ' + info.dateStr + '\n' + 'No Tasks ');
-					} else {
-						alert('Date: ' + info.dateStr + '\n' + 'Tasks: ' + '\n' + date);
-					}
+					// if (empty == false) {
+					// 	alert('Date: ' + info.dateStr + '\n' + 'No Tasks ');
+					// } else {
+					// 	alert('Date: ' + info.dateStr + '\n' + 'Tasks: ' + '\n' + date);
+					// }
 				},
 				dayMaxEventRows: true, // for all non-TimeGrid views
 				views: {
@@ -72,26 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					addEventButton: {
 						text: 'Create/Delete events',
 						click: function () {
-							if (eve.classList.contains('open')) {
-								//opens
-
-								fadeElement.forEach(function (element) {
-									element.classList.remove('fade-in');
-									element.classList.add('fade-out');
-								});
-								body.classList.remove('noScroll');
-								eve.classList.remove('open');
-							} else {
-								//close
-								// overlay.classList.remove('fade-out');
-								// overlay.classList.add('fade-in');
-								fadeElement.forEach(function (element) {
-									element.classList.remove('fade-out');
-									element.classList.add('fade-in');
-								});
-								body.classList.add('noScroll');
-								eve.classList.add('open');
-							}
+							eventCreate();
 						},
 					},
 					Dashboard: {
@@ -99,8 +104,12 @@ document.addEventListener('DOMContentLoaded', function () {
 						click: function () {
 							if (eve.classList.contains('opens')) {
 								//opens
-								overlay.classList.remove('fade-in');
-								overlay.classList.add('fade-out');
+								if (eve.classList.contains('open')) {
+								} else {
+									overlay.classList.remove('fade-in');
+									overlay.classList.add('fade-out');
+								}
+
 								fadeDB.forEach(function (element) {
 									element.classList.remove('fade-in');
 									element.classList.add('fade-out');
