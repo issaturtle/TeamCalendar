@@ -383,7 +383,7 @@ def taskList():
     if request.method == 'POST':
         
         title = request.form.get('eventTitle')
-      
+
         start = request.form.get('eventStart')
         end = request.form.get('eventEnd')
         event = {"title":title, "start":start, "end":end}
@@ -416,7 +416,8 @@ def calen():
     
     if request.method == 'POST':
         choice = request.form.get('inlineRadioOptions')         #either delete or enter an event
-        strDes = request.form.get('eventName')
+        strDes = request.form.get('eventName').capitalize()
+        
         startD= request.form.get('startD')
         endD = request.form.get('endD')
         event = {'title': strDes.strip(), 'start': startD, "end" : endD}    #creates an event object given the input from user

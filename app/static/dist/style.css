@@ -1288,7 +1288,7 @@ button:hover,
   position: relative;
   text-align: center;
   padding-top: 20px;
-  color: #f2c973;
+  color: rgba(31, 160, 247, 0.973);
   z-index: -1;
 }
 
@@ -1329,6 +1329,20 @@ button:hover,
   margin-right: 35px;
 }
 
+.Tasklist__teamTabs {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 0px;
+  text-align: center;
+  background-color: white;
+  color: #007bff;
+}
+
+.Tasklist__teamTabs:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1350,6 +1364,10 @@ button:hover,
 .cardBox__zIndex {
   position: relative;
   z-index: -1;
+}
+
+.cardBox__cardTitle {
+  font-size: 30px;
 }
 
 .cardBox__cards {
@@ -1430,7 +1448,13 @@ input[type='radio'] {
 }
 
 .taskListTabs__title {
+  padding: 20px;
   text-align: center;
+  background: -webkit-gradient(linear, left top, right top, from(#211e1e), to(#117aca));
+  background: linear-gradient(to right, #211e1e, #117aca);
+  margin-top: 20px;
+  color: #f2c973;
+  border: solid 1px gray;
 }
 
 .taskListTabs__Buttons {
@@ -1445,7 +1469,7 @@ input[type='radio'] {
 }
 
 .taskListTabs__Width {
-  width: 500px;
+  width: 700px;
 }
 
 .flxGrw {

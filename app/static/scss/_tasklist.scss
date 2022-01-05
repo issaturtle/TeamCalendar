@@ -19,7 +19,7 @@
 		text-align: center;
 		// padding-left: 30px;
 		padding-top: 20px;
-		color: $gold;
+		color: rgba(31, 160, 247, 0.973);
 		z-index: -1;
 	}
 	&__username {
@@ -50,6 +50,16 @@
 	&__button {
 		margin-right: 35px;
 	}
+	&__teamTabs {
+		box-shadow: none;
+		border-radius: 0px;
+		text-align: center;
+		&:hover {
+			box-shadow: none;
+		}
+		background-color: white;
+		color: #007bff;
+	}
 }
 .box {
 	display: flex;
@@ -62,6 +72,9 @@
 	&__zIndex {
 		position: relative;
 		z-index: -1;
+	}
+	&__cardTitle {
+		font-size: 30px;
 	}
 	&__cards {
 		margin-right: 20px;

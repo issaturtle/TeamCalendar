@@ -10,6 +10,7 @@ const cardBox = document.querySelector('.cardBox__container');
 const profi = document.querySelector('#pills-profile-tab');
 const navList = document.querySelector('#pills-tab');
 const pillsProf = document.querySelector('#pills-profile');
+const dropdownMenu = document.querySelector('.dropdown-menu');
 // profi.addEventListener('click', function () {
 // 	//CAN FETCH DURING CLICk
 // 	// fetch('/userInfo.json')
@@ -43,6 +44,7 @@ buttonNav.addEventListener('click', function () {
 		header.classList.remove('open');
 		cardBox.classList.remove('cardBox__zIndex');
 		navList.classList.remove('switchZindex');
+		pillsProf.classList.remove('switchZindex');
 	} else {
 		//close
 		overlay.classList.remove('fade-out');
@@ -55,17 +57,18 @@ buttonNav.addEventListener('click', function () {
 		header.classList.add('open');
 		cardBox.classList.add('cardBox__zIndex');
 		navList.classList.add('switchZindex');
+		pillsProf.classList.add('switchZindex');
 	}
 });
 let createTabs = (json) => {
 	teamName = json['teams'].replace(' ', '-');
 	// console.log(teamName);
-	let nav_item = document.createElement('li');
-	nav_item.className = 'nav-item';
-	nav_item.setAttribute('role', 'presentation');
+	// let nav_item = document.createElement('li');
+	// nav_item.className = 'nav-item';
+	// nav_item.setAttribute('role', 'presentation');
 
 	let tabButton = document.createElement('button');
-	tabButton.className = 'nav-link';
+	tabButton.className = 'nav-link dropdown-item Tasklist__teamTabs';
 	tabButton.id = `pills-${teamName}-tab`;
 
 	tabButton.setAttribute('data-bs-toggle', 'pill');
@@ -81,9 +84,9 @@ let createTabs = (json) => {
 		let div = document.createElement('div');
 
 		if (json['events'].length == 0) {
-			div.innerHTML = 'No tasks';
+			div.innerHTML = `${json['teams']} has no tasks`;
 		} else {
-			div.innerHTML = 'Click event to resolve';
+			div.innerHTML = `Click ${json['teams']}'s event to resolve`;
 		}
 
 		div.className = 'taskListTabs__title';
@@ -97,9 +100,13 @@ let createTabs = (json) => {
 			}
 		}
 	});
+	let divider = document.createElement('div');
+	divider.className = 'dropdown-divider';
 
-	nav_item.appendChild(tabButton);
-	navList.appendChild(nav_item);
+	dropdownMenu.appendChild(tabButton);
+	dropdownMenu.appendChild(divider);
+	// nav_item.appendChild(tabButton);
+	// navList.appendChild(nav_item);
 };
 let createEventinList = (json, teamName) => {
 	let lg = document.createElement('div');
@@ -180,7 +187,7 @@ let createCard = (json, num) => {
 	let card_body = document.createElement('div');
 	card_body.className = 'card-body';
 	let card_title = document.createElement('h5');
-	card_title.className = 'card-title teamCardWidth';
+	card_title.className = 'card-title teamCardWidth cardBox__cardTitle';
 	card_title.innerHTML = json['title'];
 
 	let card_text = document.createElement('p');

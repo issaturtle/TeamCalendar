@@ -76,7 +76,7 @@
 				{%block cardBox%}
 
 				<ul
-					class="nav nav-pills mb-3"
+					class="nav nav-pills"
 					id="pills-tab"
 					role="tablist"
 					style="margin-top: 20px"
@@ -95,53 +95,58 @@
 							Personal Profile
 						</button>
 					</li>
-					<!-- <li class="nav-item dropdown">
-						<a
+					<li class="nav-item dropdown">
+						<!-- <a
 							class="nav-link dropdown-toggle"
-							data-toggle="dropdown"
-							href="#"
-							role="button"
-							aria-haspopup="true"
-							aria-expanded="false"
-							>Dropdown</a
-						>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Separated link</a>
-						</div>
-					</li> -->
-
-					<!-- <li class="nav-item" role="presentation">
-						<button
-							class="nav-link"
 							id="pills-profile-tab"
+							data-toggle="dropdown"
 							data-bs-toggle="pill"
 							data-bs-target="#pills-profile"
+							href="#"
+							role="tab"
+							aria-controls="pills-personalProfile"
+							aria-selected="true"
+							>Dropdown</a
+						> -->
+						<button
+							class="nav-item nav-link dropdown-toggle"
+							id="pills-profile-tab"
+							data-toggle="dropdown"
 							type="button"
 							role="tab"
-							aria-controls="pills-profile"
-							aria-selected="false"
 						>
 							Teams
 						</button>
+						<div class="dropdown-menu">
+							<div class="dropdown-divider"></div>
+							<!-- <button
+								class="nav-link dropdown-item"
+								id="pills-personalProfile-tab"
+								data-bs-toggle="pill"
+								data-bs-target="#pills-personalProfile"
+								type="button"
+								role="tab"
+								aria-controls="pills-personalProfile"
+								aria-selected="true"
+							>
+								Personal Profile
+							</button>
+							<div class="dropdown-divider"></div>
+							<button
+								class="nav-link dropdown-item"
+								id="pills-Profile-tab"
+								data-bs-toggle="pill"
+								data-bs-target="#pills-profile"
+								type="button"
+								role="tab"
+								aria-controls="pills-profile"
+								aria-selected="true"
+							>
+								team A
+							</button>
+							<div class="dropdown-divider"></div> -->
+						</div>
 					</li>
-					<li class="nav-item" role="presentation">
-						<button
-							class="nav-link"
-							id="pills-contact-tab"
-							data-bs-toggle="pill"
-							data-bs-target="#pills-contact"
-							type="button"
-							role="tab"
-							aria-controls="pills-contact"
-							aria-selected="false"
-						>
-							Contact
-						</button>
-					</li> -->
 				</ul>
 				<div class="tab-content" id="pills-tabContent">
 					<div
@@ -192,16 +197,14 @@
 						id="pills-profile"
 						role="tabpanel"
 						aria-labelledby="pills-profile-tab"
+						style="position: relative"
 					>
 						<div class="taskListTabs__title">Click event to resolve</div>
 						<div class="list-group taskListTabs__Width">
 							<form>
 								<button
 									type="submit"
-									class="
-										list-group-item list-group-item-action
-										taskListTabs__Buttons
-									"
+									class="list-group-item list-group-item-action taskListTabs__Buttons"
 								>
 									<h3 class="mb-1">title</h3>
 
@@ -221,11 +224,7 @@
 				{%endblock%}
 			</div>
 			<div
-				class="
-					addEvent__menu addEvent__dashboard
-					Tasklist__dashboard
-					has-fade-db
-				"
+				class="addEvent__menu addEvent__dashboard Tasklist__dashboard has-fade-db"
 			>
 				<a
 					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
