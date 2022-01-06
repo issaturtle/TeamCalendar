@@ -17,7 +17,7 @@ let createCard = (json, num) => {
 	}
 
 	let col = document.createElement('div');
-	col.className = 'col teamCardCenter';
+	col.className = 'col teamCardCenter flxGrw';
 
 	let card = document.createElement('div');
 	card.className = 'card h-100';
@@ -34,6 +34,7 @@ let createCard = (json, num) => {
 	card_title.className = 'card-title';
 	card_title.innerHTML = json['teams'];
 	let form = document.createElement('form');
+
 	form.method = 'POST';
 	let inpTeamName = document.createElement('input');
 	inpTeamName.type = 'text';
@@ -42,15 +43,30 @@ let createCard = (json, num) => {
 	inpTeamName.value = json['teams'];
 	inpTeamName.className = 'removeTag';
 	let card_footer = document.createElement('div');
-	card_footer.className = 'card-footer';
+	card_footer.className = 'card-footer flex';
 
 	let card_button = document.createElement('button');
 	card_button.className = 'btn btn-primary';
 	card_button.innerHTML = "Check team's calendar";
 	card_button.type = 'submit';
+	card_button.name = 'checkCalen';
+	card_button.value = 'checkCalen';
+
+	let card_button2 = document.createElement('button');
+	card_button2.className = 'btn btn-danger leaveButton';
+	card_button2.innerHTML = 'Leave team';
+	card_button2.type = 'submit';
+	card_button2.name = 'leaveT';
+	card_button2.value = 'leaveT';
+	card_button2.addEventListener('click', function () {
+		col.classList.add('displayNone');
+		form.target = 'frame';
+	});
+
 	// card_button.addEventListener('click', function () {});
 
 	card_footer.appendChild(card_button);
+	card_footer.appendChild(card_button2);
 	form.appendChild(inpTeamName);
 	form.append(card_footer);
 	card_body.appendChild(card_title);
@@ -64,6 +80,7 @@ let createCard = (json, num) => {
 	tagList.appendChild(col);
 };
 json = [];
+json1 = [];
 let createList = (json) => {
 	if (json.length < 3) {
 		for (let i = 0; i < json.length; i++) {

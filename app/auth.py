@@ -474,10 +474,16 @@ def myTeam():
     if email == NullSession.__name__:
         return "Not Logged In"
     if request.method == 'POST':
-        title = request.form.get('teamName') 
-        session["team"] = title
-        calenJson()
-        return redirect('/calen')
+        if(request.form.get('checkCalen')):
+            title = request.form.get('teamName') 
+            session["team"] = title
+            calenJson()
+            return redirect('/calen')
+        elif(request.form.get('leaveT')):
+            title = request.form.get('teamName') 
+            leave_team(email,title)
+            return redirect('/myTeam')
+        
         
     return render_template("myTeam.html")
 

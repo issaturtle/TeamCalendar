@@ -4,9 +4,28 @@ pagetitle%}
 	<h1>My Teams</h1>
 </div>
 {%endblock%} {%block cardBox%}
-<div class="cardBox__container">
+<div class="cardBox__container" style="text-align: center">
 	<div id="tagsList" class="row row-cols-1 row-cols-md-1 g-4 webContainer">
-		<!-- s -->
+		<!-- <div class="col teamCardCenter">
+			<div class="card h-100">
+				<img
+					class="card-img-top"
+					width="390"
+					height="40"
+					src="/static/Images/colortag.png"
+				/>
+				<div class="card-body"><h5 class="card-title">PUBLIC TEAM</h5></div>
+				<form method="POST">
+					<input type="text" id="teamName" name="teamName" class="removeTag" />
+					<div class="card-footer flex">
+						<button class="btn btn-primary" type="submit">
+							Check team's calendar
+						</button>
+						<button class="btn btn-primary" type="submit">leave team</button>
+					</div>
+				</form>
+			</div>
+		</div> -->
 	</div>
 </div>
 {%endblock%} {%block JS%}

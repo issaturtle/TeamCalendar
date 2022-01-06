@@ -42,16 +42,26 @@ let eventCreate = () => {
 		eve.classList.add('open');
 	}
 };
+
 document.addEventListener('DOMContentLoaded', function () {
 	var json = [];
-	fetch('/calen.json')
-		.then((response) => {
-			return response.json();
+	var json1 = [];
+	Promise.all([fetch('/calen.json'), fetch('/userInfo.json')])
+		.then(function (responses) {
+			return Promise.all(
+				responses.map(function (response) {
+					return response.json();
+				})
+			);
 		})
-		.then((data) => {
-			json = json.concat(data['events']);
-			if (data['team'] != undefined) {
-				teamName.innerHTML = data['team'] + "'s calendar";
+		.then(function (data) {
+			json = json.concat(data[0]['events']);
+			json1 = json1.concat(data[1]['email']);
+
+			if (data[0]['team'] != undefined) {
+				teamName.innerHTML = data[0]['team'] + "'s calendar";
+			} else {
+				teamName.innerHTML = json1 + "'s calendar";
 			}
 
 			calendar = new FullCalendar.Calendar(calendarEl, {

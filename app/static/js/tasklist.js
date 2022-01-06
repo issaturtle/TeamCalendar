@@ -82,14 +82,14 @@ let createTabs = (json) => {
 
 	tabButton.addEventListener('click', function () {
 		let div = document.createElement('div');
-
+		div.className = 'taskListTabs__Width';
 		if (json['events'].length == 0) {
 			div.innerHTML = `${json['teams']} has no tasks`;
 		} else {
 			div.innerHTML = `Click ${json['teams']}'s event to resolve`;
 		}
 
-		div.className = 'taskListTabs__title';
+		div.className = 'taskListTabs__title taskListTabs__Width';
 		if (pillsProf.hasChildNodes()) {
 			while (pillsProf.firstChild) {
 				pillsProf.removeChild(pillsProf.firstChild);
