@@ -390,9 +390,9 @@ def taskList():
         if (delete_event(email, event)):
             calenJson()
             stack.append(email)
-            return render_template("taskList.html")
+            return render_template("tasklist.html")
                 
-    return render_template("taskList.html")
+    return render_template("tasklist.html")
 
 @auth.route('/joinTeam', methods = ['GET', 'POST'])
 def joinTeam():
