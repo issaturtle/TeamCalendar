@@ -249,6 +249,7 @@ def delete_team_event(team, thingToDelete):
             }
         }
     )
+    
 def get_team_events(team):
     cursor = team_collection.find({"team name": team})
     for item in cursor:
@@ -381,15 +382,20 @@ def taskList():
     if email == NullSession.__name__:                           #if user is not logged in and tries to access the calendar it will give an error message
         return "NOT LOGGED IN"
     if request.method == 'POST':
-        
         title = request.form.get('eventTitle')
 
         start = request.form.get('eventStart')
         end = request.form.get('eventEnd')
         event = {"title":title, "start":start, "end":end}
-        if (delete_event(email, event)):
+        if(request.form.get('personalDismiss')):
+            if (delete_event(email, event)):
+                calenJson()
+                stack.append(email)
+                return render_template("tasklist.html")
+        elif(request.form.get('teamTaskDismiss')):
+            team = request.form.get('teamName')
+            delete_team_event(team,event)
             calenJson()
-            stack.append(email)
             return render_template("tasklist.html")
                 
     return render_template("tasklist.html")

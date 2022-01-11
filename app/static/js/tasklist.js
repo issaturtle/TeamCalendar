@@ -120,6 +120,8 @@ let createEventinList = (json, teamName) => {
 		btn.classList.add('displayNone');
 	});
 	btn.setAttribute('type', 'submit');
+	btn.name = 'teamTaskDismiss';
+	btn.value = 'teamTaskDismiss';
 	let form = document.createElement('form');
 	form.method = 'POST';
 	form.target = 'frame';
@@ -128,6 +130,7 @@ let createEventinList = (json, teamName) => {
 	inpTeamName.id = 'teamName';
 	inpTeamName.name = 'teamName';
 	inpTeamName.value = teamName;
+	console.log(teamName);
 	inpTeamName.className = 'removeTag';
 	let inpEvent = document.createElement('input');
 	inpEvent.type = 'text';
@@ -154,7 +157,7 @@ let createEventinList = (json, teamName) => {
 
 	let sml = document.createElement('small');
 	sml.innerHTML = 'start: ' + json['start'] + ' end: ' + json['end'];
-
+	form.appendChild(inpTeamName);
 	form.appendChild(inpEvent);
 	form.appendChild(inpStart);
 	form.appendChild(inpEnd);
@@ -229,6 +232,8 @@ let createCard = (json, num) => {
 	card_button.className = 'btn btn-primary';
 	card_button.innerHTML = 'Resolve';
 	card_button.type = 'submit';
+	card_button.name = 'personalDismiss';
+	card_button.value = 'personalDismiss';
 	card_button.addEventListener('click', function () {
 		col.classList.add('displayNone');
 	});
