@@ -27,6 +27,18 @@
 		/>
 		<link
 			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static', filename ='clockpicker-gh-pages/assets/css/bootstrap.min.css')}}"
+		/>
+
+		<!-- ClockPicker Stylesheet -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static', filename ='clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css')}}"
+		/>
+		<link
+			rel="stylesheet"
 			href="{{url_for('static', filename = 'dist/style.css')}}"
 		/>
 		<script src="{{url_for('static', filename = 'calendar_test/lib/main.js')}}"></script>
@@ -90,6 +102,28 @@
 						/>
 					</div>
 					<div class="form-group">
+						<label for="startT" class="addEvent__label"> Start time</label>
+
+						<div
+							class="input-group clockpicker"
+							data-placement="right"
+							data-align="top"
+							data-autoclose="true"
+						>
+							<input
+								type="text"
+								class="form-control"
+								id="startT"
+								name="startT"
+								placeholder="08:32 or Empty If no Time"
+								value="noTime"
+							/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-time"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="endD" class="addEvent__label"> End date</label>
 						<input
 							type="date"
@@ -98,6 +132,28 @@
 							name="endD"
 							placeholder="Example: 2021-11-08"
 						/>
+					</div>
+					<div class="form-group">
+						<label for="endT" class="addEvent__label"> End time</label>
+
+						<div
+							class="input-group clockpicker"
+							data-placement="right"
+							data-align="top"
+							data-autoclose="true"
+						>
+							<input
+								type="text"
+								class="form-control"
+								placeholder="09:32 or Empty If no Time"
+								id="endT"
+								name="endT"
+								value="noTime"
+							/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-time"></span>
+							</span>
+						</div>
 					</div>
 					<button type="submit" class="button Register__Button">Submit</button>
 				</form>
@@ -177,5 +233,28 @@
 		type="text/javascript"
 		src="{{url_for('static', filename= 'js/calen.js')}}"
 	></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"
+	></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"
+	></script>
+	<script
+		type="text/javascript"
+		src="{{url_for('static', filename= 'clockpicker-gh-pages/assets/js/bootstrap.min.js')}}"
+	></script>
+
+	<!-- ClockPicker script -->
+	<script
+		type="text/javascript"
+		src="{{url_for('static', filename= 'clockpicker-gh-pages/src/clockpicker.js')}}"
+	></script>
+	<script type="text/javascript">
+		$('.clockpicker').clockpicker();
+	</script>
 	{%endblock%}
 </html>

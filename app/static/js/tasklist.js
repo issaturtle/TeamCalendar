@@ -156,7 +156,11 @@ let createEventinList = (json, teamName) => {
 	title.innerHTML = json['title'];
 
 	let sml = document.createElement('small');
-	sml.innerHTML = 'start: ' + json['start'] + ' end: ' + json['end'];
+	sml.innerHTML =
+		'Start: ' +
+		json['start'].replace('T', ' Time: ') +
+		' | End: ' +
+		json['end'].replace('T', ' Time: ');
 	form.appendChild(inpTeamName);
 	form.appendChild(inpEvent);
 	form.appendChild(inpStart);
@@ -195,11 +199,13 @@ let createCard = (json, num) => {
 
 	let card_text = document.createElement('p');
 	card_text.className = 'card-text';
-	card_text.innerHTML = 'Starting date: ' + json['start'];
+	card_text.innerHTML =
+		'Starting date: ' + json['start'].replace('T', ' Time: ');
 
 	let card_text_end = document.createElement('p');
 	card_text_end.className = 'card-text';
-	card_text_end.innerHTML = 'Ending date: ' + json['end'];
+	card_text_end.innerHTML =
+		'Ending date: ' + json['end'].replace('T', ' Time: ');
 
 	let form = document.createElement('form');
 	form.method = 'POST';
@@ -215,6 +221,7 @@ let createCard = (json, num) => {
 	inpStart.type = 'text';
 	inpStart.id = 'eventStart';
 	inpStart.name = 'eventStart';
+
 	inpStart.value = json['start'];
 	inpStart.className = 'removeTag';
 

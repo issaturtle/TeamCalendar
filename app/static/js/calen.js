@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
 				selectable: true,
 				timeZone: 'PT',
 				initialDate: today,
+				displayEventTime: true,
+
 				dateClick: function (info) {
 					eventCreate();
 					// for (let i = 0; i < json.length; i++) {

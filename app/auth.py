@@ -423,9 +423,17 @@ def calen():
     if request.method == 'POST':
         choice = request.form.get('inlineRadioOptions')         #either delete or enter an event
         strDes = request.form.get('eventName').capitalize()
-        
+        startT = request.form.get('startT')
         startD= request.form.get('startD')
         endD = request.form.get('endD')
+        endT = request.form.get('endT')
+        if(str(startT) != 'noTime'):
+            startD= startD + 'T' + str(startT)
+        if(str(endT) != 'noTime'):
+            endD = endD +'T'+str(endT)
+        # if(str(lol) == 'None'):
+        #     return "hi"
+        
         event = {'title': strDes.strip(), 'start': startD, "end" : endD}    #creates an event object given the input from user
         team = session["team"]
         if  team != NullSession.__name__:
