@@ -6,3 +6,4 @@ Working Demo: https://personal-calendar-1.herokuapp.com/homepage
 2. Open Project folder and PyCharm will ask to install all requirements in requirements.txt
 3. Run main.py
 
+![image](https://user-images.githubusercontent.com/66939964/150460320-56cdf0dc-d1e9-4ac7-a347-ccfa19345c7f.png)
