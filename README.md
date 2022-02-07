@@ -5,7 +5,8 @@ Developed with Hung Nguyen and Brandon Luong in CMPE 131. Allows users to login 
 Working Demo: https://personal-calendar-1.herokuapp.com/homepage
 # Instructions to Run
 1. PyCharm (Preferred)
-2. Open Project folder and PyCharm will ask to install all requirements in requirements.txt
-3. Run main.py
+2. Git clone directory 
+3. Change directory into the project
+4. Run main.py
 
 ![image](https://user-images.githubusercontent.com/66939964/150460320-56cdf0dc-d1e9-4ac7-a347-ccfa19345c7f.png)
