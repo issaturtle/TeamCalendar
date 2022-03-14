@@ -1,10 +1,10 @@
 # TeamCalendar
-• Leveraged Agile methodology to build a full-stack web application that allows users to create their
+- Leveraged Agile methodology to build a full-stack web application that allows users to create their
 schedules and join teams.
-• Used Flask to handle backend application logic and api calls.
-• Implemented a secure login/signup system using Google OAuth 2.0 and authorization using hashed
+- Used Flask to handle backend application logic and api calls.
+- Implemented a secure login/signup system using Google OAuth 2.0 and authorization using hashed
 passwords with bcrypt algorithm to ensure passwords are safely stored.
-• Rendered front-end components using HTML/SASS/JS for a better user and developer experience.
+- Rendered front-end components using HTML/SASS/JS for a better user and developer experience.
 
 
 Working Demo: https://personal-calendar-1.herokuapp.com/homepage
