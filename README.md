@@ -1,5 +1,10 @@
 # TeamCalendar
-Developed with Hung Nguyen and Brandon Luong in CMPE 131. Allows users to login with a created username and password, or login with their Google Account. Calendar Planner website developed with back-end using Python, Flask, and FullCalendarAPI (JavaScript) . Front-end developed with HTML and CSS.
+• Leveraged Agile methodology to build a full-stack web application that allows users to create their
+schedules and join teams.
+• Used Flask to handle backend application logic and api calls.
+• Implemented a secure login/signup system using Google OAuth 2.0 and authorization using hashed
+passwords with bcrypt algorithm to ensure passwords are safely stored.
+• Rendered front-end components using HTML/SASS/JS for a better user and developer experience.
 
 
 Working Demo: https://personal-calendar-1.herokuapp.com/homepage
